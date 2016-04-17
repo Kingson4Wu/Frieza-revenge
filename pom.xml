@@ -1,0 +1,171 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.kxw</groupId>
+    <artifactId>Frieza-revenge</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Frieza-revenge</name>
+    <url>http://maven.apache.org</url>
+
+
+    <modules>
+        <module>kingson</module>
+        <module>automation-test</module>
+        <module>mock-test</module>
+        <module>performance-test</module>
+        <module>cache</module>
+        <module>collection-operation</module>
+        <module>common-utils</module>
+        <module>database</module>
+        <module>maven-api</module>
+        <module>maven-plugins</module>
+        <module>message-queue</module>
+        <module>encryption</module>
+        <module>file-operation</module>
+        <module>http-client</module>
+        <module>java-web</module>
+        <module>jgit</module>
+        <module>json-parse</module>
+        <module>jdk-lib</module>
+        <module>os-sdk-example</module>
+        <module>programing-skill</module>
+        <module>string-operation</module>
+        <module>serialization</module>
+        <module>RPC-framework</module>
+        <module>spring-framework</module>
+        <module>struts</module>
+        <module>struts2</module>
+        <module>thread-related</module>
+        <module>websocket</module>
+        <module>DesignPatterns</module>
+	    <module>JavaConcurrencyProgramming</module>
+	    <module>JavaNetworkProgramming</module>
+        <module>groovy</module>
+        <module>scala</module>
+        <!--<module>python</module>
+        <module>javascript</module>-->
+
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Central Repository</name>
+            <!--<url>http://maven.oschina.net/content/groups/public/</url>-->
+            <url>http://central.maven.org/maven2/</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit.version>4.12</junit.version>
+        <jdk.version>1.8</jdk.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.3.1</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>1.1.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.3.2</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <!--   <sourceDirectory>src</sourceDirectory>
+        <testSourceDirectory>test</testSourceDirectory>-->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <showWarnings>true</showWarnings>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.8</version>
+                <configuration>
+                    <wtpversion>2.0</wtpversion>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Vendor>${project.organization.name}</Vendor>
+                            <Artifact-Id>${project.artifactId}</Artifact-Id>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <Build>${project.build}</Build>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
+
+
+
+
+</project>
+

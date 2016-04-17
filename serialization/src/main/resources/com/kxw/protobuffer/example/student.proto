@@ -1,0 +1,9 @@
+option java_package = "com.shun";  
+option java_outer_classname = "StudentProto";  
+  
+message Student {  
+    required int32 id = 1;  
+    optional string name = 2;  
+    optional int32 age = 3;  
+}
+

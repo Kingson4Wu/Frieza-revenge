@@ -1,0 +1,15 @@
+RabbitMQ是什么 ？
+ RabbitMQ是一个在AMQP基础上完整的，可复用的企业消息系统。他遵循Mozilla Public License开源协议。
+1：安装RabbitMQ需要先安装Erlang语言开发包。下载地址 http://www.erlang.org/download.html 在win7下安装Erlang最好默认安装。
+      配置环境变量 ERLANG_HOME C:\Program Files (x86)\erl5.9 
+      添加到PATH  %ERLANG_HOME%\bin;
+2：安装RabbitMQ 下载地址 http://www.rabbitmq.com/download.html  安装教程：http://www.rabbitmq.com/install-windows.html（其实就是next到底）
+      配置环境变量  RABBITMQ_SERVER  C:\Program Files (x86)\RabbitMQ Server\rabbitmq_server-2.8.0
+      添加到PATH %RABBITMQ_SERVER%\sbin;
+3：进入%RABBITMQ_SERVER%\sbin 目录以管理员身份运行 rabbitmq-plugins.bat
+rabbitmq-plugins.bat enable rabbitmq_management（执行这句）
+     安装完成之后以管理员身份启动 rabbitmq-service.bat
+rabbitmq-service.bat stop
+rabbitmq-service.bat install
+rabbitmq-service.bat start（执行这句）
+4：浏览器访问localhost:15672  默认账号：guest  密码：guest

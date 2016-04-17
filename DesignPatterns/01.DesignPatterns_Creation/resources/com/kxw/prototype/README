@@ -1,0 +1,33 @@
+原型模式（prototype）它是指通过给定一个原型对象来指明所要创建的对象类型，然后复制这个原型对象的办法创建出同类型的对象。原型模式也属于创建模式。
+我们先来看一下原型模式的模型：
+
+原型模型涉及到三个角色：
+客户角色（client）：客户端提出创建对象的请求；
+抽象原型（prototype）：这个往往由接口或者抽象类来担任，给出具体原型类的接口；
+具体原型（Concrete prototype）：实现抽象原型，是被复制的对象；
+模拟代码如下：
+
+
+
+
+以上代码简单描述了原型模式的实现，说到这里估计很多人要跳了，因为说到原型模式不能不说的问题是java的深拷贝和浅拷贝，那下面我们就来讨论下深拷贝和浅拷贝。
+浅拷贝：是指拷贝引用，实际内容并没有复制，改变后者等于改变前者。
+深拷贝：拷贝出来的东西和被拷贝者完全独立，相互没有影响。
+引用一哥们举的例子（博客地址忘记了）
+有一个人叫张三，人们给他取个别命叫李四，不管张三还是李四都是一个人，张三胳膊疼，李四也是一个样的不爽。这个就是浅拷贝，只是个别名而已。
+同样还是有一个人叫张三，通过人体克隆技术（如果法律允许）得到一个李四，这个李四和被克隆的张三完全是两个人，张三就是少个胳膊，李四也不会感到疼痛。这个就是深拷贝。
+ 
+java语言提供Cloneable接口，在运行时通知虚拟机可以安全的在这个类上使用clone（）方法，通过这个方法可以复制一个对象，但是Object并没有实现这个接口，所以在拷贝是必须实现此标识接口，否则会抛出CloneNotSupportedException。
+但是clone（）方法出来的默认都是浅拷贝，如果要深拷贝，那么可以考虑自己编写clone方法，但是深度很难控制，编写这个clone方法也不是最佳方案，还有个比较好的方案就是串行化来实现，代码如下：
+Java代码
+public Object deepClone(){  
+    ByteArrayOutputStream bos = new ByteArrayOutputStream();   
+    ObjectOutputStream oos = new ObjectOutputStream(bos);   
+    oos.writeObject(this);   
+    ByteArrayInputStream bis = new ByteArrayInputStream(baos.toByteArray())   
+    ObjectInputStream ois = new ObjectInputStream(bis);   
+    return ois.readObject();  
+}  
+这样就可以实现深拷贝，前提是对象实现java.io.Serializable接口。
+ 
+注意：除了基本数据类型外，其他对象默认拷贝都是浅拷贝，String类型是个例外，虽然是基本类型，但是也是浅拷贝，这个跟它实际在java内存存储情况有关。超出了设计模式讨论范围，大家可自行查看相关资料。

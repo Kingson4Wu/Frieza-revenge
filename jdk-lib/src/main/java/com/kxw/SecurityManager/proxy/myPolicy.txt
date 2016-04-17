@@ -1,0 +1,7 @@
+grant codeBase "file:F:/IdeaProject/Test/apache-tomcat-8.0.24-src/test/kxw/SecurityManager/proxy/TestPolicy/bin/*" {
+    //permission java.io.FilePermission "d:/testPolicy.txt", "read";
+    permission java.io.FilePermission "d:/testPolicy.txt", "read,write";
+};
+
+//这个策略文件(本文中为myPolicy.txt)在java中对应着一个类，叫java.security.Policy(策略)，这是一个神奇的类，有了它，你可以定义自己代码的权限，当然它还可以结合我们笔记四讲到的安全管理器。而你现在只需要记住一句话：
+// java对应用程序的访问控制策略是由抽象类java.security.Policy的一个子类的单例所表示，任何时候，每个应用程序实际上只有一个Policy对象，Policy对象对应着策略文件。类装载器利用这个Policy对象来帮助他们决定，在把一段代码导入虚拟机时应该给予什么权限。

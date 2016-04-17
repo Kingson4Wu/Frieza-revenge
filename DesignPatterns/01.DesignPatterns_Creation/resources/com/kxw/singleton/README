@@ -1,0 +1,95 @@
+单例模式应该是23种设计模式中最简单的一种。这里的简单我觉得应该是代码实现上的简单和思维的简单：类只提供一个全局变量。但是虽然简单，但若仔细研究，亦有万千变化，深藏奥妙。
+ 
+1. 定义：
+单例模式确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。
+这个类称为单例类
+2. 单例模式 特点
+a. 单例类只可有一个实例
+b.单例类必须自己创建自己这惟一的实例
+c.单例类必须给所有其他对象提供这一实例
+ 
+1. 一个简单的单例模式
+/** 
+ *  实现最简单的单例模式 
+ */  
+public class SimpleSingleton {  
+  
+    private static final SimpleSingleton singleton = new SimpleSingleton();//变量为static,final  
+      
+    private SimpleSingleton(){};//构造方法声明为私有，这样就保证了只能有一个对象存在  
+      
+    //提供一个外部得到类的方法  
+    public static SimpleSingleton getInstance(){  
+        return singleton;  
+    }  
+}  
+ 上面的代码目测存在两个问题：1. 不管singleton会被使用都是会被创建
+ 
+                                                    2. 尽管构造器被定义为private,但是利用java的反射类仍然是会被实例化
+2. 做一个优化吧
+/** 
+ *  做了些许优化的单例模式 
+ */  
+public class LazySingleton {  
+      
+    private static  LazySingleton singleton = null;//不再做实例化操作  
+      
+    private LazySingleton(){};//构造方法声明为私有，这样就保证了只能有一个对象存在  
+      
+    //提供一个外部得到类的方法  
+    public static LazySingleton getInstance(){  
+        //这里做一个判断,当对象为null时才初始化  
+        if(null==singleton){  
+            singleton = new LazySingleton();  
+        }  
+        return singleton;  
+    }  
+}  
+ 上面的代码目测存在一个问题就是线程安全的问题。就是如果多个地方同时调用getInstance方法。有可能，存在if的判断的已经通过，但是还没来得及调用new 方法，
+ 下一个调用又进来，这样也会进入到if的代码块中，导致会new 出来多个对象。
+关于线程安全问题
+如果你的代码所在的进程中有多个线程在同时运行，而这些线程可能会同时运行这段代码。如果每次运行结果和单线程运行的结果是一样的，而且其他的变量的值也和预期的是一样的，
+就是线程安全的。或者说：一个类或者程序所提供的接口对于线程来说是原子操作或者多个线程之间的切换不会导致该接口的执行结果存在二义性,也就是说我们不用考虑同步的问题
+3. 再优化一下，加上synchronized
+/** 
+ *  做了些许优化的单例模式 
+ */  
+public class LazySingleton {  
+      
+    private static  LazySingleton singleton = null;//不再做实例化操作  
+      
+    private LazySingleton(){};//构造方法声明为私有，这样就保证了只能有一个对象存在  
+      
+    //提供一个外部得到类的方法  
+    public synchronized static LazySingleton getInstance(){  
+        //这里做一个判断,当对象为null时才初始  
+        if(null==singleton){  
+            singleton = new LazySingleton();  
+        }  
+        return singleton;  
+    }  
+}  
+ 但是如果太多的synchronized会涉及到性能问题，所以要改变加锁的位置
+/** 
+ * 做了些许优化的单例模式 
+ */  
+public class LazySingleton {  
+  
+    private static LazySingleton singleton = null;// 不再做实例化操作  
+  
+    private LazySingleton(){};// 构造方法声明为私有，这样就保证了只能有一个对象存在  
+  
+    // 提供一个外部得到类的方法  
+    public  static LazySingleton getInstance() {  
+        if (null == singleton) {  
+            //锁加在这里  
+            synchronized (LazySingleton.class) {  
+                if (null == singleton) {  
+                    singleton = new LazySingleton();  
+                }  
+            }  
+        }  
+        return singleton;  
+    }  
+}  
+ 

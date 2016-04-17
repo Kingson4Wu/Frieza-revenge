@@ -1,0 +1,9 @@
+<bean id="resourceBean1" class="com.kxw.resource.resourceInject.ResourceBean3">
+    <property name="resource" value="cn/javass/spring/chapter4/test1.properties"/>
+</bean>
+<bean id="resourceBean2" class="com.kxw.resource.resourceInject.ResourceBean3">
+<property name="resource"
+          value="classpath:cn/javass/spring/chapter4/test1.properties"/>
+</bean>
+
+<!-- 注意此处“resourceBean1”注入的路径没有前缀表示根据使用的ApplicationContext实现进行选择Resource实现 -->

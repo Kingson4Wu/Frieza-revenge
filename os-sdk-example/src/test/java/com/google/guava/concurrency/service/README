@@ -1,0 +1,23 @@
+<http://ifeve.com/google-guava-serviceexplained/>
+
+Guava包里的Service接口用于封装一个服务对象的运行状态、包括start和stop等方法。
+例如web服务器，RPC服务器、计时器等可以实现这个接口。
+对此类服务的状态管理并不轻松、需要对服务的开启/关闭进行妥善管理、特别是在多线程环境下尤为复杂。
+Guava包提供了一些基础类帮助你管理复杂的状态转换逻辑和同步细节。
+
+
+使用一个服务
+
+一个服务正常生命周期有：
+
+Service.State.NEW
+Service.State.STARTING
+Service.State.RUNNING
+Service.State.STOPPING
+Service.State.TERMINATED
+服务一旦被停止就无法再重新启动了。
+如果服务在starting、running、stopping状态出现问题、会进入Service.State.FAILED.状态。
+调用 startAsync()方法可以异步开启一个服务,同时返回this对象形成方法调用链。
+注意：只有在当前服务的状态是NEW时才能调用startAsync()方法，因此最好在应用中有一个统一的地方初始化相关服务。
+停止一个服务也是类似的、使用异步方法stopAsync() 。但是不像startAsync(),多次调用这个方法是安全的。
+这是为了方便处理关闭服务时候的锁竞争问题。

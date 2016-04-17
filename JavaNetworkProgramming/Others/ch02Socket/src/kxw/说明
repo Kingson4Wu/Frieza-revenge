@@ -1,0 +1,32 @@
+1.PortScanner.java
+//扫描主机上从1到1024之间的端口，判断这些端口是否已经被服务器程序监听
+
+2.ConnectTester.java
+//介绍抛出各种异常的原因
+
+3.SimpleServer.java
+  SimpleClient.java
+//服务器进程拒绝连接（超过限定个数）
+
+4.HTTPClient.java
+//访问http服务器，发出请求并接受响应
+
+5.Sender.java
+  Receiver.java
+//客户机服务器进行通信时，一方突然结束程序（关闭socket等）操作，对另一方的影响
+ 
+6.ReceiveServer.java
+   SendClient.java
+//sendClient发送字符串，接着睡眠一分钟，然后关闭socket;
+//receiveServer读取直到输入流末尾，最后打印。
+
+7.linger
+  SimpleServer.java
+  SimpleClient.java
+  //client发送一万个字符，service睡眠后再接收
+  
+8.MailSender.java
+  SMTP客户端程序
+  
+  
+  

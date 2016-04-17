@@ -1,0 +1,6 @@
+Apache组织提供的一个资源JDBC工具类库，它是对JDBC的简单封装，对传统操作数据库的类进行二次封装，可以把结果集转化成List。，同时也不影响程序的性能。
+DbUtils类：启动类
+ResultSetHandler接口：转换类型接口
+MapListHandler类：实现类，把记录转化成List
+BeanListHandler类：实现类，把记录转化成List，使记录为JavaBean类型的对象
+Qrery Runner类：执行SQL语句的类

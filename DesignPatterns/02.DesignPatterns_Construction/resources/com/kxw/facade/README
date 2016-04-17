@@ -1,0 +1,128 @@
+门面（Facade）模式（也叫外观模式），为子系统中的一组接口提供一个一致的界面，Facade模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。如下图表示：
+
+ 从上图可以看出门面模式是把复杂的业务封装到了子系统内部，而对外部来说只有一个统一的访问界面，使得子系统更加简单，容易被客户端使用。
+ 门面模式的体现的是面向对象设计里面的迪米特法则（Law of Demeter）简称LoD，讲的是一个软件实体应当与尽可能少的其他软件实体发生相互作用，
+ 通过上面的示意图很明天体现的就是这一点。
+ 
+门面模式的角色：
+门面（Facade）角色：客户端通过此角色能了解到子系统提供的功能，门面角色会委派任务到相应的子系统中去。
+子系统（SubSystem）角色：子系统不是单独的类，而是类的集合。负责提供业务逻辑，对子系统来说门面就是它的一个客户端。
+ 
+在GOF中门面模式没有一个一般化的类图表示，这里用实例说明。门面模式在生活中常见，小时候玩过的游戏机，零花钱都买币玩那个三国志了，一个操作面板相当于一个门面，
+上面操作杆和操作按钮相当于门面提供的方法，这些方法实现是委托游戏机里面的各个部件，各个部件相互调用，相互配合完成了游戏的控制和操作，把复杂的业务逻辑封装起来，
+只提供简单有效的操作，这样十几岁的小孩子，乃至8,9岁的孩子都玩的很憨，如果不封装起来，给他电路，显示器，控制元件，估计没人会玩。
+ 
+还记得我们大学的第一天吗，一个陌生的城市，陌生的环境，入学报到可以说相对复杂和麻烦的事情，但是往往都会有学生会的学长、学姐的接待和帮助，基本上跟着他走，
+所有事情都由他给你办了，只要签字或交钱就ok了，一切便的很简单。
+
+
+ 运行结果：
+注册
+交学费
+领取生活用品
+ 
+门面模式的好处在于对于客户端子系统屏蔽了内部组件，减少客户单处理对象的数目，使客户端调用变的简单；将客户端和子系统解耦，子系统内部紧耦合，达到了系统设计的高内聚低耦合的要求。
+
+-----------------------------------
+
+代码：
+1. CPU类
+Java代码  收藏代码
+/** 
+ *  
+ * @Description:  
+ *  CPU类 
+ * @author king 
+ * @version 1.0 
+ */  
+public class Cpu {  
+    public void execute(){  
+    System.out.println("CPU正在启动.....");  
+    }  
+}  
+ 2. 内存类
+Java代码  收藏代码
+package com.myplay.facade;  
+  
+/** 
+ *  
+ * @Description: 内存类 
+ * @author king 
+ * @version 1.0 
+ */  
+public class Memeory {  
+  
+    public void execute() {  
+  
+    System.out.println("内存正在启动.....");  
+    }  
+  
+}  
+ 3. 硬盘驱动类
+Java代码  收藏代码
+/** 
+ *  
+ * @Description: 
+ * 硬盘驱动类 
+ * @author king 
+ * @version 1.0 
+ */  
+public class HardDriver {  
+    //执行的方法  
+    public void execute() {  
+    System.out.println("硬盘驱动正在加载.....");  
+    }  
+}  
+ 4. 键盘类
+/** 
+ *  
+ * @Description:  
+ *  键盘类 
+ * @author king 
+ * @version 1.0 
+ */  
+public class KeyBorad {  
+    public void clickButton(String command){  
+    if("start".equals(command)){  
+        new Cpu().execute();  
+        new Memeory().execute();  
+        new HardDriver().execute();  
+    }  
+    }  
+}  
+ 5.客户类
+/** 
+ *  
+ * @Description:  
+ *  客户类 
+ * @author king 
+ * @version 1.0 
+ */  
+public class Client {  
+    private KeyBorad keyBorad = new KeyBorad();  
+     
+    public void start(){  
+    keyBorad.clickButton("start");  
+    }  
+  
+}  
+ 6. 运行类：
+/** 
+ *  
+ * @Description:  
+ *  运行类 
+ * @author king 
+ * @version 1.0 
+ */  
+public class Run {  
+    public static void main(String[] args) {  
+    Client client = new Client();  
+    client.start();  
+    }  
+}  
+ 7.运行结果：
+CPU正在启动.....
+内存正在启动.....
+硬盘驱动正在加载.....
+ 
+以上是我对外观模式的理解。主要就是类的封装。

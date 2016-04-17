@@ -1,0 +1,49 @@
+<http://my.oschina.net/neron/blog/39175>
+
+pom.xml：
+
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.0.1</version>
+    <scope>provided</scope>
+</dependency>
+web.xml：
+
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <display-name>Servlet3-Demo</display-name>
+</web-app>
+AsyncServlet：
+
+@WebServlet(value = "/async-demo", asyncSupported = true)
+public class AsyncServlet extends HttpServlet {
+
+    ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(2);
+
+    public void doGet(HttpServletRequest req, HttpServletResponse res) {
+        AsyncContext aCtx = req.startAsync(req, res);
+
+        executor.execute(new AsyncHandler(aCtx));
+    }
+
+}
+AsyncHandler：
+
+public class AsyncHandler implements Runnable {
+
+    private AsyncContext ctx;
+
+    public AsyncHandler(AsyncContext ctx) {
+        this.ctx = ctx;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Dispatch Time: " + System.currentTimeMillis());
+
+        ctx.dispatch("/index.jsp");
+    }
+
+}

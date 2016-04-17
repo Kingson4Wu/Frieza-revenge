@@ -1,0 +1,83 @@
+原型模式（Prototype Pattern） 
+用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。 
+
+浅复制（浅克隆）: 浅复制仅仅复制所考虑的对象，而不复制它所引用的对象。  
+深复制（深克隆）：深复制把要复制的对象所引用的对象都复制了一遍。 
+  
+Java中对象的克隆,为了获取对象的一份拷贝，我们可以利用Object类的clone()方法。必须要遵循下面三点: 
+1.在派生类中实现Cloneable接口。 
+2.在派生类中覆盖基类的clone()方法，并声明为public【Object类中的clone()方法为protected的】。  
+3.在派生类的clone()方法中，调用super.clone()。  
+Object类里的clone方法是浅复制（浅克隆） 
+
+浅复制： 
+public class Demo implements Cloneable{  
+    private ArrayList<String> arrayList;  
+  
+    public ArrayList<String> getArrayList() {  
+        return arrayList;  
+    }  
+  
+    public Demo(){  
+        arrayList=new ArrayList<String>();  
+    }  
+      
+    @Override  
+    protected Object clone() throws CloneNotSupportedException {  
+        return super.clone();  
+    }  
+      
+    public static void main(String[] args) throws CloneNotSupportedException {  
+        Demo demo1=new Demo();  
+        demo1.getArrayList().add("1");  
+        Demo demo2=(Demo) demo1.clone();  
+        demo2.getArrayList().add("2");  
+        System.out.println("demo1:"+demo1.getArrayList());  
+        System.out.println("demo2:"+demo2.getArrayList());  
+    }  
+  
+}  
+
+
+结果： 
+demo1:[1, 2]  
+demo2:[1, 2]  
+
+
+深复制： 
+public class Demo implements Cloneable{  
+    private ArrayList<String> arrayList;  
+  
+    public ArrayList<String> getArrayList() {  
+        return arrayList;  
+    }  
+  
+    public Demo(){  
+        arrayList=new ArrayList<String>();  
+    }  
+      
+    @Override  
+    protected Object clone() throws CloneNotSupportedException {  
+        Demo demo= (Demo) super.clone();  
+        demo.arrayList=(ArrayList<String>) this.arrayList.clone();  
+        return demo;  
+    }  
+      
+    public static void main(String[] args) throws CloneNotSupportedException {  
+        Demo demo1=new Demo();  
+        demo1.getArrayList().add("1");  
+        Demo demo2=(Demo) demo1.clone();  
+        demo2.getArrayList().add("2");  
+        System.out.println("demo1:"+demo1.getArrayList());  
+        System.out.println("demo2:"+demo2.getArrayList());  
+    }  
+  
+}  
+
+
+结果： 
+demo1:[1]  
+demo2:[1, 2]  
+
+
+注意事项：克隆对象时对象的构造方法不执行 

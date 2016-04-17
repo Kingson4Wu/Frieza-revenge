@@ -1,0 +1,26 @@
+1. 背景
+目前维护的产品使用jackson处理json，现整理一下jackson相关资料，希望对初次接触jackson的新手有所帮助。
+     jackson主页: http://jackson.codehaus.org/
+     jackson document: http://wiki.fasterxml.com/JacksonJavaDocs
+     JacksonInFiveMinutes: http://wiki.fasterxml.com/JacksonInFiveMinutes
+     本文主要内容译自JacksonInFiveMinutes，增加了部分示例，转载请注明出处。
+受java平台上各种处理xml的类库(StAX, JAXB等)启发，Jackson提供一种处理json的java类库。Jackson的目标是为开发者提供快速、准确、轻量级和用起来最爽的json处理类库。本文将概括介绍Jackson的主要功能和相关功能的使用示例。
+
+2.  使用方式
+Jackson提供三种可选的json处理方式：
+1） Streaming API
+又称Incremental parsing/generation， 受StAX API启发，以非关联递增方式读写json内容。 通过
+org.codehaus.jackson.JsonParser读取，通过org.codehaus.jackson.JsonGenerator写入。
+2） Tree Model
+通过基于内存的树形结构来描述json数据，和 XML DOM类似。通过org.codehaus.jackson.map.ObjectMapper构建树，树由JsonNode节点组成。
+3） Data Binding
+基于属性访问或注解的方式将json和POJO对象互相转换， 受JAXB基于注解的处理方式启发。通过org.codehaus.jackson.map.ObjectMapper读写json数据。它包含两种类型:
+3.1 Simple Data Binding
+用于json和Java Maps, Lists, Strings, Numbers, Booleans and nulls的相互转换。
+3.2 Full Data Binding
+用于json和Java Bean的相互转换。
+
+下面从使用的角度上比较三种处理方式：
+Streaming API 执行效率最高，读写速度最快，另外两种方式都基于它实现；
+Tree Model 是最灵活的；
+Data Binding 通常是最方便使用的

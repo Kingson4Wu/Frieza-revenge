@@ -1,0 +1,72 @@
+http://blog.csdn.net/kingson_wu/article/details/48466633
+
+1.Servlet
+
+原本Servlet开发完后，必须在web.xml中配置如下代码：
+
+<servlet>
+    <servlet-name></servlet-name>
+    <servler-class></servlet-class>
+    <load-on-startup></load-on-startup>
+    <init-param>
+         <param-name></param-name>
+         <param-value></param-value>
+    </init-param>
+</servlet>
+<servlet-mapping>
+     <servlet-name></servlet-name>
+      <url-pattern></url-pattern>
+</servlet-mapping>
+现在只需要在java源文件的Servlet类前面加上：
+@WebServlet(name="",urlPatterns={""},initParams={@WebInitParam(name="",value=""),loadOnStartup=1})
+public class FirstServlet extends HttpServlet{}
+
+
+这样的话只需要将class文件放入WEB-INF\classes 中，不需要再web.xml中作任何改动就完成部署；
+
+2.Filter
+
+原本Filter的配置如下：
+
+<filter>
+    <filter-name></filter-name>
+    <filter-class></filter-class>
+<filter>
+<filter-mapping>
+    <filter-name></filter-name>
+    <url-pattern></url-pattern>
+</filter-mapping>
+
+
+现在只需要在java源文件的Filter类前面加上
+@WebFilter(filterName="",urlPattern={"/"});
+
+3.Listener
+
+原本在web.xml中配置如下：
+
+<listener>
+      <listener-class></listener-class>
+</listener>
+
+
+现在只需要在java源文件的Listener类前面加上@WebListener即可；
+
+---
+使用异步servlet主要原因就是因为，在service方法中业务逻辑如果碰到io操作时间比较长的操作，
+这样这个service方法就会长时间占用tomcat容器线程池中的线程，这样是不利于其他请求的处理的，
+当线程池中的线程处理任务时，任务由于长时间io操作，肯定会阻塞线程处理其他任务，引入异步servlet的目的就是将容器线程池和业务线程池分离开。
+在处理大io的业务操作的时候，把这个操作移动到业务线程池中进行，释放容器线程，使得容器线程处理其他任务，在业务逻辑执行完毕之后，
+然后在通知tomcat容器线程池来继续后面的操作，这个操作应该是把处理结果commit到客户端或者是dispatch到其他servlet上。
+
+---
+
+@WebServlet(name="Servlet3", urlPatterns={"/demo", "servlet"},asyncSupported=true)//此为Servlet3新增的注解支持，asyncSupported=true表示支持异步
+//也可在web.xml中添加<async-supported>true</async-supported>
+
+---
+关于 tomcat nio connector, servlet 3.0 async, spring mvc async 的关系
+<http://www.cnblogs.com/zemliu/p/3975983.html>
+
+Tomcat 对异步servlet的处理
+<http://blog.chinaunix.net/uid-27767798-id-3806685.html>

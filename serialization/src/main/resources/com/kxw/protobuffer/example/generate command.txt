@@ -1,0 +1,1 @@
+G:\Company_Study_notes\protobuffer\example>protoc --java_out=.\kxw teacher.proto student.proto

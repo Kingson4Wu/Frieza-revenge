@@ -1,0 +1,16 @@
+
+
+ sun.misc.BASE64Encoder找不到jar包的解决方法
+ 
+ 1.右键项目-》属性-》java bulid path-》jre System Library-》access rules-》resolution选择accessible，下面填上** 点击确定即可！！！
+2.
+在MyEclipse中编写Java代码时，用到了BASE64Decoder，import sun.misc.BASE64Decoder；可是Eclipse提示： 
+Access restriction: The type BASE64Decoder is not accessible due to restriction on required library C:\Program 
+files\java\jre6\lib\rt.jar 
+Access restriction : The constructor BASE64Decoder() is not accessible due to restriction on required library C:\Program files\java\jre6\lib\rt.jar 
+
+解决方案1（推荐）： 
+只需要在project build path中先移除JRE System Library，再添加库JRE System Library，重新编译后就一切正常了。 
+解决方案2： 
+Windows -> Preferences -> Java -> Compiler -> Errors/Warnings -> 
+Deprecated and trstricted API -> Forbidden reference (access rules): -> change to warning

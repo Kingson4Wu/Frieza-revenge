@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+
+
+
+      <package name="default" namespace="/" extends="struts-default">
+
+        <action name="hello">
+            <result>
+                /hello.jsp
+            </result>
+        </action>
+        
+         
+      <!-- 文件上传Action -->
+
+               <action name="Upload" class="kxw.FileUploadAction">
+            <result name="success">/success.jsp</result>
+
+            <result name="input">/upload.jsp</result>
+
+            <interceptor-ref name="fileUpload">
+
+            <!--
+
+               <param name="maximumSize">102400</param>
+
+               <param name="allowedTypes">application/msword</param>
+
+             -->
+
+            </interceptor-ref>
+
+            <interceptor-ref name="defaultStack"/>   
+
+        </action>
+        
+    </package>
+
+
+
+
+
+
+
+    <!-- Add packages here -->
+
+</struts>

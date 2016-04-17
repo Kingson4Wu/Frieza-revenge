@@ -1,0 +1,7 @@
+服务器端：TransferServer.java
+直接运行启动
+
+客户端：FileTransferClientInterface.java（界面）
+TransferClient.java（客户端业务）
+FileTransferStart.java（客户端启动）
+

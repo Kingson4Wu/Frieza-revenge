@@ -1,0 +1,57 @@
+ 配置文件中使用验证
+Xml代码  收藏代码
+<form-validation>
+   <global>
+       <validator name="required"
+          classname="org.apache.commons.validator.TestValidator"
+          method="validateRequired"
+          methodParams="java.lang.Object, org.apache.commons.validator.Field"/>
+    </global>
+    <formset>
+    </formset>
+</form-validation>
+
+添加姓名验证.
+
+<form-validation>
+   <global>
+       <validator name="required"
+          classname="org.apache.commons.validator.TestValidator"
+          method="validateRequired"
+          methodParams="java.lang.Object, org.apache.commons.validator.Field"/>
+    </global>
+    <formset>
+       <form name="nameForm">
+          <field property="firstName" depends="required">
+             <arg0 key="nameForm.firstname.displayname"/>
+          </field>
+          <field property="lastName" depends="required">
+             <arg0 key="nameForm.lastname.displayname"/>
+          </field>
+       </form>
+    </formset>
+</form-validation>
+ 验证类
+Java代码  收藏代码
+ Excerpts from org.apache.commons.validator.RequiredNameTest
+//加载验证配置文件
+InputStream in = this.getClass().getResourceAsStream("validator-name-required.xml");
+
+ValidatorResources resources = new ValidatorResources(in);
+//这个是自己创建的bean 我这里省略了
+Name name = new Name();
+
+Validator validator = new Validator(resources, "nameForm");
+//设置参数
+validator.setParameter(Validator.BEAN_PARAM, name);
+
+
+Map results = null;
+//验证
+results = validator.validate();
+
+if (results.get("firstName") == null) {
+    //验证成功
+} else {
+    //有错误     int errors = ((Integer)results.get("firstName")).intValue();
+}

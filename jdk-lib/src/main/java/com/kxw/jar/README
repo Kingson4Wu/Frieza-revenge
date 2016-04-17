@@ -1,0 +1,192 @@
+http://blog.csdn.net/yfqnihao/article/details/8267669
+
+（一）
+F:\IdeaProject\Test\apache-tomcat-8.0.24-src\test\kxw\jar\signature\friend>jar cvf friend.jar .
+已添加清单
+正在添加: Friend.java(输入 = 848) (输出 = 363)(压缩了 57%)
+
+F:\IdeaProject\Test\apache-tomcat-8.0.24-src\test\kxw\jar\signature\friend>cd ../stranger
+
+F:\IdeaProject\Test\apache-tomcat-8.0.24-src\test\kxw\jar\signature\stranger>jar cvf stranger.jar
+已添加清单
+正在添加: Stranger.java(输入 = 862) (输出 = 357)(压缩了 58%)
+
+F:\IdeaProject\Test\apache-tomcat-8.0.24-src\test\kxw\jar\signature\stranger>
+
+F:\IdeaProject\Test\apache-tomcat-8.0.24-src\test\kxw\jar\signature\stranger>mv stranger.jar ../../
+
+F:\IdeaProject\Test\apache-tomcat-8.0.24-src\test\kxw\jar\signature\friend>mv friend.jar ../../
+
+
+------------
+（二）
+
+生成第一个密钥对，这个密钥对的别名是 friend.keystore，采用的加密算法为RSA,密钥对的过期时间是10000天，密钥对存储的文件名ijvmkeys.keystore，而查看ijvmkeys.keystore的密码和friend.keystore密钥对的查看密码我们设置为611264
+
+F:\IdeaProject\Test\apache-tomcat-8.0.24-src\test\kxw\jar>ls
+README  friend.jar  signature  stranger.jar
+
+F:\IdeaProject\Test\apache-tomcat-8.0.24-src\test\kxw\jar>keytool -genkey -keystore ijvmkeys.keystore -keyalg
+RSA -validity 10000 -alias friend.keystore
+输入密钥库口令:
+再次输入新口令:
+您的名字与姓氏是什么?
+  [Unknown]:  kingson.wu
+您的组织单位名称是什么?
+  [Unknown]:  abc
+您的组织名称是什么?
+  [Unknown]:  mobile
+您所在的城市或区域名称是什么?
+  [Unknown]:  GuangZhou
+您所在的省/市/自治区名称是什么?
+  [Unknown]:  GuangDong
+该单位的双字母国家/地区代码是什么?
+  [Unknown]:  CHN
+CN=kingson.wu, OU=abc, O=mobile, L=GuangZhou, ST=GuangDong, C=CHN是否正确?
+  [否]:  y
+
+输入 <friend.keystore> 的密钥口令
+        (如果和密钥库口令相同, 按回车):
+
+F:\IdeaProject\Test\apache-tomcat-8.0.24-src\test\kxw\jar>
+
+-----------
+（三）
+keytool -genkey -keystore ijvmkeys.keystore -keyalg RSA -validity 10000 -alias stranger.keystore
+                                           按照步骤2的截图，一步一步输入吧，这个步骤是生成别名为stranger.keystore的密钥对。
+                                            好了密钥对生成结束，看看你的jar文件目录下有没有多出一个文件ijvmkeys.keystore，是滴，这里生成了一个用于存放密钥对的文件。
+
+------------
+（四）查看生成的密钥文件，在cmd窗口输入keytool -list -v -keystore ijvmkeys.keystore
+F:\IdeaProject\Test\apache-tomcat-8.0.24-src\test\kxw\jar>keytool -list -v -keystore ijvmkeys.keystore
+输入密钥库口令:
+
+密钥库类型: JKS
+密钥库提供方: SUN
+
+您的密钥库包含 2 个条目
+
+别名: friend.keystore
+创建日期: 2015-8-26
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=kingson.wu, OU=abc, O=mobile, L=GuangZhou, ST=GuangDong, C=CHN
+发布者: CN=kingson.wu, OU=abc, O=mobile, L=GuangZhou, ST=GuangDong, C=CHN
+序列号: 6558aa05
+有效期开始日期: Wed Aug 26 13:30:28 CST 2015, 截止日期: Sun Jan 11 13:30:28 CST 2043
+证书指纹:
+         MD5: 5B:DB:70:F4:E8:0E:E9:C8:0B:A9:AA:A3:6D:82:29:9B
+         SHA1: 6D:CE:0F:84:91:FC:47:1B:58:F2:C7:15:9A:33:BF:C0:3C:54:A6:5C
+         SHA256: 35:1D:EB:95:1F:86:BB:CB:39:7D:AC:7D:D8:F1:50:6F:A4:00:81:6C:D2:8F:A9:8D:EA:CE:F6:DB:25:A9:05:
+D3
+         签名算法名称: SHA256withRSA
+         版本: 3
+
+扩展:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 92 B5 D6 A0 93 CF DC F5   66 DB FE 48 94 7E 5A FF  ........f..H..Z.
+0010: D9 ED 13 FF                                        ....
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+
+别名: stranger.keystore
+创建日期: 2015-8-26
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=kingson.wu, OU=abc, O=mobile, L=GuangZhou, ST=GuangDong, C=CHN
+发布者: CN=kingson.wu, OU=abc, O=mobile, L=GuangZhou, ST=GuangDong, C=CHN
+序列号: 512b2918
+有效期开始日期: Wed Aug 26 15:25:04 CST 2015, 截止日期: Sun Jan 11 15:25:04 CST 2043
+证书指纹:
+         MD5: 79:DB:2B:24:BB:59:0F:BE:0D:A8:D5:F1:49:83:1C:7F
+         SHA1: A4:81:07:6A:DE:D2:BF:5F:0B:4B:70:4D:78:E4:E2:D9:B9:EB:52:C1
+         SHA256: EA:D5:59:F9:5C:BA:43:18:74:F5:37:0D:2D:87:EF:71:BE:35:12:C5:5E:48:E1:FB:7C:D2:B8:2B:76:66:3A:
+1D
+         签名算法名称: SHA256withRSA
+         版本: 3
+
+扩展:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: F0 C3 A2 BC B3 A3 7B AA   DB 13 17 3B 60 E2 0B 58  ...........;`..X
+0010: 28 C6 D7 40                                        (..@
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+
+
+F:\IdeaProject\Test\apache-tomcat-8.0.24-src\test\kxw\jar>
+
+（五）
+对jar进行摘要并对hash摘要进行加密生成签名，放置到jar文件结构的尾部
+
+在cmd窗口输入
+ jarsigner -verbose -keystore ijvmkeys.keystore friend.jar friend.keystore
+ jarsigner -verbose -keystore ijvmkeys.keystore stranger.jar stranger.keystore
+
+ F:\IdeaProject\Test\apache-tomcat-8.0.24-src\test\kxw\jar>  jarsigner -verbose -keystore ijvmkeys.keystore fri
+ end.jar friend.keystore
+ 输入密钥库的密码短语:
+  正在更新: META-INF/MANIFEST.MF
+    正在添加: META-INF/FRIEND_K.SF
+    正在添加: META-INF/FRIEND_K.RSA
+   正在签名: Friend.java
+
+ F:\IdeaProject\Test\apache-tomcat-8.0.24-src\test\kxw\jar>jarsigner -verbose -keystore ijvmkeys.keystore stran
+ ger.jar stranger.keystore
+ 输入密钥库的密码短语:
+  正在更新: META-INF/MANIFEST.MF
+    正在添加: META-INF/STRANGER.SF
+    正在添加: META-INF/STRANGER.RSA
+   正在签名: Stranger.java
+
+ F:\IdeaProject\Test\apache-tomcat-8.0.24-src\test\kxw\jar>
+
+ （六）
+ 右键frend.jar和stranger.jar用rar解压器看看它们在META-INF目录下是否生成了两个附加的文件
+
+ 而关于这两个附加文件的用处，我这里也简单的说明一下，首先从名字上来讲他是八个字符，他默认取我们的密钥对的名字的前八个字符做名字而因为我们的密钥对名字是friend.keystore所以生成的名字将点替换为下滑线。如果你想要自己指定名字在keytool后面加上-sigFile XXXX这个参数
+ 另外FRIEND_K.SF这个文件我们简单的展开
+ [html] view plaincopy
+ Signature-Version: 1.0
+ SHA1-Digest-Manifest-Main-Attributes: QHukAYw2MtCop4vlrhjJDDro1fQ=
+ Created-By: 1.6.0_12 (Sun Microsystems Inc.)
+ SHA1-Digest-Manifest: YePdyFc1+FVdY1PIcj6WVuTJAFE=
+
+ Name: com/yfq/test/friend/Friend$1.class
+ SHA1-Digest: mj79V3+YKsRAzxGHpyFGhOdY4dU=
+
+ Name: com/yfq/test/friend/Friend.class
+ SHA1-Digest: tqPfF2lz4Ol8eJ3tQ2IBvvtduj0=
+ 它包含了签名的版本，签名者，还有被签名的类名，以及这个类的hash摘要，第四行是整个本文件的摘要，用于jar包的校验
+ FRIEND_K.DSA 文件,SF 文件被签名且签名被放入 .DSA 文件。.DSA 文件还包含来自密钥仓库的证书或证书链（被编码到其中），它们鉴别与用于签名的私钥对应的公钥。
+
+ （七）
+ 校验jar包在cmd中输入jarsigner -verify friend.jar和jarsigner -verify stranger.jar
+
+
+-------------
+http://blog.csdn.net/yangxt/article/details/1796965
+
+friend.jar\META-INF：
+FRIEND_K.RSA
+FRIEND_K.SF
+MANIFEST.MF

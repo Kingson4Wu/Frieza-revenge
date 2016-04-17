@@ -1,0 +1,22 @@
+package com.kxw.drools.ip
+
+import com.kxw.drools.ip.UserIpInterface
+
+//多个rule时 salience 值高的先执行
+rule "kxw-alarm"
+    salience 10
+    when
+        m:UserIpInterface( sum == 1 && name.equals("kxw") )
+    then
+        m.setName("miaomiao");
+        m.setSum(4);
+end
+
+rule "kxw-alarm-2"
+    salience 10
+    when
+        m:UserIpInterface( sum == 2 && name.equals("ff") )
+    then
+        m.setName("mie");
+        m.setSum(3);
+end

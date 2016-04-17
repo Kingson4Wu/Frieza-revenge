@@ -1,0 +1,9 @@
+spring 提供了 Resource
+查看 spring-framework的test case
+
+或者 spring的DefaultResourceLoader
+
+ant风格的正则模糊匹配
+AppliacationContext提供的getResources方法将获取资源委托给ResourcePatternResolver实现
+
+---
