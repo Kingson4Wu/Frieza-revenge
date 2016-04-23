@@ -13,6 +13,7 @@
     <modules>
         <module>kingson</module>
         <module>automation-test</module>
+        <module>bytecode-parse</module>
         <module>mock-test</module>
         <module>performance-test</module>
         <module>cache</module>
