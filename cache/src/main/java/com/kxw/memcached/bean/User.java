@@ -9,7 +9,19 @@ public class User implements Serializable{
     private int uid;
     private String uname;
     private String upass;
-    
+
+
+    public User(){
+        super();
+    }
+
+    public User(int uid, String uname, String upass) {
+        super();
+        this.uid = uid;
+        this.uname = uname;
+        this.upass = upass;
+    }
+
     public int getUid() {
        return uid;
     }
