@@ -11,7 +11,7 @@ import org.apache.thrift.transport.TTransportException;
 
 /**
  * blog http://www.micmiu.com
- *
+ * <a href='http://www.micmiu.com/soa/rpc/thrift-sample/'>@link</a>
  * @author Michael
  *
  */

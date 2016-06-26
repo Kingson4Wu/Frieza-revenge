@@ -13,7 +13,7 @@ public final class StudentProto {
 
     // required int32 id = 1;
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>required int32 id = 1;</code>e
      */
     boolean hasId();
     /**
