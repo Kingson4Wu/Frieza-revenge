@@ -52,4 +52,13 @@ public class Kingson {
     public void setCompany(String company) {
         this.company = company;
     }
+
+    public void run() {
+        System.out.println("i am king !");
+
+    }
+
+    public boolean next() {
+        return false;
+    }
 }

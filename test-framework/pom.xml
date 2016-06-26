@@ -8,10 +8,10 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>mock-test</artifactId>
+    <artifactId>test-framework</artifactId>
     <packaging>jar</packaging>
 
-    <name>mock-test</name>
+    <name>test-framework</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -29,6 +29,21 @@
             <artifactId>mockito-all</artifactId>
             <version>1.10.19</version>
         </dependency>
+
+        <!-- http://mvnrepository.com/artifact/org.jmockit/jmockit -->
+        <dependency>
+            <groupId>org.jmockit</groupId>
+            <artifactId>jmockit</artifactId>
+            <version>1.24</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.kxw</groupId>
+            <artifactId>kingson</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
     </dependencies>
 
 
