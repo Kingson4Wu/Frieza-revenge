@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<demo-config>
+		<demo-keywords>上海,北京,南京</demo-keywords>
+		<demo-pagesize>5</demo-pagesize>
+	</demo-config>
+</config>

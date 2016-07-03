@@ -16,8 +16,12 @@
 
 #### crawler4j
 1. <https://github.com/yasserg/crawler4j>
+2. 难用,没深入看,看不明白啥意思,而且例子的代码比较繁琐
 
 
 #### heritrix3
 1. <https://github.com/internetarchive/heritrix3>
 
+#### pyspider
+
+#### solr,nutch(lucene)
