@@ -7,6 +7,9 @@
 <https://github.com/code4craft/webmagic>
 <http://webmagic.io/docs/zh/posts/ch6-custom-componenet/pipeline.html>
 
+### xpath
+<http://www.w3school.com.cn/xpath/xpath_syntax.asp>
+
 #### webcontroller
 1. 文档不是很完善,虽然又教程
 2. 最新版在github,没有在maven仓库

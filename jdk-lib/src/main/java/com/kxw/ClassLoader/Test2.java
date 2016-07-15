@@ -1,4 +1,4 @@
-package com.kxw.ClassLoader;
+package com.kxw.classLoader;
 
 /**
  * Created by kingsonwu on 16/4/11.

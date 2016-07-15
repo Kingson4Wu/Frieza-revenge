@@ -1,4 +1,4 @@
-package com.kxw.ClassLoader;
+package com.kxw.classLoader;
 
 /**
  * <a href='http://blog.csdn.net/u013256816/article/details/50837863'>@link</a>
