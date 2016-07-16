@@ -1,14 +1,14 @@
 package com.kxw.classLoader.diffClassloader;
 
 
-public class A {
-    private B b;
+public class Factory {
+    private Car b;
 
-    public B getB() {
+    public Car getCar() {
         return b;
     }
 
-    public void setB(B b) {
+    public void setCar(Car b) {
         this.b = b;
     }
 }
