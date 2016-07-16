@@ -6,16 +6,23 @@ public class BMW implements Car {
     public void sayHello() {
         System.out.println("Hello from loaded Bean class for test!!!");
         try {
-            System.out.println(Class.forName("com.kxw.classLoader.diffClassloader.King").getClassLoader());
-            System.out.println(King.class.getClassLoader());
+
+            ClassLoader kingForNameClassLoader =  Class.forName("com.kxw.classLoader.diffClassloader.King").getClassLoader();
+
+            System.out.println("BMW  King Class.forName classLoader: " + kingForNameClassLoader);
+            System.out.println("BMW King Class classLoader: " + King.class.getClassLoader());
+            System.out.println("BMW King  new Class classLoader: " + new King().getClass().getClassLoader());
             King king = (King) Class.forName("com.kxw.classLoader.diffClassloader.King").newInstance();
 
             king.haha();
 
-            ClassLoader cl = Thread.currentThread().getContextClassLoader();
-            System.out.println(cl);
+            //-----
+            System.out.println("--------------");
+
+           /* ClassLoader cl = Thread.currentThread().getContextClassLoader();
+            System.out.println("BMW ContextClassLoader : " + cl);
             King king2 = (King) cl.loadClass("com.kxw.classLoader.diffClassloader.King").newInstance();
-            king2.haha();
+            king2.haha();*/
 
         } catch (InstantiationException e) {
             e.printStackTrace();
@@ -24,5 +31,10 @@ public class BMW implements Car {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public void getContextClassLoader(){
+
+        System.out.println("BMW contextClassLoader: "+ Thread.currentThread().getContextClassLoader());
     }
 }

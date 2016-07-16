@@ -13,8 +13,10 @@ public class KingsonClassLoader extends URLClassLoader {
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {
         synchronized (getClassLoadingLock(name)) {
-            if ("com.kxw.classLoader.diffClassloader.B".equals(name)
-                    || "com.kxw.classLoader.diffClassloader.King".equals(name)) {
+            if ("com.kxw.classLoader.diffClassloader.Factory".equals(name)
+                    || "com.kxw.classLoader.diffClassloader.Car".equals(name)
+                    || "com.kxw.classLoader.diffClassloader.King".equals(name)
+                    || "com.kxw.classLoader.diffClassloader.BMW".equals(name)) {
                 Class<?> clazz = findLoadedClass(name);
                 if (clazz == null) {
                     clazz = findClass(name);

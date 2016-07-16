@@ -16,10 +16,11 @@ public class DifferentClassLoaderTest {
         URL[] classLoaderUrls = new URL[]{new URL("file:" + dir)};
 
         // Create a new URLClassLoader
+        //parent class Loader 为extClassLoader!!!!!!
         URLClassLoader cl = new KingsonClassLoader(classLoaderUrls, DifferentClassLoaderTest.class.getClassLoader().getParent());
 
 
-        Thread.currentThread().setContextClassLoader(cl);
+        //Thread.currentThread().setContextClassLoader(cl);
 
         System.out.println(Thread.currentThread().getContextClassLoader());
 
@@ -46,10 +47,12 @@ public class DifferentClassLoaderTest {
         /** 只能反射调???! */
 
 
-        /** class.forName 以及new 都是取当前类即DifferentClassLoaderTest 所加载的加载器作为自身的加载器
+        /** class.forName 以及new,以及Car.class 都是取目前所处的类的加载器作为自身的加载器(当然加载自定义加载器无法加载的时候可能取父加载器,这个取决于自定义加载器里面的定义)
          * 跟设置setContextClassLoader 无关,设置这个只是方便在需要使用的时候通过getContextClassLoader()取出,
-         * 所以在这个类只能使用反射来调用,但是在BMW类则可以不使用反射
-         * 类的ContextClassLoader默认为加载该类的加载器
+         * 所以在这个类(使用KingClassLoader加载)在这里只能使用反射来调用,但是在BMW类则可以不使用反射
+         * 类的ContextClassLoader默认为一开始线程启动的加第一个类的类加载器,这里即DifferentClassLoaderTest的类加载器:AppClassLoader
+         * 新开一个线程试试?
+         * 但是因为new Thread 也是使用AppClassLoader来加载Thread的,因为contetxCLassLoader默认基本都一定会是AppClassLoader
          * */
 
         /*Factory factory = new Factory();
@@ -83,6 +86,27 @@ public class DifferentClassLoaderTest {
         /**
          * http://www.cnblogs.com/shosky/archive/2011/07/22/2114290.html
          */
+
+        System.out.println("cl parent: " + cl.getParent());
+        Class<?> factoryClass = cl.loadClass("com.kxw.classLoader.diffClassloader.Factory");
+        //Class<?> factoryClass = Class.forName("com.kxw.classLoader.diffClassloader.Factory");
+        Object factoryObject = factoryClass.newInstance();
+
+        Method factoryMethod = factoryClass.getMethod("setCar", cl.loadClass("com.kxw.classLoader.diffClassloader.Car"));
+        //Method factoryMethod = factoryClass.getMethod("setCar", Car.class);
+
+        Car car = new BMW();
+        factoryMethod.invoke(factoryObject,car);
+
+        /**
+         * 虽然这里的car是使用AppClassLoader加载,而Factory使用的是KingsonClassLoader,
+         * AppClassLoader 和KingsonClassLoader 为同级的加载器,父加载器都是ExtClassLoader
+         * 因此两个car之间不能转化
+         * java.lang.IllegalArgumentException: argument type mismatch
+         *
+         * 即使AppClassLoader是KingsonClassLoader的父加载器,也不能set,详见AppClassLoaderAsParentTest!!
+         */
+        //System.out.println();
 
     }
 }
