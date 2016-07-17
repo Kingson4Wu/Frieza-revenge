@@ -25,6 +25,7 @@
         <module>maven-plugins</module>
         <module>message-queue</module>
         <module>encryption</module>
+        <module>eclipse-jdt</module>
         <module>file-operation</module>
         <module>http-client</module>
         <module>java-web</module>

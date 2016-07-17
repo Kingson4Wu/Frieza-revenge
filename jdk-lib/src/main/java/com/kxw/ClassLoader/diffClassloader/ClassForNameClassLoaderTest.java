@@ -50,5 +50,30 @@ public class ClassForNameClassLoaderTest {
          * 即从取目前所处的类的加载器作为自身的加载器开始加载
          */
 
+        //考虑当KingsonClassLoader一开始不能加载com.kxw.classLoader.diffClassloader.King的情况,则会继续走原来双亲委托的方式
+        /**
+         * <code>
+         @Override
+        public Class<?> loadClass(String name) throws ClassNotFoundException {
+        synchronized (getClassLoadingLock(name)) {
+        if ("com.kxw.classLoader.diffClassloader.Factory".equals(name)
+        || "com.kxw.classLoader.diffClassloader.Car".equals(name)
+        || "com.kxw.classLoader.diffClassloader.BMW".equals(name)) {
+        Class<?> clazz = findLoadedClass(name);
+        if (clazz == null) {
+        clazz = findClass(name);
+        }
+        return clazz;
+        }
+        }
+        return super.loadClass(name);
+        }
+         * </code>
+         */
+        //现在KingsonClassLoader的逻辑是: 如果是指定的几个类,则自己来加载,失败或者不是指定的,则走双亲委托机制,可能最终还是由自己来加载
+
+        //结果classforname ,第一个是KingsonClassLoader(因为KingsonClassLoader的parent无加载能力),
+        // 第二个是AppClassLoader((因为KingsonClassLoader的parent是AppClassLoader,有加载能力))
+
     }
 }

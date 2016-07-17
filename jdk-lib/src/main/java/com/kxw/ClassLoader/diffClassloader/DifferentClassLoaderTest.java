@@ -50,9 +50,8 @@ public class DifferentClassLoaderTest {
         /** class.forName 以及new,以及Car.class 都是取目前所处的类的加载器作为自身的加载器(当然加载自定义加载器无法加载的时候可能取父加载器,这个取决于自定义加载器里面的定义)
          * 跟设置setContextClassLoader 无关,设置这个只是方便在需要使用的时候通过getContextClassLoader()取出,
          * 所以在这个类(使用KingClassLoader加载)在这里只能使用反射来调用,但是在BMW类则可以不使用反射
-         * 类的ContextClassLoader默认为一开始线程启动的加第一个类的类加载器,这里即DifferentClassLoaderTest的类加载器:AppClassLoader
-         * 新开一个线程试试?
-         * 但是因为new Thread 也是使用AppClassLoader来加载Thread的,因为contetxCLassLoader默认基本都一定会是AppClassLoader
+         * 类的ContextClassLoader默认为AppClassLoader,这是固定的!!!
+         * Thread和String都是rt类的包,它们的classLoader为null
          * */
 
         /*Factory factory = new Factory();
