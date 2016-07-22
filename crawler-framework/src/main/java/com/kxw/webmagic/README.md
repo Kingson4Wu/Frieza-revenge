@@ -7,6 +7,15 @@
 <https://github.com/code4craft/webmagic>
 <http://webmagic.io/docs/zh/posts/ch6-custom-componenet/pipeline.html>
 
++ 总体架构
+<http://webmagic.io/docs/zh/posts/ch1-overview/architecture.html>
++ 爬虫的配置、启动和终止:
+<http://webmagic.io/docs/zh/posts/ch4-basic-page-processor/spider-config.html>
++ 使用Selectable的链式API
+<http://webmagic.io/docs/zh/posts/ch4-basic-page-processor/selectable.html>
+
+<http://www.sogyf.me/2013/01/29/guava-bloomfilter/>
+
 ### xpath
 <http://www.w3school.com.cn/xpath/xpath_syntax.asp>
 
