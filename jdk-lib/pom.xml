@@ -26,11 +26,11 @@
             <scope>test</scope>
         </dependency>
 
-      <!--  <dependency>
-            <groupId>com.sun.jdmk</groupId>
-            <artifactId>jmxtools</artifactId>
-            <version>1.2.1</version>
-        </dependency>-->
+        <!--  <dependency>
+              <groupId>com.sun.jdmk</groupId>
+              <artifactId>jmxtools</artifactId>
+              <version>1.2.1</version>
+          </dependency>-->
 
         <dependency>
             <groupId>mysql</groupId>
@@ -53,6 +53,30 @@
         </dependency>
 
     </dependencies>
+
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestFile>
+                            src/main/resources/META-INF/MANIFEST.MF
+                        </manifestFile>
+                        <!--<manifest>
+                            <mainClass>
+                                com.kxw.jvm.instrumentation.TestSize
+                            </mainClass>
+                        </manifest>-->
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
 
 
 </project>

@@ -1,3 +1,4 @@
+/*
 package ftp;
 
 
@@ -12,6 +13,7 @@ import sun.net.TelnetInputStream;
 import sun.net.TelnetOutputStream;
 import sun.net.ftp.FtpClient;
 
+*/
 /**
  * <p>
  * Title: FTPUtil
@@ -29,12 +31,14 @@ import sun.net.ftp.FtpClient;
  * @author zhihui zhou
  * @version 1.0 InternalError-->Exception by jiangyl
  * @2007.12.21
- */
+ *//*
+
 public class FTPUtil
 {
  
 	private FtpClient ftpClient=null;
-	/** 
+	*/
+/**
 	    * connectServer 
 	    * 连接ftp服务器 
 	    * @throws java.io.IOException 
@@ -42,22 +46,24 @@ public class FTPUtil
 	    * @param password 密码 
 	    * @param user   登陆用户 
 	    * @param server 服务器地址 
-	    */ 
+	    *//*
+
 	  public void connectServer(String server, String user, String password,  String path) 
 	  throws IOException  
 	  { 
 	     // server：FTP服务器的IP地址；user:登录FTP服务器的用户名 
 	     // password：登录FTP服务器的用户名的口令；path：FTP服务器上的路径 
-	     ftpClient = new FtpClient(); 
-	     ftpClient.openServer(server); 
+	     ftpClient = new FtpClient();
+	     ftpClient.openServer(server);
 	     ftpClient.login(user, password); 
 	     //path是ftp服务下主目录的子目录 
 	     if (path.length() != 0)  ftpClient.cd(path); 
 	     //用2进制上传、下载 
-	     ftpClient.binary();      
+	     ftpClient.binary();
 	 } 
 	  
-	 /** 
+	 */
+/**
 	    * upload 
 	    * 上传文件 
 	    * @throws java.lang.Exception 
@@ -66,7 +72,8 @@ public class FTPUtil
 	    *          >0 成功上传，返回文件的大小 
 	    * @param newname 上传后的新文件名 
 	    * @param filename 上传的文件 
-	    */ 
+	    *//*
+
 	 public long upload(String filename,String newname) throws Exception  
 	 { 
 	     long result = 0; 
@@ -94,12 +101,14 @@ public class FTPUtil
 	     } 
 	    return result; 
 	 } 
-	 /** 
+	 */
+/**
 	    * upload 
 	    * @throws java.lang.Exception 
 	    * @return  
 	    * @param filename 
-	    */ 
+	    *//*
+
 	 public long upload(String filename) 
 	 throws Exception  
 	 { 
@@ -114,14 +123,16 @@ public class FTPUtil
 	    return upload(filename,newname); //调用上面的重载函数
 	 } 
 	  
-	 /** 
+	 */
+/**
 	    *  download 
 	    *  从ftp下载文件到本地 
 	    * @throws java.lang.Exception 
 	    * @return  
 	    * @param newfilename 本地生成的文件名 
 	    * @param filename 服务器上的文件名 
-	    */ 
+	    *//*
+
 	 public long download(String filename,String newfilename)  
 	 throws Exception 
 	 {   
@@ -153,10 +164,12 @@ public class FTPUtil
 	     } 
 	     return result; 
 	 } 
-	 /** 
+	 */
+/**
 	  * 取得某个目录下的所有文件列表 
 	  * 
-	  */ 
+	  *//*
+
 	 public List getFileList(String path) 
 	 { 
 	    List list = new ArrayList(); 
@@ -176,11 +189,13 @@ public class FTPUtil
 	    return list; 
 	 } 
 	  
-	 /** 
+	 */
+/**
 	    * closeServer 
 	    * 断开与ftp服务器的链接 
 	    * @throws java.io.IOException 
-	    */ 
+	    *//*
+
 	 public void closeServer() 
 	 throws IOException  
 	 {    
@@ -201,9 +216,13 @@ public class FTPUtil
 	    try { 
 	         //连接ftp服务器 
 	         ftp.connectServer("172.16.42.54", "adup", "adup", "test"); 
-	         /**  上传文件到 info2 文件夹下 */ 
+	         */
+/**  上传文件到 info2 文件夹下 *//*
+
 	         System.out.println("filesize:"+ftp.upload("c:/样图.jpg")+"字节"); 
-	         /** 取得info2文件夹下的所有文件列表,并下载到 E盘下 */ 
+	         */
+/** 取得info2文件夹下的所有文件列表,并下载到 E盘下 *//*
+
 	         List list = ftp.getFileList("."); 
 	         for (int i=0;i<list.size();i++) 
 	         { 
@@ -220,3 +239,4 @@ public class FTPUtil
 	  }   
 
 }
+*/
