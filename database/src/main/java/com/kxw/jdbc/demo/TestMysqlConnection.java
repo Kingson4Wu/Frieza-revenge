@@ -8,11 +8,8 @@ package com.kxw.jdbc.demo;
  便于排错和日常管理。
 
  */
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 
 /**
  * 最简单的JDBC连接测试

@@ -1,10 +1,6 @@
 package com.kxw.jdbc.demo;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * 可以更新的结果集

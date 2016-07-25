@@ -1,10 +1,10 @@
 package com.kxw.jdbc.demo;
 
-import java.sql.DriverManager;
-import java.sql.Types;
-
 import com.mysql.jdbc.CallableStatement;
 import com.mysql.jdbc.Connection;
+
+import java.sql.DriverManager;
+import java.sql.Types;
 
 public class TestProc {
 	   public static void main(String[] args) throws Exception{

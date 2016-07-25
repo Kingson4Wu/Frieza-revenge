@@ -1,12 +1,5 @@
 package com.kxw.jdbc.service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 //import com.bjsxt.bbs2009.model.Category;
 //import com.bjsxt.bbs2009.util.DB;
 
