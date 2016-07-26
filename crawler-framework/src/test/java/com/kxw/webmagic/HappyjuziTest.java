@@ -1,6 +1,5 @@
 package com.kxw.webmagic;
 
-import com.kxw.webmagic.pipeline.HappyjuziPipeline;
 import org.junit.Test;
 import us.codecraft.webmagic.Spider;
 
@@ -19,22 +18,22 @@ public class HappyjuziTest {
 
         Spider spider = Spider.create(new HappyjuziPageProcessor())
                 .addUrl(urls)
-                .addPipeline(new HappyjuziPipeline())
+                //.addPipeline(new HappyjuziPipeline())
                 //开启5个线程同时执行
                 .thread(5);
 
         if (!Spider.Status.Running.equals(spider.getStatus())) {
-                //spider.start();
-            spider.run();
+                spider.start();
+            //spider.run();
         }
 
-        String articleUrl = "http://www.happyjuzi.com/movie/77189.html";
+      /*  String articleUrl = "http://www.happyjuzi.com/movie/77189.html";
         Spider.create(new HappyjuziArticlePageProcessor())
                 .addUrl(articleUrl)
                 //.addPipeline(new HappyjuziPipeline())
                 //开启5个线程同时执行
                 .thread(5)
-                .run();
+                .run();*/
 
     }
 
