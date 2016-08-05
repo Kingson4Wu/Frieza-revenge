@@ -73,6 +73,10 @@ public class Run {
             }
         }.getMockInstance();
 
+
+        System.out.println(new Kingson().getClass());
+        System.out.println(mock.getClass());
+        System.out.println(mock.getClass().getClassLoader());
         mock.run();
         assertTrue(mock.next());
     }
