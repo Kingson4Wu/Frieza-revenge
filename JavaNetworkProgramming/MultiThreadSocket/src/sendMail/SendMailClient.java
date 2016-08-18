@@ -18,7 +18,7 @@ import javax.mail.internet.MimeMultipart;
 public class SendMailClient {
  private String host = "smtp.163.com"; // smtp服务器
  private String user = "1992kxw@163.com"; // 用户名
- private String pwd = "19920229k3339299"; // 密码
+ private String pwd = "1---------"; // 密码
  private String from = ""; // 发件人地址
  private String to = ""; // 收件人地址 
  private String subject = ""; // 邮件标题
