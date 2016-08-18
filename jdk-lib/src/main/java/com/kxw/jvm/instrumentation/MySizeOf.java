@@ -42,6 +42,7 @@ public class MySizeOf {
     static Instrumentation inst;
 
     public static void premain(String agentArgs, Instrumentation instP) {
+        System.out.println("MySizeOf premain: " + Thread.currentThread().getId());
         inst = instP;
     }
 

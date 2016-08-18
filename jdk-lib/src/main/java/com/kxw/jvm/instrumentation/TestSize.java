@@ -3,7 +3,7 @@ package com.kxw.jvm.instrumentation;
 
 /**
  * 编写MySizeOf ,打包 (mvn clean install)
- * 编写 META-INF/MANIFEST.MF文件
+ * 编写 META-INF/MANIFEST.MF文件 Premain-Class: com.kxw.jvm.instrumentation.MySizeOf
  * java -javaagent:agent.jar TestSize
  * (java -javaagent:/Users/kingsonwu/Personal/github/Utils4Java/jdk-lib/target/jdk-lib-0.0.1-SNAPSHOT.jar)
  * <a href='http://tech.it168.com/a2011/0117/1150/000001150794_1.shtml'>@link</a>

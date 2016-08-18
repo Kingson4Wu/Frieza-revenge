@@ -1,1 +1,2 @@
-Premain-Class: com.kxw.jvm.instrumentation.MySizeOf
+Premain-Class: com.kxw.jvm.instrumentation.withoutAgentArgs.HotswapAgent
+

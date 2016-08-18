@@ -1,0 +1,12 @@
+
+When should I use ConcurrentSkipListMap?
+<http://stackoverflow.com/questions/1811782/when-should-i-use-concurrentskiplistmap>
+These two classes vary in a few ways.
+ConcurrentHashMap does not guarantee* the runtime of its operations as part of its contract. It also allows tuning for certain load factors (roughly, the number of threads concurrently modifying it).
+ConcurrentSkipListMap, on the other hand, guarantees average O(log(n)) performance on a wide variety of operations. It also does not support tuning for concurrency's sake. ConcurrentSkipListMap also has a number of operations that ConcurrentHashMap doesn't: ceilingEntry/Key, floorEntry/Key, etc. It also maintains a sort order, which would otherwise have to be calculated (at notable expense) if you were using a ConcurrentHashMap.
+Basically, different implementations are provided for different use cases. If you need quick single key/value pair addition and quick single key lookup, use the HashMap. If you need faster in-order traversal, and can afford the extra cost for insertion, use the SkipListMap.
+*Though I expect the implementation is roughly in line with the general hash-map guarantees of O(1) insertion/lookup; ignoring re-hashing
+
+ConcurrentSkipListMap不同于TreeMap，前者使用SkipList(跳表)实现排序，而后者使用红黑树。相比红黑树，跳表的原理比较容易理解，简单点说就是在有序的链表上使用多级索引来定位元素。
+
+
