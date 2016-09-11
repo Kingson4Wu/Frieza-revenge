@@ -1,1 +1,34 @@
 下载memcached-1.2.1-win32.zip  并且解压并运行
+
+
+spymemcached和xmemcached源码解读
+<http://dwz.cn/3R58TE>
+由于spymemcached是单线程单连接的，无需设置线程数和连接数；xmemcached支持多线程多连接，我会调整参数做对比。测试结果如下：
+
+单线程单连接spymemcached比多线程多连接xmemcached并发性能更好，QPS更高
+多线程单连接xmemcached比多线程多连接xmemcached并发性能更好
+单线程单连接xmemcached比多线程单连接xmemcached并发性能更好
+spymemcached占用CPU更少，稳定在30％ - 50%左右；xmemcached更占CPU，在多线程多连接情况下能达到60% - 70%
+
+
+
+4.2 小结
+从并发性能QPS角度比较：
+set性能：单线程单连接的xmemcached > 单线程单连接的spymemcached > 多线程单连接的xmemcached > 多线程多连接的xmemcached
+get性能：单线程单连接的xmemcached > 多线程单连接的xmemcached > 单线程单连接的spymemcached > 多线程多连接的xmemcached
+从资源消耗角度比较：spymemcached占用资源更少一点
+中间层生产环境xmemcached使用的是多线程多连接配置，且线程数远大于连接数，应该有优化的空间
+
+4.3 常见问题
+Q：为什么xmemcached的get性能比spymemcached的get性能好很多？怎么做到的？
+A：xmemcached默认启用了一个优化技巧，会把多个get合并成一个mget，减少了network roundtrip。关掉这个优化，xmemcached的QPS急剧下降
+Q：为什么中间层生产环境spymemcached经常出现TimeoutException，而xmemcached很少出现？
+A：spymemcached的超时时间设置是200ms，而xmemcached超时时间是5000ms，生产环境会不时出现停顿超过200ms的GC，不具有可比性
+Q：线程数和连接数的设置？
+A：一般1个memcached建立1条连接就够了。线程数小于等于连接数，线程数超过连接数没多大意义，因为有的线程不会被分配到连接
+
+5. Summary
+线程数并不是越多越好
+不要想当然
+
+
