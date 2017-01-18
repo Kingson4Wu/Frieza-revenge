@@ -1,5 +1,7 @@
 package com.kxw.java8;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.BiConsumer;
 
 /**
@@ -23,5 +25,15 @@ public class BiConsumerTest {
         System.out.println("--------------------");
         BiConsumer<String, String> ccc = c.andThen(cc);
         ccc.accept("dd", "tt");
+
+        Map<String, String> params = new HashMap(){{
+
+            put("kxw","jjj");
+            put("kk","dddd");
+        }};
+
+
+
+        params.forEach((key, value) -> System.out.println(key+":"+value));
     }
 }
