@@ -47,3 +47,8 @@ Java 8中，使用javac编译器的时候加上-parameters参数的话，会在�
 
 
 <http://www.oschina.net/translate/everything-about-java-8>
+
+LongAdder
+CompletableFuture
+StampedLock
+

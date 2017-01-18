@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!-- 每个构建文件对应一个项目。<project>标签时构建文件的根标签。它可以有多个内在属性，就如代码中所示，其各个属性的含义分别如下。
+(1) default表示默认的运行目标，这个属性是必须的。
+(2) basedir表示项目的基准目录。
+(3) name表示项目名。
+(4) description表示项目的描述。
+ -->
+<project default="build" name="kilim">
+    <path id="src"> <pathelement location="."/>
+        <pathelement location="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/lib"/>
+        <pathelement location="./lib/kilim-1.0.jar"/>
+        </path>
+    <target name="weave"  description="handles Kilim byte code weaving">
+        <java classname="kilim.tools.Weaver" fork="yes">
+            <classpath refid="src" />
+            <arg value="-d" />
+            <arg value="./target/classes/com/kxw/kilim" />
+            <arg line="./target/classes/com/kxw/kilim" />
+        </java>
+    </target>
+</project>
+
+<!--
+weave:
+     [java] Error weaving /Users/kingsonwu/Personal/github/Utils4Java/JavaConcurrencyProgramming/target/classes/com/kxw/kilim/Calculation.class
+     [java] java.lang.NoClassDefFoundError: org/objectweb/asm/ClassVisitor
+     [java] 	at kilim.tools.Weaver.weaveFile(Weaver.java:109)
+     [java] 	at kilim.tools.Weaver.main(Weaver.java:81)
+     [java] Caused by: java.lang.ClassNotFoundException: org.objectweb.asm.ClassVisitor
+     [java] 	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+     [java] 	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+     [java] 	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
+     [java] 	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+     [java] 	... 2 more
+[INFO] Executed tasks
+-->
+<!-- http://phl.iteye.com/blog/2247112 -->
+<!-- https://segmentfault.com/a/1190000000697487 -->
