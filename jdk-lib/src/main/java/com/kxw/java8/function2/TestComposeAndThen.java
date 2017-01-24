@@ -1,5 +1,7 @@
 package com.kxw.java8.function2;
 
+import com.kxw.bean.Kingson;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BiFunction;
@@ -82,6 +84,11 @@ public class TestComposeAndThen {
 
         //我想要表达的观点是：通过 Function 接口及其组合功能，可以创建小的代码块，再将其组合来满足你的需求，这样可以可以更简单、更有意思地实现 DRY 原则。
         //就这样了——利用 compose 和 andThen 来使用简单的方式组合功能。
+
+        BiFunction<String, List<Article>, List<Kingson>> kk =
+                (tag, articles) -> articles.stream()
+                        .map(article -> new Kingson())
+                        .collect(Collectors.toList());
 
     }
 }

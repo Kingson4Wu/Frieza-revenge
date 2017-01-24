@@ -1,11 +1,11 @@
 package com.kxw.java8;
 
+import com.kxw.java8.function.Converter;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import com.kxw.java8.function.Converter;
 
 /**
  * Created by kingson.wu on 2015/12/3.
@@ -69,3 +69,16 @@ public class TestLambda {
     }
 
 }
+
+/**
+
+ <a href='http://stackoverflow.com/questions/25055392/lambdas-local-variables-need-final-instance-variables-dont'></a>
+ The fundamental difference between a field and a local variable is that the local variable is copied when JVM creates a lambda instance. On the other hand, fields can be changed freely, because the changes to them are propagated to the outside class instance as well (their scope is the whole outside class, as Boris pointed out below).
+ The easiest way of thinking about anonymous classes, closures and labmdas is from the variable scope perspective; imagine a copy constructor added for all local variables you pass to a closure.
+
+ <a href='https://www.zhihu.com/question/21395848'></>
+ Java编译器支持了闭包，但支持地不完整。说支持了闭包，是因为编译器编译的时候其实悄悄对函数做了手脚，偷偷把外部环境方法的x和y局部变量，拷贝了一份到匿名内部类里。
+ Java编译器实现的只是capture-by-value，并没有实现capture-by-reference。
+ 而只有后者才能保持匿名内部类和外部环境局部变量保持同步。
+ 但Java又不肯明说，只能粗暴地一刀切，就说既然内外不能同步，那就不许大家改外围的局部变量。
+ */
