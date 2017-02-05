@@ -1,0 +1,62 @@
+问题描述
+Java8提供了新的日期时间API，其中包括用于日期时间格式化的DateTimeFormatter，它与SimpleDateFormat的有什么区别呢？
+
+问题解决
+两者最大的区别是，Java8的DateTimeFormatter也是线程安全的，而SimpleDateFormat并不是线程安全。
+
+在并发环境下使用SimpleDateFormat
+
+为了能够在多线程环境下使用SimpleDateFormat，有这三种方法：
+
+方法一
+
+在需要执行格式化的地方都新建SimpleDateFormat实例，使用局部变量来存放SimpleDateFormat实例
+
+public static  String formatDate(Date date)throws ParseException{
+  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+  return sdf.format(date);
+}
+这种方法可能会导致短期内创建大量的SimpleDateFormat实例，如解析一个excel表格里的字符串日期。
+
+方法二
+
+为了避免创建大量的SimpleDateFormat实例，往往会考虑把SimpleDateFormat实例设为静态成员变量,共享SimpleDateFormat对象。这种情况下就得对SimpleDateFormat添加同步。
+
+private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+public static String formatDate(Date date)throws ParseException{
+  synchronized(sdf){
+    return sdf.format(date);
+  }
+}
+这种方法的缺点也很明显，就是在高并发的环境下会导致解析被阻塞。
+
+方法三（推荐）
+
+要在高并发环境下能有比较好的体验，可以使用ThreadLocal来限制SimpleDateFormat只能在线程内共享，这样就避免了多线程导致的线程安全问题。
+
+ private static ThreadLocal<DateFormat> threadLocal = new ThreadLocal<DateFormat>() {
+    @Override
+    protected DateFormat initialValue() {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    }
+};
+
+public static String format(Date date) {
+    return threadLocal.get().format(date);
+}
+DateTimeFormatter使用
+
+解析日期
+
+String dateStr= "2016年10月25日";
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年MM月dd日");
+LocalDate date= LocalDate.parse(dateStr, formatter);
+日期转换为字符串
+
+LocalDateTime now = LocalDateTime.now();
+DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy年MM月dd日 hh:mm a");
+String nowStr = now .format(format);
+由DateTimeFormatter的静态方法ofPattern()构建日期格式，LocalDateTime和LocalDate等一些表示日期或时间的类使用parse和format方法把日期和字符串做转换。
+
+使用新的API，整个转换过程都不需要考虑线程安全的问题。
