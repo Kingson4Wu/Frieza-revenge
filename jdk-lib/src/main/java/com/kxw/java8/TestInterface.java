@@ -75,7 +75,7 @@ public class TestInterface {
         stringCollection.add("bbb2");
         stringCollection.add("ddd1");
         //Java 8扩展了集合类，可以通过 Collection.stream() 或者 Collection.parallelStream() 来创建一个Stream。
-
+Arrays.asList(678304,678305,678306,678307);
         //Filter 过滤
         //过滤通过一个predicate接口来过滤并只保留符合条件的元素，该操作属于中间操作，所以我们可以在过滤后的结果来应用其他Stream操作（比如forEach）。
         // forEach需要一个函数来对过滤后的元素依次执行。forEach是一个最终操作，所以我们不能在forEach之后来执行其他Stream操作。
@@ -186,10 +186,11 @@ public class TestInterface {
         //putIfAbsent 不需要我们做额外的存在性检查，而forEach则接收一个Consumer接口来对map里的每一个键值对进行操作。
 
         //map上的其他有用的函数
+        System.out.println(map.get(3));
         map.computeIfPresent(3, (num, val) -> val + num);
-        map.get(3);             // val33
+        System.out.println(map.get(3));             // val33
         map.computeIfPresent(9, (num, val) -> null);
-        map.containsKey(9);     // false
+        System.out.println(map.containsKey(9));     // false
         map.computeIfAbsent(23, num -> "val" + num);
         map.containsKey(23);    // true
         map.computeIfAbsent(3, num -> "bam");

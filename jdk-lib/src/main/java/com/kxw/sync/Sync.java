@@ -13,7 +13,16 @@ class Sync {
     }
 
     public void thisSync() throws InterruptedException {
+        System.out.println("thisSync");
+        synchronized (this) {
+            runThread();
+        }
 
+    }
+
+    public void thisSync2() throws InterruptedException {
+
+        System.out.println("thisSync2");
         synchronized (this) {
             runThread();
         }
