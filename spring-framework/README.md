@@ -281,3 +281,8 @@ this.interceptors = interceptors;
 <http://docs.spring.io/spring/docs/4.1.0.BUILD-SNAPSHOT/javadoc-api/>
 
 
+---
+
+Spring 5 新特性：函数式Web框架
+<http://www.codeceo.com/article/spring-5-functional-web.html>
+https://github.com/poutsma/web-function-sample

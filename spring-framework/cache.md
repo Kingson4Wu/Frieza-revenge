@@ -1,0 +1,13 @@
+Cacheable(value=”accountCache"
+
+
+@Cacheable、@CachePut、@CacheEvict 注释介绍
+
+@Cacheable 主要针对方法配置，能够根据方法的请求参数对其结果进行缓存
+
+@CachePut 主要针对方法配置，能够根据方法的请求参数对其结果进行缓存，和 @Cacheable 不同的是，它每次都会触发真实方法的调用
+
+-@CachEvict 主要针对方法配置，能够根据一定的条件对缓存进行清空
+
+
+
