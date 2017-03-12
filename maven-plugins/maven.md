@@ -35,3 +35,7 @@ maven classloader:<http://maven.apache.org/guides/mini/guide-maven-classloading.
 `@requiresDependencyResolution`
 
 maven生命周期：<http://v-gimi.iteye.com/blog/1412103>
+
+
++ 通过maven-enforcer插件解决类冲突
+(ATA)

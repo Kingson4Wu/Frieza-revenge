@@ -70,3 +70,8 @@ pan.baidu.com/s/1jGskEb0
 
 
 <http://www.csdn.net/article/2014-09-25/2821866#rd>
+
+---
+
+【问底】静行：FastJSON实现详解:<http://www.csdn.net/article/2014-09-25/2821866>
+
