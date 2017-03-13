@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class SerialVersionUIDClass implements Serializable{
 
-    private static final long serialVersionUID = 555555555;
+    //private static final long serialVersionUID = 555555555;
 
     private int id;
 
