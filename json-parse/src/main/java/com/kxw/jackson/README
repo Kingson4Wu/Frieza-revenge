@@ -24,3 +24,20 @@ org.codehaus.jackson.JsonParser读取，通过org.codehaus.jackson.JsonGenerator
 Streaming API 执行效率最高，读写速度最快，另外两种方式都基于它实现；
 Tree Model 是最灵活的；
 Data Binding 通常是最方便使用的
+
+----
+
+
+ObjectMapper是否线程安全
+
+官方网站有答案，参考
+http://wiki.fasterxml.com/JacksonFAQ
+
+Is ObjectMapper thread-safe?
+
+Short answer: yes
+
+Long answer: yes, as long as you always configure instance before use, and do not call configure methods during operation (or synchronize such calls appropriately). Usually it is better to construct separate mapper instance if configurations differ in any case.
+
+Further: it is beneficial to use just one instance (or small number of instances) for data binding; many optimizations for reuse (of symbol tables, some buffers) depend on ObjectMapper instances being reused.
+
