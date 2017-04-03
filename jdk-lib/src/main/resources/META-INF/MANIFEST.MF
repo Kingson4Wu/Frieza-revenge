@@ -1,2 +1,2 @@
-Premain-Class: com.kxw.jvm.instrumentation.withoutAgentArgs.HotswapAgent
-
+Agent-Class: com.kxw.jvm.instrumentation.agentmainjar.BugFixAgent
+Can-Redefine-Classes: true

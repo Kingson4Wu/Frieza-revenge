@@ -73,5 +73,18 @@ pan.baidu.com/s/1jGskEb0
 
 ---
 
-【问底】静行：FastJSON实现详解:<http://www.csdn.net/article/2014-09-25/2821866>
++ 【问底】静行：FastJSON实现详解:<http://www.csdn.net/article/2014-09-25/2821866>
 
++ FastJson 对enum的 序列化（ordinal）和反序列化 :<http://www.cnblogs.com/miniwiki/p/6437282.html>
+
+<pre>
+
+1. 目前版本的fastjon默认对enum对象使用WriteEnumUsingName属性，因此会将enum值序列化为其Name。
+2. 使用WriteEnumUsingToString方法可以序列化时将Enum转换为toString()的返回值；同时override toString函数能够将enum值输出需要的形式。但是这样做会带来一个问题，对应的反序列化使用的Enum的静态方法valueof可能无法识别自行生成的toString()，导致反序列化出错。
+3. 如果将节省enum序列化后的大小，可以将enum序列化其ordinal值，保存为int类型。fastJson在反序列化时，如果值为int，则能够使用ordinal值匹配，找到合适的对象。
+fastjson要将enum序列化为ordinal只需要禁止WriteEnumUsingName feature。
+首先根据默认的features排除WriteEnumUsingName,然后使用新的features序列化即可。
+
+int features=SerializerFeature.config(JSON.DEFAULT_GENERATE_FEATURE, SerializerFeature.WriteEnumUsingName, false)
+JSON.toJSONString(obj,features,SerializerFeature.EMPTY);
+</pre>

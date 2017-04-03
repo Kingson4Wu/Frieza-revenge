@@ -4,6 +4,11 @@ import java.lang.instrument.ClassDefinition;
 import java.lang.instrument.Instrumentation;
 import java.lang.instrument.UnmodifiableClassException;
 
+/**
+ * /Users/kingsonwu/Personal/github/Utils4Java/jdk-lib/src/main/resources/META-INF/MANIFEST.MF
+ * 文件加
+ * Premain-Class: com.kxw.jvm.instrumentation.withoutAgentArgs.HotswapAgent
+ */
 public class HotswapAgent {
     static Instrumentation instrumentation;
     public static boolean enabled = false;

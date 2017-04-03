@@ -1,4 +1,4 @@
-package com.kxw.collection;
+package com.kxw.queue;
 
 import java.util.ArrayDeque;
 

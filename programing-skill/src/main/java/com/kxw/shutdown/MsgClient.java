@@ -139,3 +139,16 @@ public class MsgClient {
 /**
  * sun.misc.SignalHandler，sun.misc.Signal不太推荐使用这些类吧！
  */
+
+/**
+ <pre>
+ Java.Runtime.addShutdownHook(Thread hook)方法，可以注册一个JVM关闭的钩子，这个钩子可以在一下几种场景中被调用：
+
+ 程序正常退出
+ 使用System.exit()
+ 终端使用Ctrl+C触发的中断
+ 系统关闭
+ OutOfMemory宕机
+ 使用Kill pid命令干掉进程（注：在使用kill -9 pid时，是不会被调用的）
+ </pre>
+ */

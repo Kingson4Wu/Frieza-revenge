@@ -39,3 +39,6 @@ maven生命周期：<http://v-gimi.iteye.com/blog/1412103>
 
 + 通过maven-enforcer插件解决类冲突
 (ATA)
+
+
++ 常用Maven插件介绍:<http://www.cnblogs.com/crazy-fox/archive/2012/02/09/2343722.html>

@@ -62,10 +62,13 @@
                             src/main/resources/META-INF/MANIFEST.MF
                         </manifestFile>
                         <!--<manifest>
-                            <mainClass>
-                                com.kxw.jvm.instrumentation.TestSize
-                            </mainClass>
-                        </manifest>-->
+                        <addClasspath>true</addClasspath>
+                        <classpathPrefix>lib/</classpathPrefix>
+                        <mainClass>com.chosen0ne.ByteCode.ByteBuddyTest</mainClass>
+                        </manifest>
+                        <manifestEntries>
+                        <Premain-Class>com.chosen0ne.ByteCode.agent.ToStringAgent</Premain-Class>
+                        </manifestEntries> -->
                     </archive>
                 </configuration>
             </plugin>

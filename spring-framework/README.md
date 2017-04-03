@@ -286,3 +286,6 @@ this.interceptors = interceptors;
 Spring 5 新特性：函数式Web框架
 <http://www.codeceo.com/article/spring-5-functional-web.html>
 https://github.com/poutsma/web-function-sample
+
+---
+spring framework体系结构及内部各模块jar之间的maven依赖关系:<http://www.cnblogs.com/ywlaker/p/6136625.html>

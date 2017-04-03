@@ -93,6 +93,8 @@ jdk properties,spring,spring 自定义PropertyPlaceholderConfigurer,ReourceBundl
 1. <http://beanvalidation.org/1.1/>
 2. <https://github.com/neoremind/fluent-validator>
 <http://neoremind.com/2016/02/java%E7%9A%84%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E9%AA%8C%E8%AF%81%E6%A1%86%E6%9E%B6fluent-validator/>
+3. alibaba 最快的声明式校验框架fastvalidator
+4. apache-bval
 
 
 #### JVM command 
