@@ -20,6 +20,7 @@ public class HeaderUtilTest {
                 e.printStackTrace();
             }
             System.out.println(HeaderUtility.isPriorityCall(input));
+
         }
 
         //waitIndefinitely();

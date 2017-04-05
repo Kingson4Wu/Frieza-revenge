@@ -99,3 +99,8 @@ public enum Singleton {
 参考资料
 《Effective Java（第二版）》
 《深入理解Java虚拟机——JVM高级特性与最佳实践（第二版）》
+
+---
+
+可以不要再使用Double-Checked Locking了
+：<https://my.oschina.net/andylucc/blog/668919>

@@ -10,3 +10,15 @@ Basically, different implementations are provided for different use cases. If yo
 ConcurrentSkipListMap不同于TreeMap，前者使用SkipList(跳表)实现排序，而后者使用红黑树。相比红黑树，跳表的原理比较容易理解，简单点说就是在有序的链表上使用多级索引来定位元素。
 
 
+---
+三种将list转换为map的方法
+http://jackyrong.iteye.com/blog/2158009
+
+ JAVA 8直接用流的方法： Map<Integer, Movie> mappedMovies = movies.stream().collect(
+                           Collectors.toMap(Movie::getRank, (p) -> p));
+
+使用guava 工具类库:
+  Map<Integer,Movie> mappedMovies = Maps.uniqueIndex(movies, new Function <Movie,Integer> () {
+          public Integer apply(Movie from) {
+            return from.getRank();
+    }});
