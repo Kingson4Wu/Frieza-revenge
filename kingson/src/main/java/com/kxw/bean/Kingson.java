@@ -11,6 +11,7 @@ public class Kingson {
     private String email;
     private String company;
     private int age;
+    private String gameOpen;
 
     public Kingson(){
         super();
@@ -51,6 +52,14 @@ public class Kingson {
 
     public void setCompany(String company) {
         this.company = company;
+    }
+
+    public String getGameOpen() {
+        return gameOpen;
+    }
+
+    public void setGameOpen(String gameOpen) {
+        this.gameOpen = gameOpen;
     }
 
     public void run() {
