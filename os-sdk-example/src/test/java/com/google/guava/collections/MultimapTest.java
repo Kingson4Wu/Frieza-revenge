@@ -1,10 +1,15 @@
 package com.google.guava.collections;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import org.junit.Test;
-
-import java.util.*;
 
 /**
  * {<a href='http://www.cnblogs.com/peida/p/Guava_Multimap.html'>@link</a>}
@@ -75,6 +80,13 @@ public class MultimapTest {
         }
         System.out.println("scoreMultimap:" + scoreMultimap.size());
         System.out.println("scoreMultimap:" + scoreMultimap.keys());
+
+        /**
+         * 可以使用java8代码代替
+         */
+        List<StudentScore> list = new ArrayList<>();
+        Map<Integer,List<StudentScore>> map = list.stream().collect(Collectors.groupingBy(StudentScore::getCourseId));
+
     }
 
     /**
@@ -159,4 +171,20 @@ public class MultimapTest {
 class StudentScore {
     int CourseId;
     int score;
+
+    public int getCourseId() {
+        return CourseId;
+    }
+
+    public void setCourseId(int courseId) {
+        CourseId = courseId;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 }

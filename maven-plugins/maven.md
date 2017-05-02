@@ -20,6 +20,20 @@ maven-antrun-plugin(运行ant的插件)
 </plugin>  
 ```
 
+如果你使用Maven进行项目管理，则可以在maven-compiler-plugin编译器的配置项中配置-parameters参数：
+```xml
+
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.1</version>
+    <configuration>
+        <compilerArgument>-parameters</compilerArgument>
+        <source>1.8</source>
+        <target>1.8</target>
+    </configuration>
+</plugin>
+```
 
 
 maven classloader:<http://maven.apache.org/guides/mini/guide-maven-classloading.html>
