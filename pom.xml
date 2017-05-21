@@ -34,6 +34,7 @@
         <module>jdk-lib</module>
         <module>os-sdk-example</module>
         <module>programing-skill</module>
+        <module>Quartz</module>
         <module>string-operation</module>
         <module>serialization</module>
         <module>RPC-framework</module>

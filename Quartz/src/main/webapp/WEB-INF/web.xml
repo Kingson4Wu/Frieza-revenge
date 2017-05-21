@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+      http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- 配置ContextLoaderListener表示，该工程要以spring的方式启动。 启动时会默认在/WEB-INF目录下查找applicationContext.xml作为spring容器的配置文件， 
+		这里可以初始化一些bean，如DataSource -->
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:applicationContext.xml</param-value>
+	</context-param>
+
+
+
+
+	<servlet>
+		<servlet-name>SpringMVC</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+		<!-- 配置DispatcherServlet表示，该工程将采用springmvc的方式。 启动时也会默认在/WEB-INF目录下查找XXX-servlet.xml作为配置文件， 
+			XXX就是DispatcherServlet的名字，该文件中将配置两项重要的mvc特性： HandlerMapping,负责为DispatcherServlet这个前端控制器的请求查找Controller； 
+			ViewResolver,负责为DispatcherServlet查找ModelAndView的视图解析器。 -->
+
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath*:/SpringMVC-servlet.xml</param-value>
+		</init-param>
+
+
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
