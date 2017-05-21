@@ -1,6 +1,7 @@
 package com.kxw.java8;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 
@@ -35,5 +36,7 @@ public class BiConsumerTest {
 
 
         params.forEach((key, value) -> System.out.println(key+":"+value));
+
+        System.out.println(List.class.isAssignableFrom(List.class));
     }
 }

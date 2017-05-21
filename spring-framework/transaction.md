@@ -24,3 +24,56 @@ Spring团队建议在具体的类（或类的方法）上使用 @Transactional �
 @Transactional 的事务开启 ，或者是基于接口的 或者是基于类的代理被创建。<b>所以在同一个类中一个方法调用另一个方法有事务的方法，事务是不会起作用的。</b> 原因：（这也是为什么在项目中有些@Async并没有异步执行） spring 在扫描bean的时候会扫描方法上是否包含@Transactional注解，如果包含，spring会为这个bean动态地生成一个子类（即代理类，proxy），代理类是继承原来那个bean的。此时，当这个有注解的方法被调用的时候，实际上是由代理类来调用的，代理类在调用之前就会启动transaction。然而，如果这个有注解的方法是被同一个类中的其他方法调用的，那么该方法的调用并没有通过代理类，而是直接通过原来的那个bean，所以就不会启动transaction，我们看到的现象就是@Transactional注解无效。
 
 
+---
+“Transaction rolled back because it has been marked as rollback-only”
+：<http://narcissusoyf.iteye.com/blog/710261>
+使用PROPAGATION_REQUIRES_NEW
+
+<pre>
+try-catch不起作用的原因简单的说就是，try-catch的不是地方，你认为你的try-catch是最接近异常抛出点了，是第一个处理的handler了。实际上，spring在更早一步就try-catch 住了，同时还设置了一些标志位，再把catch住的异常往外抛。这个时候才是我们的try-catch。而"Transaction rolled back because it has been marked as rollback-only"就是因为事务在提交的时候，发现标志位已经被设置了，不应该去提交了，然后吭哧吭哧的回滚调，再提示你已经被设置成rollback-only了。
+
+原因是既然如此，那么在不改变代码的情况下，依靠配置能否解决这个问题呢？使用PROPAGATION_REQUIRES_NEW吧。对于bBo.insertB(b)开个新的事务，如果失败了就回滚调，不影响外面的insertA不就OK了。
+</pre>
+
+<pre>
+spring在TransactionDefinition接口中规定了7种类型的事务传播行为，
+
+它们规定了事务方法和事务方法发生嵌套调用时事务如何进行传播：
+
+事务传播行为类型
+
+事务传播行为类型
+
+说明
+
+PROPAGATION_REQUIRED
+
+如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。这是最常见的选择。
+
+PROPAGATION_SUPPORTS
+
+支持当前事务，如果当前没有事务，就以非事务方式执行。
+
+PROPAGATION_MANDATORY
+
+使用当前的事务，如果当前没有事务，就抛出异常。
+
+PROPAGATION_REQUIRES_NEW
+
+新建事务，如果当前存在事务，把当前事务挂起。
+
+PROPAGATION_NOT_SUPPORTED
+
+以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。
+
+PROPAGATION_NEVER
+
+以非事务方式执行，如果当前存在事务，则抛出异常。
+
+PROPAGATION_NESTED
+
+如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与PROPAGATION_REQUIRED类 似的操作。
+</pre>
+
+<http://blog.csdn.net/liuwei063608/article/details/7784800>
+
