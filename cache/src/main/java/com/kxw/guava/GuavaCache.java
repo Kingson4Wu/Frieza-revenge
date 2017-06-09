@@ -1,10 +1,11 @@
 package com.kxw.guava;
 
-import com.google.common.cache.Cache;
-import com.google.common.cache.CacheBuilder;
-
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
+
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 
 /**
  * Created by kingsonwu on 16/7/6.
@@ -15,7 +16,7 @@ public class GuavaCache {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
 
-        /*LoadingCache<String, String> cache = CacheBuilder
+        LoadingCache<String, String> cache = CacheBuilder
                 .newBuilder()
                 .maximumSize(1000)
                 .refreshAfterWrite(120, TimeUnit.SECONDS)
@@ -35,13 +36,13 @@ public class GuavaCache {
         for (int i = 0; i < 10; i++) {
             System.out.println(cache.get("kxw"));
             Thread.sleep(3000);
-        }*/
+        }
 
 
         //---------------
 
 
-        Cache<String, Boolean> activeUserEMailCache = CacheBuilder.newBuilder()
+      /*  Cache<String, Boolean> activeUserEMailCache = CacheBuilder.newBuilder()
                 .maximumSize(10000)
                 //.expireAfterAccess(1, TimeUnit.HOURS)
                 //.expireAfterWrite(6, TimeUnit.HOURS)
@@ -54,7 +55,7 @@ public class GuavaCache {
         System.out.println("size:" + activeUserEMailCache.size());
         Thread.sleep(10000);
         System.out.println(activeUserEMailCache.getIfPresent("kxw") != null);
-        System.out.println("size:" + activeUserEMailCache.size());
+        System.out.println("size:" + activeUserEMailCache.size());*/
 
     }
 }
