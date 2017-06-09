@@ -1,7 +1,9 @@
 syntax = "proto3";
 
-option java_generic_services = true;
-option java_multiple_files = true;
+option java_generic_services = false; //Then the protocol buffer compiler will generate code based on the service definitions found in the file as described in this section. However, the generated code may be undesirable as it is not tied to any particular RPC system, and thus requires more levels of indirection that code tailored to one system.
+// 作用：定义在C++、java、python中，protocol buffer编译器是否应该 基于服务定义 产生 抽象服务代码（2.3.0版本前该值默认 = true）
+// 自2.3.0版本以来，官方认为通过提供 代码生成器插件 来对 RPC实现 更可取，而不是依赖于“抽象”服务
+option java_multiple_files = true; //生成多个文件，而不是全部内容在一个文件 https://stackoverflow.com/questions/26162696/protoc-how-to-generate-multiple-java-source-files
 option java_package = "com.kxw.gRPC.schema";
 option java_outer_classname = "HelloWorldProto";
 
