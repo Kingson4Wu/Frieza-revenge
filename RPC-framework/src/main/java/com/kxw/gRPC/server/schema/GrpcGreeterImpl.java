@@ -1,4 +1,4 @@
-package com.kxw.gRPC.schema.server;
+package com.kxw.gRPC.server.schema;
 
 import com.kxw.gRPC.schema.GreeterGrpc.GreeterImplBase;
 import com.kxw.gRPC.schema.HelloReply;
