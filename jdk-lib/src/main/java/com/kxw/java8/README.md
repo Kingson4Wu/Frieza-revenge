@@ -101,3 +101,41 @@ JVM中默认方法的实现非常高效，而且方法调用的字节码指令�
 Java 8拓宽了注解的应用场景。现在，注解几乎可以使用在任何元素上：局部变量、接口类型、超类和接口实现类，甚至可以用在函数的异常定义上。
 
 ------
+
+<http://listenzhangbin.com/post/2017/01/java8-learning-notes/>
+
+#### 函数式接口
+<pre>
+函数式接口	           函数描述符	              原始类型特化
+Predicate<T>	    T -> boolean	        IntPredicate, LongPredicate, DoublePredicate
+Consumer<T>	        T -> void	            IntConsumer, LongConsumer, DoubleConsumer
+Function<T,R>	    T -> R	                IntFunction<R>, IntToDoubleFunction, IntToLongFunction, LongFunction<R>, LongToDoubleFunction, LongToIntFunction, DoubleFunction<R>, ToIntFunction<T>, ToDoubleFunction<T>, ToLongFunction<T>
+Supplier<T>	        () -> T	                BooleanSupplier, IntSupplier, LongSupplier, DoubleSupplier
+UnaryOperator<T>	T -> T	                IntUnaryOperator, LongUnaryOperator, DoubleUnaryOperator
+BinaryOperator<T>	(T,T) -> T	            IntBinaryOperator, LongBinaryOperator, DoubleBinaryOperator
+BiPredicate<L,R>	(L,R) -> boolean	
+BiConsumer<T,U>	    (T,U) -> void	        ObjIntConsumer<T>, ObjLongConsumer<T>, ObjDoubleConsumer<T>
+BiFunction<T,U,R>	(T,U) -> R	            ToIntBiFunction<T,U>, ToLongBiFunction<T,U>, ToDoubleBiFunction<T,U>
+</pre>
+
+#### Stream
+
+<pre>
+操作	         类型	  返回类型	    使用的类型/函数式接口	       函数描述符
+filter	    中间	     Stream<T>	     Predicate<T>	         T -> boolean
+distinct	中间	     Stream<T>		
+skip	    中间	     Stream<T>	     long	
+limit	    中间  	 Stream<T>	     long	
+map	        中间	     Stream<R>	     Function<T,R>	         T -> R
+flatMap	    中间	     Stream<R>	     Function<T, Stream<R>>	 T -> Stream<R>
+sorted	    中间	     Stream<R>	     Comparator<T>	         (T,T) -> int
+anyMatch	终端	     boolean	     Predicate<T>	         T -> boolean
+noneMatch	终端      boolean	     Predicate<T>	         T -> boolean
+allMatch	终端      boolean	     Predicate<T>	         T -> boolean
+findAny	    终端      Optional<T>		
+findFirst	终端      Optional<T>		     
+forEach	    终端	     void	         Consumer<T>	         T -> void
+collect	    终端	     R	             Collector<T,A,R>	
+reduce	    终端  	 Optional<T>	 BinaryOperator<T>	     (T,T) -> T
+count	    终端	     long
+</pre>

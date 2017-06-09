@@ -58,14 +58,29 @@
         <repository>
             <id>central</id>
             <name>Central Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
             <!--<url>http://maven.oschina.net/content/groups/public/</url>-->
-            <url>http://central.maven.org/maven2/</url>
+           <!-- <url>http://central.maven.org/maven2/</url>-->
             <layout>default</layout>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
         </repository>
     </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>Aliyun central</id>
+            <name>Aliyun Central Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
