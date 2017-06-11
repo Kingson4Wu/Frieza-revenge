@@ -30,29 +30,29 @@ public class Md5 {
     private static final int S43 = 15 ;
     private static final int S44 = 21 ;
 
-    private static byte padding[] = {
-        (byte) 0x80, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0,
-        (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0,
-        (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0,
-        (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0,
-        (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0,
-        (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0,
-        (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0,
-        (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0,
-        (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0,
-        (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0,
-        (byte) 0, (byte) 0, (byte) 0, (byte) 0
-    } ;
+    private static byte[] padding = {
+        (byte)0x80, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0,
+        (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0,
+        (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0,
+        (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0,
+        (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0,
+        (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0,
+        (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0,
+        (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0,
+        (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0,
+        (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0,
+        (byte)0, (byte)0, (byte)0, (byte)0
+    };
 
 
     private InputStream in       = null ;
     private boolean     stringp  = false ;
-    private int         state[]  = null ;
+    private int[] state = null;
     private long        count    = 0 ;
-    private byte        buffer[] = null ;
-    private byte        digest[] = null ;
+    private byte[] buffer = null;
+    private byte[] digest = null;
 
-    public static String stringify (byte buf[]) {
+    public static String stringify (byte[] buf) {
         StringBuffer sb = new StringBuffer(2*buf.length) ;
         for (int i = 0 ; i < buf.length; i++) {
             int h = (buf[i] & 0xf0) >> 4 ;
@@ -111,7 +111,7 @@ public class Md5 {
         return a;
     }
 
-    private final void decode (int output[], byte input[], int off, int len) {
+    private final void decode (int[] output, byte[] input, int off, int len) {
         int i = 0 ;
         int j = 0 ;
         for ( ; j < len; i++, j += 4) {
@@ -122,12 +122,12 @@ public class Md5 {
         }
     }
 
-    private final void transform (byte block[], int offset) {
+    private final void transform (byte[] block, int offset) {
         int a   = state[0] ;
         int b   = state[1] ;
         int c   = state[2] ;
         int d   = state[3] ;
-        int x[] = new int[16] ;
+        int[] x = new int[16];
 
         decode (x, block, offset, 64);
         /* Round 1 */
@@ -207,7 +207,7 @@ public class Md5 {
         state[3] += d;
     }
 
-    private final void update (byte input[], int len) {
+    private final void update (byte[] input, int len) {
         int index = ((int) (count >> 3)) & 0x3f ;
         count += (len << 3) ;
         int partLen = 64 - index ;
@@ -215,8 +215,9 @@ public class Md5 {
         if ( len >= partLen ) {
             System.arraycopy (input, 0, buffer, index, partLen) ;
             transform (buffer, 0) ;
-            for (i = partLen ; i + 63 < len ; i+= 64)
-                transform (input, i) ;
+            for (i = partLen ; i + 63 < len ; i+= 64) {
+                transform(input, i);
+            }
             index = 0 ;
         } else {
             i = 0 ;
@@ -225,9 +226,10 @@ public class Md5 {
     }
 
     private byte[] end () {
-        byte bits[] = new byte[8] ;
-        for (int i = 0 ; i < 8 ; i++)
-            bits[i] = (byte) ((count>>>(i*8)) & 0xff) ;
+        byte[] bits = new byte[8];
+        for (int i = 0 ; i < 8 ; i++) {
+            bits[i] = (byte)((count >>> (i * 8)) & 0xff);
+        }
         int index  = ((int) (count >> 3)) & 0x3f ;
         int padlen = (index < 56) ? (56 - index) : (120 - index) ;
         update (padding, padlen) ;
@@ -236,8 +238,8 @@ public class Md5 {
     }
 
     // Encode the content.state array into 16 bytes array
-    private byte[] encode (int input[], int len) {
-        byte output[] = new byte[len] ;
+    private byte[] encode (int[] input, int len) {
+        byte[] output = new byte[len];
         int i = 0 ;
         int j = 0 ;
         for ( ; j < len ; i++, j+= 4) {
@@ -261,13 +263,15 @@ public class Md5 {
     public byte[] getDigest ()
         throws IOException
     {
-        byte buffer[] = new byte[BUFFER_SIZE] ;
+        byte[] buffer = new byte[BUFFER_SIZE];
         int  got      = -1 ;
 
-        if ( digest != null )
-            return digest ;
-        while ((got = in.read(buffer)) > 0 )
-            update (buffer, got) ;
+        if ( digest != null ) {
+            return digest;
+        }
+        while ((got = in.read(buffer)) > 0 ) {
+            update(buffer, got);
+        }
         this.digest = end () ;
         return digest ;
     }
@@ -279,10 +283,11 @@ public class Md5 {
      */
 
     public byte[] processString () {
-        if ( ! stringp )
-            throw new RuntimeException (this.getClass().getName()
-                                        + "[processString]"
-                                        + " not a string.") ;
+        if ( ! stringp ) {
+            throw new RuntimeException(this.getClass().getName()
+                + "[processString]"
+                + " not a string.");
+        }
         try {
             return getDigest() ;
         } catch (IOException ex) {
@@ -297,10 +302,11 @@ public class Md5 {
      */
 
     public String getStringDigest() {
-        if ( digest == null )
-            throw new RuntimeException (this.getClass().getName()
-                                        + "[getStringDigest]"
-                                        + ": called before processing.") ;
+        if ( digest == null ) {
+            throw new RuntimeException(this.getClass().getName()
+                + "[getStringDigest]"
+                + ": called before processing.");
+        }
         return stringify (digest) ;
     }
 
@@ -312,7 +318,7 @@ public class Md5 {
      */
 
     public Md5 (String input, String enc) {
-         byte bytes [] = null;
+        byte[] bytes = null;
         try {
             bytes = input.getBytes (enc);
         } catch(UnsupportedEncodingException e){
@@ -360,10 +366,10 @@ public class Md5 {
                 //byte disgest[] = new byte[16] ;
                 //byte output[] = new byte[32] ;
                 //output[33] = ( byte ) '\0' ;
-                byte k_ipad[] = new byte[64] ;
-                byte k_opad[] = new byte[64] ;
+            byte[] k_ipad = new byte[64];
+            byte[] k_opad = new byte[64];
                 //byte tk[] = new byte[16] ;
-                byte key1 [] ;
+            byte[] key1 ;
                 int i ;
                 int text_len = text.getBytes().length ;
                 int key_len = key.getBytes().length ;
@@ -374,10 +380,12 @@ public class Md5 {
                         key_len = 16 ;
                 }
 
-                for ( i = 0 ; i < 64 ; i++ )
-                        k_ipad[i] = ( byte ) 0 ;
-                for ( i = 0 ; i < 64 ; i++ )
-                        k_opad[i] = ( byte ) 0 ;
+                for ( i = 0 ; i < 64 ; i++ ) {
+                    k_ipad[i] = (byte)0;
+                }
+                for ( i = 0 ; i < 64 ; i++ ) {
+                    k_opad[i] = (byte)0;
+                }
 
                 for ( i = 0 ; i < key_len ; i++ ) {
                         k_ipad[i] = ( byte ) key1[i] ;

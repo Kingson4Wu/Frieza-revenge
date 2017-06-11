@@ -11,9 +11,11 @@ import javax.servlet.annotation.*;
 @WebServlet(name="UploadServlet" ,urlPatterns={"/upload"})
 @MultipartConfig
 public class UploadServlet extends HttpServlet{
+    @Override
     public void init(ServletConfig config)throws ServletException{
         super.init(config);
     }
+    @Override
     public void service(HttpServletRequest request,HttpServletResponse response)throws ServletException,IOException{
         Part part = request.getPart("file");
         PrintWriter out = response.getWriter();

@@ -122,6 +122,7 @@ public class SocketThread extends Thread {
     }
 
     //线程执行函数
+    @Override
     public void run() {
         running = true;
         if (fileSender) {

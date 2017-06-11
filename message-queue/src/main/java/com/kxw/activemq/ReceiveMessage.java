@@ -65,7 +65,7 @@ public class ReceiveMessage {
   
  }  
   
- public static void main(String args[]) {  
+ public static void main(String[] args) {
   ReceiveMessage rm = new ReceiveMessage();  
   rm.receiveMessage();  
  }  

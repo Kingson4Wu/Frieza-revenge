@@ -21,7 +21,7 @@ public class DirectoryCopy {
             if (!dest.exists()) {
                 dest.mkdir();
             }
-            String files[] = src.list();
+            String[] files = src.list();
             for (String file : files) {
                 File srcFile = new File(src, file);
                 File destFile = new File(dest, file);

@@ -26,6 +26,7 @@ public class MsgClient {
 
         //注册钩子方法
         Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
             public void run() {
                 close();
             }
@@ -41,6 +42,7 @@ public class MsgClient {
     private static void producer(final BlockingQueue  queue){
         //每200毫秒向队列中放入一个消息
         SCHEDULED_EXECUTOR_SERVICE.scheduleAtFixedRate(new Runnable() {
+            @Override
             public void run() {
                 queue.offer("");
             }
@@ -56,6 +58,7 @@ public class MsgClient {
             //放入线程池处理
             if(!THREAD_POOL.isShutdown()) {
                 THREAD_POOL.execute(new Runnable() {
+                    @Override
                     public void run() {
                         try {
                             //System.out.println(msg);

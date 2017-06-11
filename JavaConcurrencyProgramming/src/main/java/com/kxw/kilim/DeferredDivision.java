@@ -1,13 +1,12 @@
 package com.kxw.kilim;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.util.Random;
+
 import kilim.Mailbox;
 import kilim.Pausable;
 import kilim.Task;
-
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.util.Date;
-import java.util.Random;
 
 public class DeferredDivision extends Task {
 
@@ -20,7 +19,7 @@ public class DeferredDivision extends Task {
 
     @Override
     public void execute() throws Pausable, Exception {
-        Random numberGenerator = new Random(new Date().getTime());
+        Random numberGenerator = new Random(System.currentTimeMillis());
         MathContext context = new MathContext(8);
         while (true) {
             System.out.println("I need to know the answer of something");

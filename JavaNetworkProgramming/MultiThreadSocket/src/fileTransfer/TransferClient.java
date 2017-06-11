@@ -60,10 +60,12 @@ public class TransferClient {
         boolean b = true;  
         while(b){  
             int i = r.nextInt(size);  
-            if(!v.contains(i))  
-                v.add(i);  
-            if(v.size() == size)  
-                b = false;  
+            if(!v.contains(i)) {
+                v.add(i);
+            }
+            if(v.size() == size) {
+                b = false;
+            }
         }  
         return v;  
     }      
@@ -75,7 +77,8 @@ public class TransferClient {
             private String ip ="localhost";  
             private int port = 10000;  
               
-            public void run() {  
+            @Override
+            public void run() {
                 System.out.println("开始发送文件:" + filePath);  
                 File file = new File(filePath);  
                 if(createConnection()){  

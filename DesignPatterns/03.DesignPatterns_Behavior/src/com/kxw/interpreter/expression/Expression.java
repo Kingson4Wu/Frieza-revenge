@@ -13,13 +13,16 @@ public abstract class Expression {
     /**
      * 检验两个表达式在结构上是否相同
      */
+    @Override
     public abstract boolean equals(Object obj);
     /**
      * 返回表达式的hash code
      */
+    @Override
     public abstract int hashCode();
     /**
      * 将表达式转换成字符串
      */
+    @Override
     public abstract String toString();
 }

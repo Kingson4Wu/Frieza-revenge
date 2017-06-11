@@ -27,8 +27,9 @@ public class DoorManager {
      *            DoorListener
      */
     public void removeDoorListener(DoorListener listener) {
-        if (listeners == null)
+        if (listeners == null) {
             return;
+        }
         listeners.remove(listener);
     }
 
@@ -36,8 +37,9 @@ public class DoorManager {
      * 触发开门事件
      */
     protected void fireWorkspaceOpened() {
-        if (listeners == null)
+        if (listeners == null) {
             return;
+        }
         DoorEvent event = new DoorEvent(this, "open");
         notifyListeners(event);
     }
@@ -46,8 +48,9 @@ public class DoorManager {
      * 触发关门事件
      */
     protected void fireWorkspaceClosed() {
-        if (listeners == null)
+        if (listeners == null) {
             return;
+        }
         DoorEvent event = new DoorEvent(this, "close");
         notifyListeners(event);
     }

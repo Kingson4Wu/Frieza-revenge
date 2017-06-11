@@ -4,6 +4,7 @@ class ATask implements Runnable {
 
     private double d = 0.0;
 
+    @Override
     public void run() {
 //死循环执行打印"I am running!" 和做消耗时间的浮点计算
         while (true) {

@@ -21,7 +21,7 @@ public class LineNo {
         return Thread.currentThread().getStackTrace()[2].getFileName();
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         System.out.println("[" + getFileName() + "：" + getLineNumber2() + "]" + "Hello World!");
     }
 }

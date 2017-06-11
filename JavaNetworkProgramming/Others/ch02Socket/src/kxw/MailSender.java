@@ -37,7 +37,9 @@ public class MailSender{
       e.printStackTrace();
     }finally{
       try{
-        if(socket!=null)socket.close();
+        if(socket!=null) {
+          socket.close();
+        }
       }catch (IOException e) {e.printStackTrace();}
     }
   }
@@ -49,8 +51,9 @@ public class MailSender{
       pw.println(str);  //发送完str字符串后，还会发送“\r\n”。
     }
     String response;
-    if ((response = br.readLine()) != null)
-      System.out.println("Server>"+response);
+    if ((response = br.readLine()) != null) {
+      System.out.println("Server>" + response);
+    }
   }
 
   private PrintWriter getWriter(Socket socket)throws IOException{

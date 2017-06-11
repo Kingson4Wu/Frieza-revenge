@@ -13,6 +13,7 @@ public class TestPipe {
         Promise p = deferred.promise();
 
         p.then(new DonePipe<Integer, Integer, Exception, Void>() {
+            @Override
             public Deferred<Integer, Exception, Void> pipeDone(Integer result) {
                 if (result < 100) {
                     return new DeferredObject<Integer, Exception, Void>().resolve(result);

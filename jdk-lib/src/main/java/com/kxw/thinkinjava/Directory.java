@@ -12,6 +12,7 @@ public final class Directory {
   local(File dir, final String regex) {
     return dir.listFiles(new FilenameFilter() {
       private Pattern pattern = Pattern.compile(regex);
+      @Override
       public boolean accept(File dir, String name) {
         return pattern.matcher(
           new File(name).getName()).matches();
@@ -27,6 +28,7 @@ public final class Directory {
     public List<File> files = new ArrayList<File>();
     public List<File> dirs = new ArrayList<File>();
     // The default iterable element is the file list:
+    @Override
     public Iterator<File> iterator() {
       return files.iterator();
     }
@@ -34,6 +36,7 @@ public final class Directory {
       files.addAll(other.files);
       dirs.addAll(other.dirs);
     }
+    @Override
     public String toString() {
       return "dirs: " + PPrint.pformat(dirs) +
         "\n\nfiles: " + PPrint.pformat(files);
@@ -60,17 +63,18 @@ public final class Directory {
         result.dirs.add(item);
         result.addAll(recurseDirs(item, regex));
       } else // Regular file
-        if(item.getName().matches(regex))
+        if(item.getName().matches(regex)) {
           result.files.add(item);
+        }
     }
     return result;
   }
   // Simple validation test:
   public static void main(String[] args) {
-    if(args.length == 0)
+    if(args.length == 0) {
       System.out.println(walk("."));
-    else
-      for(String arg : args)
-       System.out.println(walk(arg));
+    } else {
+      for (String arg : args) { System.out.println(walk(arg)); }
+    }
   }
 } ///:~

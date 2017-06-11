@@ -10,7 +10,7 @@ import org.jsoup.select.Elements;
 
 public class TestJsoup {
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 
 		// 1
 		/*

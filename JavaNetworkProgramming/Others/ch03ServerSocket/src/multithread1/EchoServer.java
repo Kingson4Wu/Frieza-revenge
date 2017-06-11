@@ -23,7 +23,7 @@ public class EchoServer {
     }
   }
 
-  public static void main(String args[])throws IOException {
+  public static void main(String[] args)throws IOException {
     new EchoServer().service();
   }
 }
@@ -44,6 +44,7 @@ class Handler implements Runnable{
   public String echo(String msg) {
     return "echo:" + msg;
   }
+  @Override
   public void run(){
     try {
       System.out.println("New connection accepted " +
@@ -55,14 +56,17 @@ class Handler implements Runnable{
       while ((msg = br.readLine()) != null) {
         System.out.println(msg);
         pw.println(echo(msg));
-        if (msg.equals("bye"))
+        if ("bye".equals(msg)) {
           break;
+        }
       }
     }catch (IOException e) {
       e.printStackTrace();
     }finally {
       try{
-        if(socket!=null)socket.close();
+        if(socket!=null) {
+          socket.close();
+        }
       }catch (IOException e) {e.printStackTrace();}
     }
   }

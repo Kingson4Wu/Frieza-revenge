@@ -23,8 +23,9 @@ public class CookieServletT extends HttpServlet {
             throws ServletException, IOException {
         // 获取Cookie
         Cookie[] cookies = req.getCookies();
-        for (Cookie cookie : cookies)
+        for (Cookie cookie : cookies) {
             System.out.println(cookie.getName() + " " + cookie.getValue());
+        }
 
         // 创建Cookie
         Cookie cookie = new Cookie("CookieName", "CookieValue");

@@ -54,7 +54,7 @@ public class HelloWorld3 {
     private static String potentialException(String s) {
 
         System.out.println(s);
-        if (s.equals("a")) {
+        if ("a".equals(s)) {
             //throw new Exception("aaa");
         }
 
@@ -65,7 +65,7 @@ public class HelloWorld3 {
     private static String anotherPotentialException(String s) {
 
         System.out.println(s);
-        if (s.equals("b")) {
+        if ("b".equals(s)) {
             //throw new Exception("bbb");
         }
         return s;

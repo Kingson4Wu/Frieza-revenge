@@ -10,11 +10,13 @@ public class Cabinet extends CompositeEquipment {
     }  
   
     // 柜子本身价格以及放在柜子里面盒子的价格.  
-    public double netPrice() {  
+    @Override
+    public double netPrice() {
         return cabinetNetPrice + super.netPrice();  
     }  
   
-    public double discountPrice() {  
+    @Override
+    public double discountPrice() {
         return cabinetDiscountPrice + super.discountPrice();  
     }  
 }  

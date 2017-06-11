@@ -5,9 +5,11 @@ interface A{
 }
 
 class B implements A{
+	@Override
 	public void ma(String[] names){
-		for(String name : names)
+		for(String name : names) {
 			System.out.println(name);
+		}
 	}
 }
 

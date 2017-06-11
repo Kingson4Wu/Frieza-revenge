@@ -32,6 +32,7 @@ public class ThreadDemo
 		//2、创建Thread对象的同时传递一个实现Runnable接口的实例对象
 		Thread thread2 = new Thread(new Runnable()
 		{
+			@Override
 			public void run()
 			{
 				while (true)

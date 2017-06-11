@@ -6,6 +6,7 @@ package com.kxw.thinkinjava;
 public class BasicGenerator<T> implements Generator<T> {
   private Class<T> type;
   public BasicGenerator(Class<T> type){ this.type = type; }
+  @Override
   public T next() {
     try {
       // Assumes type is a public class:

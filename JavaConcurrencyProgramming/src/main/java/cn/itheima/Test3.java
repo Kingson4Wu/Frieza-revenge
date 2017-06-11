@@ -30,6 +30,7 @@ public class Test3 extends Thread
 		c.start();
 		d.start();
 	}
+	@Override
 	public void run()
 	{
 		testDo.doSome(key, value);
@@ -47,8 +48,9 @@ class TestDo3
 	Lock lock = new ReentrantLock();
 	public void doSome(Object key, String value)
 	{
-		if (key.equals("1"))
+		if ("1".equals(key)) {
 			lock.lock();
+		}
 		//System.out.println("OKOKOOK");
 		//synchronized ("1")
 		try
@@ -65,8 +67,9 @@ class TestDo3
 			}
 		}finally
 		{
-			if (key.equals("1"))
+			if ("1".equals(key)) {
 				lock.unlock();
+			}
 		}
 	}
 }

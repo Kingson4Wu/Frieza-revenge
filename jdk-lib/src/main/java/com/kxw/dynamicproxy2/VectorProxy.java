@@ -24,6 +24,7 @@ public class VectorProxy implements InvocationHandler
 				cls.getInterfaces(), new VectorProxy(obj));
 	}
 
+	@Override
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable
 	{

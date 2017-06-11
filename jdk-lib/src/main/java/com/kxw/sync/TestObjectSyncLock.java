@@ -12,6 +12,7 @@ public class TestObjectSyncLock {
 
             new Thread(new Runnable() {
 
+                @Override
                 public void run() {
 
                     try {

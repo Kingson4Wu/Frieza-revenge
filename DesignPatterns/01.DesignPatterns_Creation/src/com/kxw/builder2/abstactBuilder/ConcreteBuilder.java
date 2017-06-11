@@ -16,6 +16,7 @@ public class ConcreteBuilder extends Builder {
     private Object obj = null;
 
     //用反射的方法得到实例化的产品  
+    @Override
     void setProduct(Class clazz, Map setMap) {
         try {
             obj = clazz.newInstance();
@@ -37,6 +38,7 @@ public class ConcreteBuilder extends Builder {
         }
     }
 
+    @Override
     Object getProduct() {
         return obj;
     }

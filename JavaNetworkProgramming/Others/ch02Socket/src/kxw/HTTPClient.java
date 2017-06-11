@@ -52,7 +52,7 @@ public class HTTPClient {
     socket.close();
   }
 
-  public static void main(String args[])throws Exception{
+  public static void main(String[] args)throws Exception{
     HTTPClient client=new HTTPClient();
     client.createSocket();
     client.communicate();

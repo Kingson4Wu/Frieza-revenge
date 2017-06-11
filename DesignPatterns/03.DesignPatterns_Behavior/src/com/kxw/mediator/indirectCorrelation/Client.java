@@ -17,6 +17,7 @@ abstract class AbstractColleague {
 
 class ColleagueA extends AbstractColleague {
 
+    @Override
     public void setNumber(int number, AbstractMediator am) {
         this.number = number;
         am.AaffectB();
@@ -54,12 +55,14 @@ class Mediator extends AbstractMediator {
     }
 
     //处理A对B的影响  
+    @Override
     public void AaffectB() {
         int number = A.getNumber();
         B.setNumber(number * 100);
     }
 
     //处理B对A的影响  
+    @Override
     public void BaffectA() {
         int number = B.getNumber();
         A.setNumber(number / 100);

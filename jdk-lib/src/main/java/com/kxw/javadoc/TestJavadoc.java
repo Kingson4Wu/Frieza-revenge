@@ -27,8 +27,9 @@ public class TestJavadoc {
             AnnotationDesc[] annotations = classDoc.annotations();
             boolean flag = false;
             for(AnnotationDesc desc: annotations) {
-                if(desc.toString().equals("@com.kxw.core.annotation.Component"))
+                if("@com.kxw.core.annotation.Component".equals(desc.toString())) {
                     flag = true;
+                }
             }
         }
 

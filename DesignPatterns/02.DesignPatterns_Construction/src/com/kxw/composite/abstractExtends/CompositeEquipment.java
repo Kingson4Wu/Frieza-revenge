@@ -16,6 +16,7 @@ public abstract class CompositeEquipment extends Equipment {
         super(name);
     }
 
+    @Override
     public boolean add(Equipment equipment) {
         if (equipment instanceof Disk && this instanceof Chassis) {
             System.out.println("在盘盒里面放了一个硬盘");
@@ -26,6 +27,7 @@ public abstract class CompositeEquipment extends Equipment {
         return true;
     }
 
+    @Override
     public double netPrice() {
         double netPrice = 0.;
         if (this instanceof Cabinet) {
@@ -49,6 +51,7 @@ public abstract class CompositeEquipment extends Equipment {
         return netPrice;
     }
 
+    @Override
     public double discountPrice() {
         double discountPrice = 0.;
         Iterator<Equipment> iter = equipment.iterator();
@@ -60,6 +63,7 @@ public abstract class CompositeEquipment extends Equipment {
 
     // 这里提供用于访问自己组合体内的部件方法。  
     // 上面Disk之所以没有，是因为Disk是个单独(Primitive)的元素.  
+    @Override
     public Iterator iter() {
         return equipment.iterator();
     }
@@ -71,10 +75,11 @@ public abstract class CompositeEquipment extends Equipment {
 
     // 重载Iterator方法  
     public Object next() {
-        if (hasNext())
+        if (hasNext()) {
             return equipment.get(i++);
-        else
+        } else {
             throw new NoSuchElementException();
+        }
     }
 
 }  

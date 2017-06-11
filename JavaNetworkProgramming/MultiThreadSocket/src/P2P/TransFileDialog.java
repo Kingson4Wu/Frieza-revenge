@@ -118,7 +118,8 @@ public class TransFileDialog extends JDialog {
     }
 
     public void jbtnOK_actionPerformed(ActionEvent e) {
-        if(jtfServerName.getText().trim().equals("")||jtfPort.getText().trim().equals("")||jtfFile.getText().trim().equals("")){
+        if("".equals(jtfServerName.getText().trim()) || "".equals(jtfPort.getText().trim()) || "".equals(
+            jtfFile.getText().trim())){
             JOptionPane.showMessageDialog(this,"数据填写错误！");
             return;
         }
@@ -141,6 +142,7 @@ class TransFileDialog_jbtnCancel_actionAdapter implements ActionListener {
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.jbtnCancel_actionPerformed(e);
     }
@@ -153,6 +155,7 @@ class TransFileDialog_jbtnOK_actionAdapter implements ActionListener {
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.jbtnOK_actionPerformed(e);
     }
@@ -165,6 +168,7 @@ class TransFileDialog_jbtnFile_actionAdapter implements ActionListener {
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.jbtnFile_actionPerformed(e);
     }

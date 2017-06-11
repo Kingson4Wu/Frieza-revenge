@@ -9,15 +9,18 @@ import com.kxw.interator.iterator.Iterator;
   
 public class ConcreteAggregate <T>implements Aggregate<T>{  
  private List <T>list = new ArrayList<T>();  
- public void add(T obj) {  
+ @Override
+ public void add(T obj) {
    list.add(obj);  
  }  
   
- public Iterator<T> iterator() {  
+ @Override
+ public Iterator<T> iterator() {
      return new ConcreteIterator<T>(list);  
  }  
   
- public void remove(Object obj) {  
+ @Override
+ public void remove(Object obj) {
      list.remove(obj);  
  }  
 }  

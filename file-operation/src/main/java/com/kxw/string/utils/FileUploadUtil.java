@@ -110,8 +110,9 @@ public class FileUploadUtil {
                     System.out.println("++++====="+name);
                     long size = item.getSize();
                     //有多个文件域时，只上传有文件的
-                    if ((name == null || name.equals("")) && size == 0)
+                    if ((name == null || "".equals(name)) && size == 0) {
                         continue;
+                    }
                     Matcher m = p.matcher(name);
                     boolean result = m.find();
                     if (result) {
@@ -125,7 +126,7 @@ public class FileUploadUtil {
                             //保存上传的文件到指定的目录
                             //在下文中上传文件至数据库时，将对这里改写
                             //没有指定新文件名时以原文件名来命名
-                            if (newFileName == null || newFileName.trim().equals(""))
+                            if (newFileName == null || "".equals(newFileName.trim()))
                             {
                                 item.write(new File(dstPath +"/"+ m.group(1)));
                             }

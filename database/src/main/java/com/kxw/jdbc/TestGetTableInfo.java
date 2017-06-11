@@ -39,8 +39,9 @@ public class TestGetTableInfo {
                 fieldName = rsMeta.getColumnName(i);
 
                 // 将 varchar 类型转换成 String 类型
-                if (fieldType.equals("varchar"))
+                if ("varchar".equals(fieldType)) {
                     fieldType = "String";
+                }
 
                 // declare field
                 buf.append(fieldType + " " + fieldName + ";\n\n");

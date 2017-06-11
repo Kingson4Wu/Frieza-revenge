@@ -19,7 +19,9 @@ public class DealString {
 
 	//判断字符串是否为空，并删除首尾空格
 	public static String convertNullCode(String tempSql){
-		if (tempSql==null) tempSql="";
+		if (tempSql==null) {
+			tempSql = "";
+		}
 		return tempSql;
 	}
 	/**
@@ -235,7 +237,7 @@ public class DealString {
 		return strcurr;
 	}
 
-	public static void main(String args[]){
+	public static void main(String[] args){
 		DealString.convertNumToMoney(1234566);
 	}
 }

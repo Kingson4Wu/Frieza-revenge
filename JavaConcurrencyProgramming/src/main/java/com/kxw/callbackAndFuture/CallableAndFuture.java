@@ -17,6 +17,7 @@ public class CallableAndFuture {
      */
     public static void main(String[] args) {
         Callable<Integer> callable = new Callable<Integer>() {
+            @Override
             public Integer call() throws Exception {
                 return new Random().nextInt(100);
             }

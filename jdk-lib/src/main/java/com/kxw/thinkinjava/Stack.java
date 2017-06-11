@@ -9,5 +9,6 @@ public class Stack<T> {
   public T peek() { return storage.getFirst(); }
   public T pop() { return storage.removeFirst(); }
   public boolean empty() { return storage.isEmpty(); }
+  @Override
   public String toString() { return storage.toString(); }
 } ///:~

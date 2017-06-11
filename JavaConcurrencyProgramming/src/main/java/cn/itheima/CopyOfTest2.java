@@ -16,6 +16,7 @@ public class CopyOfTest2
 		{
 			new Thread(new Runnable()
 			{
+				@Override
 				public void run()
 				{
 					//先得到在打印

@@ -14,6 +14,7 @@ public class ProxySubject extends Subject
     {
     }
 
+    @Override
     public void request() // 该方法封装了真实对象的request方法
 
     {

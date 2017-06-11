@@ -2,7 +2,7 @@ package kxw;
 
 import java.net.*;
 public class Client {
-  public static void main(String args[])throws Exception{
+  public static void main(String[] args)throws Exception{
     final int length=100;
     String host="localhost";
     int port=8000;

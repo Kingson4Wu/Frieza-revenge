@@ -23,6 +23,7 @@ public class PbClient {
                 Executors.newCachedThreadPool()));
         final PbClientHandler handler = new PbClientHandler();
         cbApp.setPipelineFactory(new ChannelPipelineFactory() {
+            @Override
             public ChannelPipeline getPipeline() {
                 ChannelPipeline pipeline = Channels.pipeline();
                 pipeline.addLast("decoder", new StringDecoder());

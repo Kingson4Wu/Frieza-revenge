@@ -19,6 +19,7 @@ abstract class AbstractColleague {
 }
 
 class ColleagueA extends AbstractColleague {
+    @Override
     public void setNumber(int number, AbstractColleague coll) {
         this.number = number;
         coll.setNumber(number * 100);
@@ -27,6 +28,7 @@ class ColleagueA extends AbstractColleague {
 
 class ColleagueB extends AbstractColleague {
 
+    @Override
     public void setNumber(int number, AbstractColleague coll) {
         this.number = number;
         coll.setNumber(number / 100);

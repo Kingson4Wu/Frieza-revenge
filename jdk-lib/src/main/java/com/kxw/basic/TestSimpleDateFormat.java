@@ -65,7 +65,7 @@ import java.text.SimpleDateFormat;
  */
 
 public class TestSimpleDateFormat{
-	public static void main(String args[]){
+	public static void main(String[] args){
 		Locale locale1 = new Locale("zh","CN");
 		Locale locale2 = new Locale("en","US");
 

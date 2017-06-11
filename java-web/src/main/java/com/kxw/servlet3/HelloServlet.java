@@ -20,10 +20,12 @@ import javax.servlet.annotation.*;
                 @WebInitParam(name = "age", value = "20")
         })
 public class HelloServlet extends HttpServlet {
+    @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
     }
 
+    @Override
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("GBK");
         ServletConfig config = getServletConfig();

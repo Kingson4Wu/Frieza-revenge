@@ -45,7 +45,9 @@ public class EchoServer{
             synchronized(gate){}
             int n = selector.select();
 
-            if(n==0)continue;
+            if(n==0) {
+                continue;
+            }
             Set readyKeys = selector.selectedKeys();
             Iterator it = readyKeys.iterator();
             while (it.hasNext()){
@@ -77,18 +79,21 @@ public class EchoServer{
         SocketChannel socketChannel=(SocketChannel)key.channel();
         buffer.flip();  //把极限设为位置
         String data=decode(buffer);
-        if(data.indexOf("\n")==-1)return;
+        if(data.indexOf("\n")==-1) {
+            return;
+        }
         String outputData=data.substring(0,data.indexOf("\n")+1);
         System.out.print(outputData);
         ByteBuffer outputBuffer=encode("echo:"+outputData);
-        while(outputBuffer.hasRemaining())
+        while(outputBuffer.hasRemaining()) {
             socketChannel.write(outputBuffer);
+        }
 
         ByteBuffer temp=encode(outputData);
         buffer.position(temp.limit());
         buffer.compact();
 
-        if(outputData.equals("bye\r\n")){
+        if("bye\r\n".equals(outputData)){
             key.cancel();
             socketChannel.close();
             System.out.println("关闭与客户的连接");
@@ -115,9 +120,10 @@ public class EchoServer{
         return charset.encode(str);
     }
 
-    public static void main(String args[])throws Exception{
+    public static void main(String[] args)throws Exception{
         final EchoServer server = new EchoServer();
         Thread accept=new Thread(){
+            @Override
             public void run(){
                 server.accept();
             }

@@ -9,6 +9,7 @@ public class Request {
     static class Action {  //枚举类，表示HTTP请求方式
         private String name;
         private Action(String name) { this.name = name; }
+        @Override
         public String toString() { return name; }
 
         static Action GET = new Action("GET");
@@ -17,14 +18,18 @@ public class Request {
         static Action HEAD = new Action("HEAD");
 
         public static Action parse(String s) {
-            if (s.equals("GET"))
+            if ("GET".equals(s)) {
                 return GET;
-            if (s.equals("PUT"))
+            }
+            if ("PUT".equals(s)) {
                 return PUT;
-            if (s.equals("POST"))
+            }
+            if ("POST".equals(s)) {
                 return POST;
-            if (s.equals("HEAD"))
+            }
+            if ("HEAD".equals(s)) {
                 return HEAD;
+            }
             throw new IllegalArgumentException(s);
         }
     }
@@ -43,6 +48,7 @@ public class Request {
         uri = u;
     }
 
+    @Override
     public String toString() {
         return (action + " " + version + " " + uri);
     }
@@ -99,8 +105,9 @@ public class Request {
         CharBuffer cb = requestCharset.decode(bb); //解码
         Matcher m = requestPattern.matcher(cb);  //进行字符串匹配
         //如果HTTP请求与指定的字符串模式不匹配，说明请求数据不正确
-        if (!m.matches())
+        if (!m.matches()) {
             throw new MalformedRequestException();
+        }
         Action a;
         try {  //获得请求方式
             a = Action.parse(m.group(1));

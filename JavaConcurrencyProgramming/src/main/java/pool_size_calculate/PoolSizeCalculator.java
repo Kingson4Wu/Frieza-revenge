@@ -107,6 +107,7 @@ public abstract class PoolSizeCalculator {
             start = System.currentTimeMillis();
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {
+                @Override
                 public void run() {
                     expired = true;
                 }

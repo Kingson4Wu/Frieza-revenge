@@ -38,20 +38,24 @@ public class EchoServer {
         while ((msg = br.readLine()) != null) {
           System.out.println(msg);
           pw.println(echo(msg));
-          if (msg.equals("bye")) //如果客户发送的消息为“bye”，就结束通信
+          if ("bye".equals(msg)) //如果客户发送的消息为“bye”，就结束通信
+          {
             break;
+          }
         }
       }catch (IOException e) {
         e.printStackTrace();
       }finally {
         try{
-          if(socket!=null)socket.close();  //断开连接
+          if(socket!=null) {
+            socket.close();  //断开连接
+          }
         }catch (IOException e) {e.printStackTrace();}
       }
     }
   }
 
-  public static void main(String args[])throws IOException {
+  public static void main(String[] args)throws IOException {
     new EchoServer().service();
   }
 }

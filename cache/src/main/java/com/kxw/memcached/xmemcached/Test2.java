@@ -12,7 +12,7 @@ import net.rubyeye.xmemcached.utils.AddrUtil;
 
 public class Test2 {
 
-	public static void main(String arg[]) throws IOException, TimeoutException,
+	public static void main(String[] arg) throws IOException, TimeoutException,
 			InterruptedException, MemcachedException {
 		MemcachedClientBuilder builder = new XMemcachedClientBuilder(
 

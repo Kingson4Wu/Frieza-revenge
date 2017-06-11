@@ -34,7 +34,7 @@ public class TestIdentityHashMap {
     }*/
 
     //IdentityHashMap情况
-    public static void main(String args[]){
+    public static void main(String[] args){
         Map<Person,String> map = null ; // 声明Map对象
         map = new IdentityHashMap<Person,String>() ;
         map.put(new Person("张三",30),"zhangsan_1") ; // 加入内容

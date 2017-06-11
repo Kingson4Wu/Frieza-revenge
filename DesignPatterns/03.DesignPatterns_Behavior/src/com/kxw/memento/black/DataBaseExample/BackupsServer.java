@@ -1,9 +1,8 @@
 package com.kxw.memento.black.DataBaseExample;
 
 
-import java.util.Date;  
-import java.util.Iterator;  
-import java.util.Map;  
+import java.util.Iterator;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;  
  
 /** 
@@ -48,7 +47,7 @@ public class BackupsServer {
     */  
    public void createMemento(){  
        IMemento memento = dbServer.createMemento();  
-       this.mementos.put(new Date().getTime(), memento);  
+       this.mementos.put(System.currentTimeMillis(), memento);
    }  
  
  

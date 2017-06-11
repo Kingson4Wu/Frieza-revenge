@@ -280,7 +280,7 @@ public class FileUtil {
       }
     }
     if (file.isDirectory()) {
-      File files[] = file.listFiles();
+      File[] files = file.listFiles();
       for (int i = 0; i < files.length; i++) {
         list(list, files[i], filter);
       }
@@ -709,8 +709,9 @@ public class FileUtil {
       File[] files = lfile.listFiles(mfilter);
       for(int i=0;i<files.length;i++){
         filename = files[i].getName();
-        if((filename.indexOf(id + "_")==0)&&(filename.indexOf("_small")>-1))
-          counts ++;
+        if((filename.indexOf(id + "_")==0)&&(filename.indexOf("_small")>-1)) {
+          counts++;
+        }
       }
       files = null;
     }

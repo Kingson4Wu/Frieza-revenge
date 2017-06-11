@@ -13,6 +13,7 @@ public class TestTimer {
     }
 
     private static class AppendCacheTask extends TimerTask {
+        @Override
         public void run() {
             //
         }

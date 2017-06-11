@@ -20,15 +20,19 @@ public class FileContent implements Content {
     private String type = null;
 
     /* 确定文件类型 */
+    @Override
     public String type() {
-        if (type != null) return type;
+        if (type != null) {
+            return type;
+        }
         String nm = file.getName();
-        if (nm.endsWith(".html")|| nm.endsWith(".htm"))
+        if (nm.endsWith(".html")|| nm.endsWith(".htm")) {
             type = "text/html; charset=GBK";  //HTML网页
-        else if ((nm.indexOf('.') < 0) || nm.endsWith(".txt"))
+        } else if ((nm.indexOf('.') < 0) || nm.endsWith(".txt")) {
             type = "text/plain; charset=GBK";  //文本文件
-        else
+        } else {
             type = "application/octet-stream";  //应用程序
+        }
         return type;
     }
 
@@ -36,24 +40,30 @@ public class FileContent implements Content {
     private long length = -1;  //文件长度
     private long position = -1; //文件的当前位置
 
+    @Override
     public long length() {
         return length;
     }
 
     /* 创建FileChannel对象*/
+    @Override
     public void prepare() throws IOException {
-        if (fileChannel == null)
+        if (fileChannel == null) {
             fileChannel = new RandomAccessFile(file, "r").getChannel();
+        }
         length = fileChannel.size();
         position = 0;
     }
 
     /* 发送正文，如果发送完毕，就返回false，否则返回true */
+    @Override
     public boolean send(ChannelIO channelIO) throws IOException {
-        if (fileChannel == null)
+        if (fileChannel == null) {
             throw new IllegalStateException();
-        if (position < 0)
+        }
+        if (position < 0) {
             throw new IllegalStateException();
+        }
 
         if (position >= length) {
             return false;  //如果发送完毕，就返回false
@@ -63,6 +73,7 @@ public class FileContent implements Content {
         return (position < length);
     }
 
+    @Override
     public void release() throws IOException {
         if (fileChannel != null){
             fileChannel.close();  //关闭fileChannel

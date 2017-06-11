@@ -12,7 +12,7 @@ public class TimerManager {
 	public void run() {
 		/**10秒后执行，2分钟执行一次*/
 		Timer timer = new Timer();
-		timer.schedule(new SearchTask(),10*1000l, 120 * 1000l);
+		timer.schedule(new SearchTask(),10* 1000L, 120 * 1000L);
 	}
 	
 }

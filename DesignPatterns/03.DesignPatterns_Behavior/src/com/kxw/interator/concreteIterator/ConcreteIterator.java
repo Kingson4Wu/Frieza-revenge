@@ -12,13 +12,15 @@ public class ConcreteIterator<T> implements Iterator<T> {
   public ConcreteIterator(List<T> list){  
    this.list = list;  
   }  
-  public boolean hasNext() {  
+  @Override
+  public boolean hasNext() {
    if(cursor==list.size()){  
     return false;  
    }  
    return true;  
   }  
-  public T next() {  
+  @Override
+  public T next() {
    T obj = null;  
    if(this.hasNext()){  
     obj = this.list.get(cursor++);  

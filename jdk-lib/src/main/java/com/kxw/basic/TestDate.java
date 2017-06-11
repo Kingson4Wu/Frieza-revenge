@@ -3,7 +3,7 @@ package com.kxw.basic;
 import java.util.*;
 
 public class TestDate{
-	public static void main(String args[]){
+	public static void main(String[] args){
 		Date d1 = new Date(2000);
 		long time = d1.getTime();
 		System.out.println(time);

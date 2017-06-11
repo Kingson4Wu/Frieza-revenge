@@ -9,6 +9,7 @@ class Person {
         this.age = age;
     }
 
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -24,10 +25,12 @@ class Person {
         }
     }
 
+    @Override
     public int hashCode() {
         return this.name.hashCode() * this.age;
     }
 
+    @Override
     public String toString() {
         return "姓名：" + this.name + "，年龄：" + this.age;
     }

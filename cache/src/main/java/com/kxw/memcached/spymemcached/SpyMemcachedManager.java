@@ -129,7 +129,7 @@ public class SpyMemcachedManager {
         return map;
     }
 
-    public Map<String, Object> asyncGetMulti(String keys[]) {
+    public Map<String, Object> asyncGetMulti(String[] keys) {
         Map map = null;
         Future<Map<String, Object>> f = memClient.asyncGetBulk(keys);
         try {

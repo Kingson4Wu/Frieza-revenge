@@ -11,7 +11,7 @@ import net.rubyeye.xmemcached.utils.AddrUtil;
 
 public class Test {
 
-	public static void main(String arg[]) throws IOException {
+	public static void main(String[] arg) throws IOException {
 
 		MemcachedClientBuilder builder = new XMemcachedClientBuilder(
 

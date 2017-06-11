@@ -14,11 +14,13 @@ public class EchoServer {
     private boolean isShutdown=false; //服务器是否已经关闭
 
     private Thread shutdownThread=new Thread(){   //负责关闭服务器的线程
+        @Override
         public void start(){
             this.setDaemon(true);  //设置为守护线程（也称为后台线程）
             super.start();
         }
 
+        @Override
         public void run(){
             while (!isShutdown) {
                 Socket socketForShutdown=null;
@@ -27,7 +29,7 @@ public class EchoServer {
                     BufferedReader br = new BufferedReader(
                             new InputStreamReader(socketForShutdown.getInputStream()));
                     String command=br.readLine();
-                    if(command.equals("shutdown")){
+                    if("shutdown".equals(command)){
                         long beginTime=System.currentTimeMillis();
                         socketForShutdown.getOutputStream().write("服务器正在关闭\r\n".getBytes());
                         isShutdown=true;
@@ -36,8 +38,9 @@ public class EchoServer {
                         executorService.shutdown();
 
                         //等待关闭线程池，每次等待的超时时间为30秒
-                        while(!executorService.isTerminated())
-                            executorService.awaitTermination(30,TimeUnit.SECONDS);
+                        while(!executorService.isTerminated()) {
+                            executorService.awaitTermination(30, TimeUnit.SECONDS);
+                        }
 
                         serverSocket.close(); //关闭与EchoClient客户通信的ServerSocket
                         long endTime=System.currentTimeMillis();
@@ -81,20 +84,24 @@ public class EchoServer {
                 //不必处理等待客户连接时出现的超时异常
             }catch(RejectedExecutionException e){
                 try{
-                    if(socket!=null)socket.close();
+                    if(socket!=null) {
+                        socket.close();
+                    }
                 }catch(IOException x){}
                 return;
             }catch(SocketException e) {
                 //如果是由于在执行serverSocket.accept()方法时，
                 //ServerSocket被ShutdownThread线程关闭而导致的异常，就退出service()方法
-                if(e.getMessage().indexOf("socket closed")!=-1)return;
+                if(e.getMessage().indexOf("socket closed")!=-1) {
+                    return;
+                }
             }catch(IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public static void main(String args[])throws IOException {
+    public static void main(String[] args)throws IOException {
         new EchoServer().service();
     }
 }
@@ -114,6 +121,7 @@ class Handler implements Runnable{
     public String echo(String msg) {
         return "echo:" + msg;
     }
+    @Override
     public void run(){
         try {
             System.out.println("New connection accepted " +
@@ -125,14 +133,17 @@ class Handler implements Runnable{
             while ((msg = br.readLine()) != null) {
                 System.out.println(msg);
                 pw.println(echo(msg));
-                if (msg.equals("bye"))
+                if ("bye".equals(msg)) {
                     break;
+                }
             }
         }catch (IOException e) {
             e.printStackTrace();
         }finally {
             try{
-                if(socket!=null)socket.close();
+                if(socket!=null) {
+                    socket.close();
+                }
             }catch (IOException e) {e.printStackTrace();}
         }
     }

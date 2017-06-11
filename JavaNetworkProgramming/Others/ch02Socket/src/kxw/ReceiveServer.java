@@ -3,7 +3,7 @@ package kxw;
 import java.io.*;
 import java.net.*;
 public class ReceiveServer {
-  public static void main(String args[])throws Exception {
+  public static void main(String[] args)throws Exception {
     System.out.println("启动。。。。");
     ServerSocket serverSocket = new ServerSocket(8000);
     Socket s=serverSocket.accept();
@@ -16,7 +16,9 @@ public class ReceiveServer {
     do{
       try{
         len=in.read(buff);
-        if(len!=-1)buffer.write(buff,0,len);
+        if(len!=-1) {
+          buffer.write(buff, 0, len);
+        }
       }catch(SocketTimeoutException e){
         System.out.println("等待读超时");
         len=0;

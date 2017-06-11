@@ -16,6 +16,7 @@ public class TestDoPrivileged {
         if (System.getSecurityManager() != null) {
 
             AccessController.doPrivileged(new PrivilegedAction() {
+                @Override
                 public Object run() {
                     //check();
                     return null;

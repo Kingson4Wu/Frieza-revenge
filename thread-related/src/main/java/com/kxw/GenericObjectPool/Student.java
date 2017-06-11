@@ -72,6 +72,7 @@ public class Student {
     this.age = age;
   }
 
+  @Override
   public String toString() {
     return "id =" + studentid + ",name =" + name + ",age=" + age + ",sex=" +
         sex;

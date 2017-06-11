@@ -27,7 +27,9 @@ public class HttpServer{
         for(;;){
             int n = selector.select();
 
-            if(n==0)continue;
+            if(n==0) {
+                continue;
+            }
             Set readyKeys = selector.selectedKeys();
             Iterator it = readyKeys.iterator();
             while (it.hasNext()){
@@ -51,7 +53,7 @@ public class HttpServer{
     }
 
 
-    public static void main(String args[])throws Exception{
+    public static void main(String[] args)throws Exception{
         final HttpServer server = new HttpServer();
         server.service();
     }

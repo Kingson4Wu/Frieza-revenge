@@ -36,6 +36,7 @@ public class TransFileManager extends Thread {
         s.start();
     }
 
+    @Override
     public void run() {
         running = true;
         SocketThread st;

@@ -22,9 +22,10 @@ public class EchoClient{
         System.out.println("与服务器的连接建立成功");
         selector=Selector.open();
     }
-    public static void main(String args[])throws IOException{
+    public static void main(String[] args)throws IOException{
         final EchoClient client=new EchoClient();
         Thread receiver=new Thread(){
+            @Override
             public void run(){
                 client.receiveFromUser();
             }
@@ -42,8 +43,9 @@ public class EchoClient{
                 synchronized(sendBuffer){
                     sendBuffer.put(encode(msg + "\r\n"));
                 }
-                if(msg.equals("bye"))
+                if("bye".equals(msg)) {
                     break;
+                }
             }
         }catch(IOException e){
             e.printStackTrace();
@@ -96,11 +98,13 @@ public class EchoClient{
         receiveBuffer.flip();
         String receiveData=decode(receiveBuffer);
 
-        if(receiveData.indexOf("\n")==-1)return;
+        if(receiveData.indexOf("\n")==-1) {
+            return;
+        }
 
         String outputData=receiveData.substring(0,receiveData.indexOf("\n")+1);
         System.out.print(outputData);
-        if(outputData.equals("echo:bye\r\n")){
+        if("echo:bye\r\n".equals(outputData)){
             key.cancel();
             socketChannel.close();
             System.out.println("关闭与服务器的连接");

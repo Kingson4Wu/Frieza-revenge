@@ -5,7 +5,7 @@ import java.util.Locale;
 import java.text.DateFormat;
 
 public class TestDateFormat{
-	public static void main(String args[]){
+	public static void main(String[] args){
 		Date d = new Date();
 		Locale locale1 = new Locale("zh","CN");
 		Locale locale2 = new Locale("en","US");

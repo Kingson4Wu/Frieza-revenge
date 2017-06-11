@@ -3,7 +3,7 @@ package kxw;
 import java.io.*;
 import java.net.*;
 public class SimpleClient {
-  public static void main(String args[])throws Exception {
+  public static void main(String[] args)throws Exception {
     Socket s1 = new Socket("localhost",8000);
     System.out.println("第一次连接成功");
     Socket s2 = new Socket("localhost",8000);

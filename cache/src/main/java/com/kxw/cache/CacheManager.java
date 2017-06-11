@@ -113,8 +113,9 @@ public class CacheManager {
                 cache.setExpired(true);
             }
             return cache;
-        }else
+        }else {
             return null;
+        }
     }
 
     //载入缓存信息  

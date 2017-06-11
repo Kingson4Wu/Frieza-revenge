@@ -51,7 +51,7 @@ public class TestListRemove {
         ListIterator<String> iterator3 = imageArr.listIterator();
         while (iterator3.hasPrevious()) {
             String str = iterator3.previous();
-            if (str.equals("")) {
+            if ("".equals(str)) {
                 iterator3.remove();
             }else{
                 break;

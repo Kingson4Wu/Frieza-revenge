@@ -63,8 +63,9 @@ public class ClientTest {
 						.asString();
 				List<String> winnderIds = JsonPath.from(json).get(
 						"lotto.winners.winnerId");
-				for (int i = 0; i < winnderIds.size(); i++)
+				for (int i = 0; i < winnderIds.size(); i++) {
 					System.out.println(String.valueOf(winnderIds.get(i)));
+				}
 
 				// Example with XmlPath
 				// String xml = post("/shopping").andReturn().body().asString();

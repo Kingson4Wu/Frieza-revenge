@@ -9,10 +9,12 @@ public class SingletonBeanRegister implements SingletonBeanRegistry {
     //单例Bean缓存池，此处不考虑并发
     private final Map<String, Object> BEANS = new HashMap<String, Object>();
 
+    @Override
     public boolean containsSingleton(String beanName) {
         return BEANS.containsKey(beanName);
     }
 
+    @Override
     public Object getSingleton(String beanName) {
         return BEANS.get(beanName);
     }

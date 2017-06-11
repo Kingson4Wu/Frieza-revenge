@@ -55,8 +55,9 @@ public class FileDownloadUtils {
         byte[] b = new byte[100];
         int len;
         try {
-            while ((len = inStream.read(b)) > 0)
+            while ((len = inStream.read(b)) > 0) {
                 response.getOutputStream().write(b, 0, len);
+            }
             inStream.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -111,8 +112,9 @@ public class FileDownloadUtils {
             response.setHeader("Content-Disposition", "attachment; filename=" + f.getName());
         }
         OutputStream out = response.getOutputStream();
-        while ((len = br.read(buf)) > 0)
+        while ((len = br.read(buf)) > 0) {
             out.write(buf, 0, len);
+        }
         br.close();
         out.close();
     }

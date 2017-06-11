@@ -23,6 +23,7 @@ public class EclipseJdtTest {
         cu.accept(new ASTVisitor() {
             Set<String> names = new HashSet<String>();
 
+            @Override
             public boolean visit(VariableDeclarationFragment node) {
                 SimpleName name = node.getName();
                 this.names.add(name.getIdentifier());
@@ -30,6 +31,7 @@ public class EclipseJdtTest {
                 return false; // do not continue to avoid usage info
             }
 
+            @Override
             public boolean visit(SimpleName node) {
                 if (this.names.contains(node.getIdentifier())) {
                     System.out.println("Usage of '" + node + "' at line " + cu.getLineNumber(node.getStartPosition()));

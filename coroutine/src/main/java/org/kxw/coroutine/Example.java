@@ -28,14 +28,17 @@ public class Example {
 
         //运行两个Fiber实现.
         new Fiber((SuspendableRunnable) () -> {
-            for (int i = 0; i < 10; i++) naturals.send(i);
+            for (int i = 0; i < 10; i++) {
+                naturals.send(i);
+            }
             naturals.close();
         }).start();
 
         new Fiber((SuspendableRunnable) () -> {
             Integer v;
-            while ((v = (Integer) naturals.receive()) != null)
+            while ((v = (Integer) naturals.receive()) != null) {
                 squares.send(v * v);
+            }
             squares.close();
         }).start();
 

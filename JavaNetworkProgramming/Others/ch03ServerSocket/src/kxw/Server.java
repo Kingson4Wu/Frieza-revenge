@@ -22,13 +22,15 @@ public class Server {
         e.printStackTrace();
       }finally {
         try{
-          if(socket!=null)socket.close();
+          if(socket!=null) {
+            socket.close();
+          }
         }catch (IOException e) {e.printStackTrace();}
       }
     }
   }
 
-  public static void main(String args[])throws Exception {
+  public static void main(String[] args)throws Exception {
     Server server=new Server();
     Thread.sleep(60000*10);  //睡眠十分钟
     //server.service();

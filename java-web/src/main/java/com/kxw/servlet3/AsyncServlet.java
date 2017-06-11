@@ -18,6 +18,7 @@ import java.io.*;
 
 @WebServlet(name = "AsyncServlet", urlPatterns = {"/AsyncServlet"}, asyncSupported = true)
 public class AsyncServlet extends HttpServlet {
+    @Override
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //final AsyncContext actx = request.startAsync(request, response);
@@ -46,6 +47,7 @@ class MyThread implements Runnable {
         this.actx = actx;
     }
 
+    @Override
     public void run() {
         try {
             Thread.sleep(5 * 1000); //消耗5秒

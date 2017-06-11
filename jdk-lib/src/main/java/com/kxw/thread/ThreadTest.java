@@ -16,6 +16,7 @@ public class ThreadTest {
 class MyThread extends Thread {
     private int tickets = 100;
 
+    @Override
     public void run() {
         while (tickets > 0) {
             System.out.println(this.getName() + "卖出第【" + tickets-- + "】张火车票");

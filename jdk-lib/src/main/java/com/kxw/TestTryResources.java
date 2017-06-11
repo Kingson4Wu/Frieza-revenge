@@ -17,7 +17,9 @@ public class TestTryResources {
         try {
             return br.readLine();
         } finally {
-            if (br != null) br.close();
+            if (br != null) {
+                br.close();
+            }
         }
     }
 

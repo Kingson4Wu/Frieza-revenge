@@ -10,12 +10,14 @@ public class Chassis extends CompositeEquipment {
     }  
   
     // 盒子的价格以及盒子里面硬盘价格.  
-    public double netPrice() {  
+    @Override
+    public double netPrice() {
         return chassisNetPrice + super.netPrice();  
     }  
   
     //  
-    public double discountPrice() {  
+    @Override
+    public double discountPrice() {
         return chassisDiscountPrice + super.discountPrice();  
     }  
 }  

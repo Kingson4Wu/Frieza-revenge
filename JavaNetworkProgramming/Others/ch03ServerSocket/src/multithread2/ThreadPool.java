@@ -10,8 +10,9 @@ public class ThreadPool extends ThreadGroup {
     super("ThreadPool-" + (threadPoolID++));
     setDaemon(true);
     workQueue = new LinkedList<Runnable>();  //创建工作队列
-    for (int i=0; i<poolSize; i++)
+    for (int i=0; i<poolSize; i++) {
       new WorkThread().start();  //创建并启动工作线程
+    }
   }
 
   /** 向工作队列中加入一个新任务，由工作线程去执行该任务 */
@@ -28,7 +29,9 @@ public class ThreadPool extends ThreadGroup {
   /** 从工作队列中取出一个任务，工作线程会调用此方法 */
   protected synchronized Runnable getTask()throws InterruptedException{
     while (workQueue.size() == 0) {
-      if (isClosed) return null;
+      if (isClosed) {
+        return null;
+      }
       wait();  //如果工作队列中没有任务，就等待任务
     }
     return workQueue.removeFirst();
@@ -67,6 +70,7 @@ public class ThreadPool extends ThreadGroup {
       super(ThreadPool.this,"WorkThread-" + (threadID++));
     }
 
+    @Override
     public void run() {
       while (!isInterrupted()) {  //isInterrupted()方法继承自Thread类，判断线程是否被中断
         Runnable task = null;
@@ -75,7 +79,9 @@ public class ThreadPool extends ThreadGroup {
         }catch (InterruptedException ex){}
 
         // 如果getTask()返回null或者线程执行getTask()时被中断，则结束此线程
-        if (task == null) return;
+        if (task == null) {
+          return;
+        }
 
         try { //运行任务，捕获异常
           task.run();

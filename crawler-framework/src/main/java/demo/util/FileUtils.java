@@ -110,14 +110,16 @@ public final class FileUtils implements Serializable{
 	 */
 	public static File makeFile(String filePath) {
 		File file = new File(filePath);
-		if (file.isFile())
+		if (file.isFile()) {
 			return file;
-		if (filePath.endsWith("/") || filePath.endsWith("\\"))
+		}
+		if (filePath.endsWith("/") || filePath.endsWith("\\")) {
 			try {
 				throw new IOException(filePath + " is a directory");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
 
 		String dirPath = extractDirPath(filePath); // 文件所在目录的路径
 
@@ -203,10 +205,11 @@ public final class FileUtils implements Serializable{
 		String[] tempList = file.list();
 		String temp = null;
 		for (int i = 0; i < tempList.length; i++) {
-			if (path.endsWith("\\") || path.endsWith("/"))
+			if (path.endsWith("\\") || path.endsWith("/")) {
 				temp = path + tempList[i];
-			else
+			} else {
 				temp = path + File.separator + tempList[i];
+			}
 			if ((new File(temp)).isFile()) {
 				deleteFile(temp);
 			} else if ((new File(temp)).isDirectory() && ifDeleteFolder) {
@@ -449,8 +452,9 @@ public final class FileUtils implements Serializable{
 		File file = new File(filePath);
 		File[] tempFile = file.listFiles();
 		for (int i = 0; i < tempFile.length; i++) {
-			if (tempFile[i].isFile())
+			if (tempFile[i].isFile()) {
 				fileNames.add(tempFile[i].getName());
+			}
 		}
 		return fileNames;
 	}
@@ -466,11 +470,14 @@ public final class FileUtils implements Serializable{
 		int count = 0;
 		try{
 		File file = new File(filePath);
-		if(!isFolderExist(filePath)) return count;
+		if(!isFolderExist(filePath)) {
+			return count;
+		}
 		File[] tempFile = file.listFiles();
 		for (int i = 0; i < tempFile.length; i++) {
-			if (tempFile[i].isFile())
+			if (tempFile[i].isFile()) {
 				count++;
+			}
 		}
 		}catch(Exception fe){
 			count =0;
@@ -487,22 +494,28 @@ public final class FileUtils implements Serializable{
 	 */
 	public static int getFileCount(String filePath, String matchs) {
 		int count = 0;
-		if(!isFolderExist(filePath)) return count;
-		if(matchs.equals("") || matchs == null) return getFileCount(filePath);
+		if(!isFolderExist(filePath)) {
+			return count;
+		}
+		if("".equals(matchs) || matchs == null) {
+			return getFileCount(filePath);
+		}
 		File file = new File(filePath);
 //		log4j.info("filePath in getFileCount: " + filePath);
 //		log4j.info("matchs in getFileCount: " + matchs);
 		File[] tempFile = file.listFiles();
 		for (int i = 0; i < tempFile.length; i++) {
-			if (tempFile[i].isFile())
-				if(Pattern.matches(matchs, tempFile[i].getName()))
-					count++;
+			if (tempFile[i].isFile()) {
+				if (Pattern.matches(matchs, tempFile[i].getName())) { count++; }
+			}
 		}
 		return count;		
 	}
 
 	public static int getStrCountFromFile(String filePath, String str) {
-		if(!isFileExist(filePath)) return 0;
+		if(!isFileExist(filePath)) {
+			return 0;
+		}
 		FileReader fr = null;
 		BufferedReader br = null;
 		int count = 0;
@@ -511,7 +524,9 @@ public final class FileUtils implements Serializable{
 			br = new BufferedReader(fr);
 			String line = null;
 			while((line = br.readLine()) != null) {
-				if(line.indexOf(str) != -1) count++;
+				if(line.indexOf(str) != -1) {
+					count++;
+				}
 			}			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -519,8 +534,12 @@ public final class FileUtils implements Serializable{
 			e.printStackTrace();
 		} finally {
 			try {
-				if(br != null) br.close();
-				if(fr != null) fr.close();
+				if(br != null) {
+					br.close();
+				}
+				if(fr != null) {
+					fr.close();
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -534,8 +553,9 @@ public final class FileUtils implements Serializable{
 	 * @return int 行数
 	 */
 	public static int getFileLineCount(String filePath){
-		if(!isFileExist(filePath)) 
+		if(!isFileExist(filePath)) {
 			return 0;
+		}
 		FileReader fr = null;
 		BufferedReader br = null;
 		int count = 0;
@@ -552,8 +572,12 @@ public final class FileUtils implements Serializable{
 			e.printStackTrace();
 		} finally {
 			try {
-				if(br != null) br.close();
-				if(fr != null) fr.close();
+				if(br != null) {
+					br.close();
+				}
+				if(fr != null) {
+					fr.close();
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -625,9 +649,9 @@ public final class FileUtils implements Serializable{
 	 * @return 返回文件的大小,单位kb,如果文件不存在返回null
 	 */
 	public static Double getFileSize(String filePath) {
-		if (!isFileExist(filePath))
+		if (!isFileExist(filePath)) {
 			return null;
-		else{
+		} else{
 		File file = new File(filePath);
 		double intNum = Math.ceil(file.length() / 1024.0);
 		return new Double(intNum);
@@ -643,9 +667,9 @@ public final class FileUtils implements Serializable{
 	 * @return 返回文件的大小,单位kb,如果文件不存在返回null
 	 */
 	public static Double getFileByteSize(String filePath) {
-		if (!isFileExist(filePath))
+		if (!isFileExist(filePath)) {
 			return null;
-		else{
+		} else{
 		File file = new File(filePath);
 		double intNum = Math.ceil(file.length());
 		return new Double(intNum);
@@ -661,9 +685,9 @@ public final class FileUtils implements Serializable{
 	 * @return 返回文件的大小,单位kb,如果文件不存在返回null
 	 */
 	public static Double getWhpjFileSize(String filePath) {
-		if (!isFileExist(filePath))
+		if (!isFileExist(filePath)) {
 			return null;
-		else{
+		} else{
 		File file = new File(filePath);
 		return new Double(file.length());
 		}
@@ -676,8 +700,9 @@ public final class FileUtils implements Serializable{
 	 * @return 返回文件最后的修改日期的字符串,如果文件不存在返回null
 	 */
 	public static String fileModifyTime(String filePath) {
-		if (!isFileExist(filePath)) return null;
-		else{
+		if (!isFileExist(filePath)) {
+			return null;
+		} else{
 		File file = new File(filePath);
 
 		long timeStamp = file.lastModified();
@@ -724,10 +749,11 @@ public final class FileUtils implements Serializable{
 		File file = new File(filePath);
 		File[] tempFile = file.listFiles();
 		for (int i = 0; i < tempFile.length; i++) {
-			if (tempFile[i].isFile())
-				if(tempFile[i].getName().indexOf("TXT") !=-1||tempFile[i].getName().indexOf("txt")!=-1){
-				fileNames.add(tempFile[i].getName());
+			if (tempFile[i].isFile()) {
+				if (tempFile[i].getName().indexOf("TXT") != -1 || tempFile[i].getName().indexOf("txt") != -1) {
+					fileNames.add(tempFile[i].getName());
 				}
+			}
 		}
 		return fileNames;
 	}
@@ -745,10 +771,11 @@ public final class FileUtils implements Serializable{
 		File file = new File(filePath);
 		File[] tempFile = file.listFiles();
 		for (int i = 0; i < tempFile.length; i++) {
-			if (tempFile[i].isFile())
-				if(tempFile[i].getName().indexOf("XML") !=-1||tempFile[i].getName().indexOf("xml")!=-1){
-				fileNames.add(tempFile[i].getName());
+			if (tempFile[i].isFile()) {
+				if (tempFile[i].getName().indexOf("XML") != -1 || tempFile[i].getName().indexOf("xml") != -1) {
+					fileNames.add(tempFile[i].getName());
 				}
+			}
 		}
 		return fileNames;
 	}
@@ -761,7 +788,9 @@ public final class FileUtils implements Serializable{
 	   */
 	  @SuppressWarnings("unchecked")
 	public static boolean checkFile(String fileName, HashMap mapErrorMessage) {
-	    if(mapErrorMessage == null ) mapErrorMessage = new HashMap();
+	    if(mapErrorMessage == null ) {
+			mapErrorMessage = new HashMap();
+		}
 	    // 判断文件名是否为空
 	    if (fileName == null) {
 	      fileName = "";
@@ -841,7 +870,7 @@ public final class FileUtils implements Serializable{
 				for(List<String> tempList : list){
 					
 					for(String str : tempList){
-						if(str !=null && !str.equals("")){
+						if(str !=null && !"".equals(str)){
 							bw.write(str);
 							bw.newLine();
 							bw.flush();

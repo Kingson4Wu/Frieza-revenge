@@ -15,7 +15,7 @@ public class EchoClient{
         socketChannel.connect(isa);
         System.out.println("与服务器的连接建立成功");
     }
-    public static void main(String args[])throws IOException{
+    public static void main(String[] args)throws IOException{
         new EchoClient().talk();
     }
     private PrintWriter getWriter(Socket socket)throws IOException{
@@ -36,8 +36,9 @@ public class EchoClient{
                 pw.println(msg);
                 System.out.println(br.readLine());
 
-                if(msg.equals("bye"))
+                if("bye".equals(msg)) {
                     break;
+                }
             }
         }catch(IOException e){
             e.printStackTrace();

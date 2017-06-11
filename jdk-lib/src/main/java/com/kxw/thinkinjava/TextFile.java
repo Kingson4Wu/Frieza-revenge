@@ -45,7 +45,9 @@ public class TextFile extends ArrayList<String> {
     super(Arrays.asList(read(fileName).split(splitter)));
     // Regular expression split() often leaves an empty
     // String at the first position:
-    if(get(0).equals("")) remove(0);
+    if("".equals(get(0))) {
+      remove(0);
+    }
   }
   // Normally read by lines:
   public TextFile(String fileName) {
@@ -56,8 +58,9 @@ public class TextFile extends ArrayList<String> {
       PrintWriter out = new PrintWriter(
         new File(fileName).getAbsoluteFile());
       try {
-        for(String item : this)
+        for(String item : this) {
           out.println(item);
+        }
       } finally {
         out.close();
       }

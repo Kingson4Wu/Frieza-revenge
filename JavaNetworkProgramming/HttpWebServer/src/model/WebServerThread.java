@@ -26,6 +26,7 @@ public class WebServerThread extends Thread{
 		setPriority(4);
 	}
 
+	@Override
 	public void run()
 	{
 
@@ -53,7 +54,7 @@ public class WebServerThread extends Thread{
 
 			if (requestLine.toLowerCase().indexOf("http/1.") != -1) {
 				String string_0_;
-				while (!(string_0_ = br.readLine()).equals("")//请求不为空
+				while (!"".equals(string_0_ = br.readLine())//请求不为空
 						&& string_0_ != null) {
 					requestCmds+="\n"+string_0_;
 				}
@@ -71,7 +72,7 @@ public class WebServerThread extends Thread{
 				String string_1_ = request[0];//如"GET"
 				/*只允许GET请求类型*/
 				System.out.println("请求方法为："+string_1_);
-				if (string_1_.equals("GET"))
+				if ("GET".equals(string_1_))
 				{
 					serveFile(request[1]);//request[1]为请求路径，如"/"
 					System.out.println("请求路径为"+request[1]);
@@ -97,7 +98,7 @@ public class WebServerThread extends Thread{
 
 
 	private void serveFile(String requestPath)  {
-		if (requestPath.equals("/")){
+		if ("/".equals(requestPath)){
 			/**
 			 * 取首页文件，首页文件可以为index.html或index.htm
 			 */
@@ -123,19 +124,21 @@ public class WebServerThread extends Thread{
 
 	private void sendFileData(String requestPath) throws IOException,FileNotFoundException {
 		InputStream inputstream = new FileInputStream(path+requestPath);
-		if (inputstream == null)
+		if (inputstream == null) {
 			throw new FileNotFoundException(requestPath);
+		}
 		if (isHttp1) {
 			pout.println("HTTP/1.0 200 Document follows");
 			pout.println("Content-length: " + inputstream.available());
-			if (requestPath.endsWith(".gif"))
+			if (requestPath.endsWith(".gif")) {
 				pout.println("Content-type: image/gif");
-			else if (requestPath.endsWith(".jpg"))
+			} else if (requestPath.endsWith(".jpg")) {
 				pout.println("Content-type: image/jpeg");
-			else if (requestPath.endsWith(".html") || requestPath.endsWith(".htm"))
+			} else if (requestPath.endsWith(".html") || requestPath.endsWith(".htm")) {
 				pout.println("Content-Type: text/html");
-			else
+			} else {
 				pout.println("Content-Type: application/octet-stream");
+			}
 			pout.println();
 		}
 		/*缓冲区设为8K*/

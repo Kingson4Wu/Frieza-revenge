@@ -39,6 +39,7 @@ class MyListener  implements ActionListener{
 	public MyListener(JLabel clock){
 		this.clock = clock;	
 	}	
+	@Override
 	public void actionPerformed(ActionEvent e){
 		Calendar c = new GregorianCalendar();
 		String time = c.get(Calendar.YEAR) + "-" +
@@ -67,6 +68,7 @@ class MyListener2 implements ActionListener{
 		this.button = button;
 		this.clock = clock;
 	}	
+	@Override
 	public void actionPerformed(ActionEvent e){
 		if(running){
 			timer.stop();

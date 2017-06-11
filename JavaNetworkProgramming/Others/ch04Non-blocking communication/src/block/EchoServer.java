@@ -34,7 +34,7 @@ public class EchoServer {
     }
   }
 
-  public static void main(String args[])throws IOException {
+  public static void main(String[] args)throws IOException {
     new EchoServer().service();
   }
 }
@@ -44,6 +44,7 @@ class Handler implements Runnable{
   public Handler(SocketChannel socketChannel){
     this.socketChannel=socketChannel;
   }
+  @Override
   public void run(){
     handle(socketChannel);
   }
@@ -61,14 +62,17 @@ class Handler implements Runnable{
       while ((msg = br.readLine()) != null) {
         System.out.println(msg);
         pw.println(echo(msg));
-        if (msg.equals("bye"))
+        if ("bye".equals(msg)) {
           break;
+        }
       }
     }catch (IOException e) {
       e.printStackTrace();
     }finally {
       try{
-        if(socketChannel!=null)socketChannel.close();
+        if(socketChannel!=null) {
+          socketChannel.close();
+        }
       }catch (IOException e) {e.printStackTrace();}
     }
   }

@@ -9,7 +9,7 @@ import java.util.Arrays;
  * <a href='http://www.runoob.com/mongodb/mongodb-java.html'>@link</a>
  */
 public class MongoDBJDBC{
-    public static void main( String args[] ){
+    public static void main(String[] args ){
         try{
             // 连接到 mongodb 服务
             MongoClient mongoClient = new MongoClient( "localhost" , 27017 );

@@ -20,6 +20,7 @@ public class ReadWriteLockDemo
 			//读
 			new Thread(new Runnable()
 			{
+				@Override
 				public void run()
 				{
 					while (true)
@@ -31,6 +32,7 @@ public class ReadWriteLockDemo
 			//写
 			new Thread(new Runnable()
 			{
+				@Override
 				public void run()
 				{
 					while (true)

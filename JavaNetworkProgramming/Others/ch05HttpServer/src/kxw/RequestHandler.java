@@ -22,7 +22,9 @@ public class RequestHandler implements Handler {
     private boolean receive(SelectionKey sk) throws IOException {
         ByteBuffer tmp = null;
 
-        if (requestReceived)return true;  //如果已经接收到所有HTTP请求数据，返回true
+        if (requestReceived) {
+            return true;  //如果已经接收到所有HTTP请求数据，返回true
+        }
 
         //如果已经读到通道的末尾，或者已经读到HTTP请求数据的末尾标志“\r\n”，就返回true
         if ((channelIO.read() < 0) || Request.isComplete(channelIO.getReadBuf())) {
@@ -64,15 +66,20 @@ public class RequestHandler implements Handler {
     }
 
     /*  接收HTTP请求，发送HTTP响应 */
+    @Override
     public void handle(SelectionKey sk) throws IOException {
         try {
             if (request == null) { //如果还没有接收到HTTP请求的所有数据
                 //接收HTTP请求
-                if (!receive(sk))return;
+                if (!receive(sk)) {
+                    return;
+                }
                 requestByteBuffer.flip();
 
                 //如果成功解析了HTTP请求，就创建一个Response对象
-                if (parse())build();
+                if (parse()) {
+                    build();
+                }
 
                 try {
                     response.prepare();  //准备HTTP响应的内容

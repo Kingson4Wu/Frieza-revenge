@@ -47,9 +47,11 @@ public class HelloWorldService {
   public static class Client extends org.apache.thrift.TServiceClient implements Iface {
     public static class Factory implements org.apache.thrift.TServiceClientFactory<Client> {
       public Factory() {}
+      @Override
       public Client getClient(org.apache.thrift.protocol.TProtocol prot) {
         return new Client(prot);
       }
+      @Override
       public Client getClient(org.apache.thrift.protocol.TProtocol iprot, org.apache.thrift.protocol.TProtocol oprot) {
         return new Client(iprot, oprot);
       }
@@ -64,6 +66,7 @@ public class HelloWorldService {
       super(iprot, oprot);
     }
 
+    @Override
     public String sayHello(String username) throws org.apache.thrift.TException
     {
       send_sayHello(username);
@@ -96,6 +99,7 @@ public class HelloWorldService {
         this.clientManager = clientManager;
         this.protocolFactory = protocolFactory;
       }
+      @Override
       public AsyncClient getAsyncClient(org.apache.thrift.transport.TNonblockingTransport transport) {
         return new AsyncClient(protocolFactory, clientManager, transport);
       }
@@ -105,6 +109,7 @@ public class HelloWorldService {
       super(protocolFactory, clientManager, transport);
     }
 
+    @Override
     public void sayHello(String username, org.apache.thrift.async.AsyncMethodCallback<sayHello_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       sayHello_call method_call = new sayHello_call(username, resultHandler, this, ___protocolFactory, ___transport);
@@ -119,6 +124,7 @@ public class HelloWorldService {
         this.username = username;
       }
 
+      @Override
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("sayHello", org.apache.thrift.protocol.TMessageType.CALL, 0));
         sayHello_args args = new sayHello_args();
@@ -159,14 +165,17 @@ public class HelloWorldService {
         super("sayHello");
       }
 
+      @Override
       public sayHello_args getEmptyArgsInstance() {
         return new sayHello_args();
       }
 
+      @Override
       protected boolean isOneway() {
         return false;
       }
 
+      @Override
       public sayHello_result getResult(I iface, sayHello_args args) throws org.apache.thrift.TException {
         sayHello_result result = new sayHello_result();
         result.success = iface.sayHello(args.username);
@@ -219,7 +228,9 @@ public class HelloWorldService {
        */
       public static _Fields findByThriftIdOrThrow(int fieldId) {
         _Fields fields = findByThriftId(fieldId);
-        if (fields == null) throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
+        if (fields == null) {
+          throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
+        }
         return fields;
       }
 
@@ -238,10 +249,12 @@ public class HelloWorldService {
         _fieldName = fieldName;
       }
 
+      @Override
       public short getThriftFieldId() {
         return _thriftId;
       }
 
+      @Override
       public String getFieldName() {
         return _fieldName;
       }
@@ -276,6 +289,7 @@ public class HelloWorldService {
       }
     }
 
+    @Override
     public sayHello_args deepCopy() {
       return new sayHello_args(this);
     }
@@ -309,6 +323,7 @@ public class HelloWorldService {
       }
     }
 
+    @Override
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
       case USERNAME:
@@ -322,6 +337,7 @@ public class HelloWorldService {
       }
     }
 
+    @Override
     public Object getFieldValue(_Fields field) {
       switch (field) {
       case USERNAME:
@@ -332,6 +348,7 @@ public class HelloWorldService {
     }
 
     /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    @Override
     public boolean isSet(_Fields field) {
       if (field == null) {
         throw new IllegalArgumentException();
@@ -346,24 +363,29 @@ public class HelloWorldService {
 
     @Override
     public boolean equals(Object that) {
-      if (that == null)
+      if (that == null) {
         return false;
-      if (that instanceof sayHello_args)
+      }
+      if (that instanceof sayHello_args) {
         return this.equals((sayHello_args)that);
+      }
       return false;
     }
 
     public boolean equals(sayHello_args that) {
-      if (that == null)
+      if (that == null) {
         return false;
+      }
 
       boolean this_present_username = true && this.isSetUsername();
       boolean that_present_username = true && that.isSetUsername();
       if (this_present_username || that_present_username) {
-        if (!(this_present_username && that_present_username))
+        if (!(this_present_username && that_present_username)) {
           return false;
-        if (!this.username.equals(that.username))
+        }
+        if (!this.username.equals(that.username)) {
           return false;
+        }
       }
 
       return true;
@@ -374,6 +396,7 @@ public class HelloWorldService {
       return 0;
     }
 
+    @Override
     public int compareTo(sayHello_args other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
@@ -395,14 +418,17 @@ public class HelloWorldService {
       return 0;
     }
 
+    @Override
     public _Fields fieldForId(int fieldId) {
       return _Fields.findByThriftId(fieldId);
     }
 
+    @Override
     public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
+    @Override
     public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
@@ -445,6 +471,7 @@ public class HelloWorldService {
     }
 
     private static class sayHello_argsStandardSchemeFactory implements SchemeFactory {
+      @Override
       public sayHello_argsStandardScheme getScheme() {
         return new sayHello_argsStandardScheme();
       }
@@ -452,6 +479,7 @@ public class HelloWorldService {
 
     private static class sayHello_argsStandardScheme extends StandardScheme<sayHello_args> {
 
+      @Override
       public void read(org.apache.thrift.protocol.TProtocol iprot, sayHello_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
@@ -481,6 +509,7 @@ public class HelloWorldService {
         struct.validate();
       }
 
+      @Override
       public void write(org.apache.thrift.protocol.TProtocol oprot, sayHello_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
@@ -497,6 +526,7 @@ public class HelloWorldService {
     }
 
     private static class sayHello_argsTupleSchemeFactory implements SchemeFactory {
+      @Override
       public sayHello_argsTupleScheme getScheme() {
         return new sayHello_argsTupleScheme();
       }
@@ -573,7 +603,9 @@ public class HelloWorldService {
        */
       public static _Fields findByThriftIdOrThrow(int fieldId) {
         _Fields fields = findByThriftId(fieldId);
-        if (fields == null) throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
+        if (fields == null) {
+          throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
+        }
         return fields;
       }
 
@@ -592,10 +624,12 @@ public class HelloWorldService {
         _fieldName = fieldName;
       }
 
+      @Override
       public short getThriftFieldId() {
         return _thriftId;
       }
 
+      @Override
       public String getFieldName() {
         return _fieldName;
       }
@@ -630,6 +664,7 @@ public class HelloWorldService {
       }
     }
 
+    @Override
     public sayHello_result deepCopy() {
       return new sayHello_result(this);
     }
@@ -663,6 +698,7 @@ public class HelloWorldService {
       }
     }
 
+    @Override
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
       case SUCCESS:
@@ -676,6 +712,7 @@ public class HelloWorldService {
       }
     }
 
+    @Override
     public Object getFieldValue(_Fields field) {
       switch (field) {
       case SUCCESS:
@@ -686,6 +723,7 @@ public class HelloWorldService {
     }
 
     /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    @Override
     public boolean isSet(_Fields field) {
       if (field == null) {
         throw new IllegalArgumentException();
@@ -700,24 +738,29 @@ public class HelloWorldService {
 
     @Override
     public boolean equals(Object that) {
-      if (that == null)
+      if (that == null) {
         return false;
-      if (that instanceof sayHello_result)
+      }
+      if (that instanceof sayHello_result) {
         return this.equals((sayHello_result)that);
+      }
       return false;
     }
 
     public boolean equals(sayHello_result that) {
-      if (that == null)
+      if (that == null) {
         return false;
+      }
 
       boolean this_present_success = true && this.isSetSuccess();
       boolean that_present_success = true && that.isSetSuccess();
       if (this_present_success || that_present_success) {
-        if (!(this_present_success && that_present_success))
+        if (!(this_present_success && that_present_success)) {
           return false;
-        if (!this.success.equals(that.success))
+        }
+        if (!this.success.equals(that.success)) {
           return false;
+        }
       }
 
       return true;
@@ -728,6 +771,7 @@ public class HelloWorldService {
       return 0;
     }
 
+    @Override
     public int compareTo(sayHello_result other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
@@ -749,14 +793,17 @@ public class HelloWorldService {
       return 0;
     }
 
+    @Override
     public _Fields fieldForId(int fieldId) {
       return _Fields.findByThriftId(fieldId);
     }
 
+    @Override
     public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
+    @Override
     public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
@@ -799,6 +846,7 @@ public class HelloWorldService {
     }
 
     private static class sayHello_resultStandardSchemeFactory implements SchemeFactory {
+      @Override
       public sayHello_resultStandardScheme getScheme() {
         return new sayHello_resultStandardScheme();
       }
@@ -806,6 +854,7 @@ public class HelloWorldService {
 
     private static class sayHello_resultStandardScheme extends StandardScheme<sayHello_result> {
 
+      @Override
       public void read(org.apache.thrift.protocol.TProtocol iprot, sayHello_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
@@ -835,6 +884,7 @@ public class HelloWorldService {
         struct.validate();
       }
 
+      @Override
       public void write(org.apache.thrift.protocol.TProtocol oprot, sayHello_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
@@ -851,6 +901,7 @@ public class HelloWorldService {
     }
 
     private static class sayHello_resultTupleSchemeFactory implements SchemeFactory {
+      @Override
       public sayHello_resultTupleScheme getScheme() {
         return new sayHello_resultTupleScheme();
       }

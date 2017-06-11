@@ -18,8 +18,10 @@ public class Sender {
   public Sender()throws IOException{
     socket=new Socket(host,port);
   }
-  public static void main(String args[])throws Exception{
-    if(args.length>0)stopWay=Integer.parseInt(args[0]);//由命令行接受参数
+  public static void main(String[] args)throws Exception{
+    if(args.length>0) {
+      stopWay = Integer.parseInt(args[0]);//由命令行接受参数
+    }
     new Sender().send();
   }
   private PrintWriter getWriter(Socket socket)throws IOException{

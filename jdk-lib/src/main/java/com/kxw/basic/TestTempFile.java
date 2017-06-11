@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class TestTempFile implements ActionListener{
 	private File tempPath;
-	public static void main(String args[]){
+	public static void main(String[] args){
 		TestTempFile ttf = new TestTempFile();
 		ttf.init();
 		ttf.createUI();
@@ -28,6 +28,7 @@ public class TestTempFile implements ActionListener{
 			tempPath.mkdir();  //如果不存在，则创建该文件夹
 		}
 	}
+	@Override
 	public void actionPerformed(ActionEvent e){
 		try	{
 			//在tempPath路径下创建临时文件"mytempfileXXXX.tmp"

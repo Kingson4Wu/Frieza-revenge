@@ -35,7 +35,7 @@ public class SimpleHttpServer {
         }
     }
 
-    public static void main(String args[])throws IOException {
+    public static void main(String[] args)throws IOException {
         new SimpleHttpServer().service();
     }
     class Handler implements Runnable{
@@ -43,6 +43,7 @@ public class SimpleHttpServer {
         public Handler(SocketChannel socketChannel){
             this.socketChannel=socketChannel;
         }
+        @Override
         public void run(){
             handle(socketChannel);
         }
@@ -67,10 +68,11 @@ public class SimpleHttpServer {
                 FileInputStream in;
                 //获得HTTP请求的第一行
                 String firstLineOfRequest=request.substring(0,request.indexOf("\r\n"));
-                if(firstLineOfRequest.indexOf("login.htm")!=-1)
-                    in=new FileInputStream("root/login.htm");
-                else
-                    in=new FileInputStream("root/hello.htm");
+                if(firstLineOfRequest.indexOf("login.htm")!=-1) {
+                    in = new FileInputStream("root/login.htm");
+                } else {
+                    in = new FileInputStream("root/hello.htm");
+                }
 
                 FileChannel fileChannel=in.getChannel();
                 fileChannel.transferTo(0,fileChannel.size(),socketChannel);
@@ -79,7 +81,9 @@ public class SimpleHttpServer {
                 e.printStackTrace();
             }finally {
                 try{
-                    if(socketChannel!=null)socketChannel.close();
+                    if(socketChannel!=null) {
+                        socketChannel.close();
+                    }
                 }catch (IOException e) {e.printStackTrace();}
             }
         }

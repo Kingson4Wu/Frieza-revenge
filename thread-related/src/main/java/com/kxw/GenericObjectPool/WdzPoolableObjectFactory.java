@@ -27,6 +27,7 @@ public class WdzPoolableObjectFactory
   /**
    * 创建对象实例。同时可以分配这个对象适用的资源。
    * **/
+  @Override
   public Object makeObject() throws Exception {
     return new Student();
   };
@@ -37,6 +38,7 @@ public class WdzPoolableObjectFactory
    *  from the pool (whether due to the response from validateObject,
    *  or for reasons specific to the pool implementation.)
    * */
+  @Override
   public void destroyObject(Object obj) throws Exception {
   }
 
@@ -47,6 +49,7 @@ public class WdzPoolableObjectFactory
    * determine if an instance is still valid to be returned by the pool.
    * It will only be invoked on an "activated" instance.
    * **/
+  @Override
   public boolean validateObject(Object obj) {
     return true;
   }
@@ -55,6 +58,7 @@ public class WdzPoolableObjectFactory
    * 激活一个对象。
    * activateObject is invoked on every instance before it is returned from the pool.
    * **/
+  @Override
   public void activateObject(Object obj) throws Exception {
   }
 
@@ -62,6 +66,7 @@ public class WdzPoolableObjectFactory
    * 挂起一个对象
        * passivateObject is invoked on every instance when it is returned to the pool
    * **/
+  @Override
   public void passivateObject(Object obj) throws Exception {
     if (obj instanceof Student) {
       ( (Student) obj).clear();

@@ -9,6 +9,7 @@ public class Response implements Sendable {
         private int number;
         private String reason;
         private Code(int i, String r) { number = i; reason = r; }
+        @Override
         public String toString() { return number + " " + reason; }
 
         static Code OK = new Code(200, "OK");
@@ -58,32 +59,38 @@ public class Response implements Sendable {
     }
 
     /* 准备HTTP响应中的正文以及响应头的内容 */
+    @Override
     public void prepare() throws IOException {
         content.prepare();
         headerBuffer= headers();
     }
 
     /* 发送HTTP响应，如果全部发送完毕，返回false，否则返回true */
+    @Override
     public boolean send(ChannelIO cio) throws IOException {
-        if (headerBuffer == null)
+        if (headerBuffer == null) {
             throw new IllegalStateException();
+        }
 
         //发送响应头
         if (headerBuffer.hasRemaining()) {
-            if (cio.write(headerBuffer) <= 0)
+            if (cio.write(headerBuffer) <= 0) {
                 return true;
+            }
         }
 
         //发送响应正文
         if (!headersOnly) {
-            if (content.send(cio))
+            if (content.send(cio)) {
                 return true;
+            }
         }
 
         return false;
     }
 
     /* 释放响应正文占用的资源 */
+    @Override
     public void release() throws IOException {
         content.release();
     }

@@ -11,6 +11,7 @@ import java.util.TimerTask;
  * @date 2014年6月19日 13:54:44
  */
 public class SearchTask extends TimerTask{
+	@Override
 	public void run() {
 		if(!SearchBKeyword.process){
 			/**加载关键词和采集页数*/

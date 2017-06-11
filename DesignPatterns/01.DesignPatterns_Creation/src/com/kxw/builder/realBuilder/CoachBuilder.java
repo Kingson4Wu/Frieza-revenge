@@ -46,6 +46,7 @@ public class CoachBuilder implements Builder {
         coach.setShell(new Shell());
     }
 
+    @Override
     public TrafficMachine retrieveResult() {
 // 此处根据实际业务写相关逻辑  
         return coach;

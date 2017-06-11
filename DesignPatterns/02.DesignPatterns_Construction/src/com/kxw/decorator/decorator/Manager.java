@@ -18,6 +18,7 @@ public class Manager implements Project {
     /**
      * 编码
      */
+    @Override
     public void doCoding() {
         //项目经理开始新的工作 
         startNewWork();

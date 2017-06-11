@@ -29,6 +29,8 @@ public class HTMLPage extends Thread implements WebPage
     private StringBuffer contents;
     private URL url;
 
+    private final  static Pattern p=  Pattern.compile("href=.*?>");
+
     public HTMLPage(URL url)
     {
         this.url = url;
@@ -37,6 +39,7 @@ public class HTMLPage extends Thread implements WebPage
     /**
      * 将网页下载到本地，用来以后分析
      */
+    @Override
     public File getPageFile()
     {
         int ch = 0;
@@ -71,6 +74,7 @@ public class HTMLPage extends Thread implements WebPage
     /**
      * 分析网页，将不重复的url地址添加到候选叶中
      */
+    @Override
     public void parse() throws MalformedURLException
     {
         //无法处理内部链接，即不带http   
@@ -80,7 +84,7 @@ public class HTMLPage extends Thread implements WebPage
         while(mt.find())
         {
             //获取网址   
-            Matcher myurl=Pattern.compile("href=.*?>").matcher(mt.group());
+            Matcher myurl=p.matcher(mt.group());
             while(myurl.find())
             {
                 String url = myurl.group().replaceAll("href=|>","");
@@ -97,6 +101,7 @@ public class HTMLPage extends Thread implements WebPage
         }
     }
 
+    @Override
     public void run()
     {
         getPageFile();

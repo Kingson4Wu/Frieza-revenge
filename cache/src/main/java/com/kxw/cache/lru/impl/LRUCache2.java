@@ -68,10 +68,12 @@ public class LRUCache2 {
             if (node.next != null) {
                 node.next.prev = node.prev;
             }
-            if (last == node)
+            if (last == node) {
                 last = node.prev;
-            if (first == node)
+            }
+            if (first == node) {
                 first = node.next;
+            }
         }
         //在hashtable中删除
         nodes.remove(key);
@@ -83,10 +85,11 @@ public class LRUCache2 {
     private void removeLast() {
         //链表尾不为空,则将链表尾指向null. 删除连表尾（删除最少使用的缓存对象）
         if (last != null) {
-            if (last.prev != null)
+            if (last.prev != null) {
                 last.prev.next = null;
-            else
+            } else {
                 first = null;
+            }
             last = last.prev;
         }
     }
@@ -95,22 +98,27 @@ public class LRUCache2 {
      * 移动到链表头，表示这个节点是最新使用过的
      */
     private void moveToHead(Entry node) {
-        if (node == first)
+        if (node == first) {
             return;
-        if (node.prev != null)
+        }
+        if (node.prev != null) {
             node.prev.next = node.next;
-        if (node.next != null)
+        }
+        if (node.next != null) {
             node.next.prev = node.prev;
-        if (last == node)
+        }
+        if (last == node) {
             last = node.prev;
+        }
         if (first != null) {
             node.next = first;
             first.prev = node;
         }
         first = node;
         node.prev = null;
-        if (last == null)
+        if (last == null) {
             last = first;
+        }
     }
 
     /*

@@ -25,6 +25,7 @@ public class Person implements Comparable{
 	public int getAge(){
 		return age;	
 	}
+	@Override
 	public String toString(){
 		return "Id: " + id + "\tName: " + name + "\tAge: " + age; 	
 	}	
@@ -37,8 +38,9 @@ public class Person implements Comparable{
 	public boolean equals(Object o){
 		boolean flag = false;
 		if(o instanceof Person){
-			if(this.id == ((Person)o).id)
+			if(this.id == ((Person)o).id) {
 				flag = true;
+			}
 		}
 		return false;		
 	}	

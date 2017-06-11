@@ -38,23 +38,28 @@ public class LifeCycleBean2 implements InitializingBean, DisposableBean,
 		System.out.println("cleanup mtd2 @@@@@@@@");
 	}
 
+	@Override
 	public void afterPropertiesSet() throws Exception {
 		System.out.println("afterPropertiesSet2 @@@@@@@@");
 	}
 
+	@Override
 	public void destroy() throws Exception {
 		System.out.println("destroy2 @@@@@@@@");
 	}
 
+	@Override
 	public void setApplicationContext(ApplicationContext arg0)
 			throws BeansException {
 		System.out.println("setApplicationContext2@@@@@@@@");
 	}
 
+	@Override
 	public void setBeanFactory(BeanFactory arg0) throws BeansException {
 		System.out.println("setBeanFactory2@@@@@@@@");
 	}
 
+	@Override
 	public void setBeanName(String arg0) {
 		System.out.println("setBeanName2@@@@@@@@" + arg0);
 	}

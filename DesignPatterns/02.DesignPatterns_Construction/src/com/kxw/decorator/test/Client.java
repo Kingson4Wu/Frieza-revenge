@@ -12,7 +12,7 @@ import com.kxw.decorator.concreteDecorator.ManagerB;
  * 客户端测试
  */
 public class Client {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Project employee = new Employee();        //代码工人 
         Project managerA = new ManagerA(employee); //项目经理 
         Project managerB = new ManagerB(employee); //项目经理 

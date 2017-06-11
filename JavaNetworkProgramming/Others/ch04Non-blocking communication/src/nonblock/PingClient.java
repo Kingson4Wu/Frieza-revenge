@@ -24,12 +24,13 @@ class Target {  //表示一项任务
 
     void show() {  //打印任务执行的结果
         String result;
-        if (connectFinish != 0)
+        if (connectFinish != 0) {
             result = Long.toString(connectFinish - connectStart) + "ms";
-        else if (failure != null)
+        } else if (failure != null) {
             result = failure.toString();
-        else
+        } else {
             result = "Timed out";
+        }
         System.out.println(address + " : " + result);
         shown = true;
     }
@@ -51,7 +52,7 @@ public class PingClient{
         receiveTarget();
     }
 
-    public static void main(String args[])throws IOException{
+    public static void main(String[] args)throws IOException{
         new PingClient();
     }
     public void addTarget(Target target) {
@@ -94,8 +95,9 @@ public class PingClient{
             for (;;) {
                 Target target = null;
                 synchronized (finishedTargets) {
-                    while (finishedTargets.size() == 0)
+                    while (finishedTargets.size() == 0) {
                         finishedTargets.wait();
+                    }
                     target = (Target)finishedTargets.removeFirst();
                 }
                 target.show();
@@ -152,7 +154,7 @@ public class PingClient{
             BufferedReader localReader=new BufferedReader(new InputStreamReader(System.in));
             String msg=null;
             while((msg=localReader.readLine())!=null){
-                if(!msg.equals("bye")){
+                if(!"bye".equals(msg)){
                     Target target=new Target(msg);
                     addTarget(target);
                 }else{
@@ -172,12 +174,14 @@ public class PingClient{
         public Printer(){
             setDaemon(true);
         }
+        @Override
         public void run(){
             printFinishedTargets();
         }
     }
 
     public class Connector extends Thread{
+        @Override
         public void run(){
             while (!shutdown) {
                 try {

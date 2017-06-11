@@ -15,12 +15,14 @@ public class TestFilter {
         Deferred deferred = new DeferredObject();
         Promise p = deferred.promise();
         Promise filtered = p.then(new DoneFilter<Integer, Integer>() {
+            @Override
             public Integer filterDone(Integer result) {
                 return result * 10;
             }
         });
 
         filtered.done(new DoneCallback<Integer>() {
+            @Override
             public void onDone(Integer result) {
                 // result would be original * 10
                 System.out.println(result);

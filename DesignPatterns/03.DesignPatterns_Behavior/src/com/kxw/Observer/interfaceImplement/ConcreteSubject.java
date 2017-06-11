@@ -10,15 +10,18 @@ import java.util.Vector;
  */  
 public class ConcreteSubject implements Subject {  
     private Vector<Observer>observersVector = new Vector<Observer>();  
-    public void attach(Observer observer) {  
+    @Override
+    public void attach(Observer observer) {
         observersVector.addElement(observer);  
     }  
   
-    public void detach(Observer observer) {  
+    @Override
+    public void detach(Observer observer) {
         observersVector.removeElement(observer);  
     }  
   
-    public void notifyObservers() {  
+    @Override
+    public void notifyObservers() {
         Enumeration<Observer>enumeration = observers();  
         while (enumeration.hasMoreElements()) {  
             ((Observer) enumeration.nextElement()).update();  

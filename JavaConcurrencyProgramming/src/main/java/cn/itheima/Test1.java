@@ -33,6 +33,7 @@ public class Test1
 		{
 			new Thread(new Runnable()
 			{
+				@Override
 				public void run()
 				{
 					while (true)
@@ -46,8 +47,9 @@ public class Test1
 								{	parseLog(log);
 									System.exit(0);
 								}
-								else
+								else {
 									parseLog(log);
+								}
 							}}
 					}
 				}

@@ -11,6 +11,7 @@ public class Application {
     @Bean
     MessageService mockMessageService() {
         return new MessageService() {
+            @Override
             public String getMessage() {
                 return "Hello World!";
             }

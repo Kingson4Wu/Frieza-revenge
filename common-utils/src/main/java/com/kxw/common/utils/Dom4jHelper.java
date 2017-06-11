@@ -115,8 +115,9 @@ public class Dom4jHelper {
 			Iterator iter = list.iterator();
 			while (iter.hasNext()) {
 				Attribute attribute = (Attribute) iter.next();
-				if (attribute.getName().equals(attributename))
+				if (attribute.getName().equals(attributename)) {
 					attribute.setValue(value);
+				}
 			}
 			XMLWriter output;
 			if (outXml != null){ //指定输出文件

@@ -72,7 +72,7 @@ public class StringHelper {
 		if (needed <= 0){
 			return s;
 		}
-		char padding[] = new char[needed];
+		char[] padding = new char[needed];
 		java.util.Arrays.fill(padding, c);
 		StringBuffer sb = new StringBuffer(length);
 		sb.append(padding);
@@ -120,7 +120,7 @@ public class StringHelper {
 		if (needed <= 0){
 			return s;
 		}
-		char padding[] = new char[needed];
+		char[] padding = new char[needed];
 		java.util.Arrays.fill(padding, c);
 		StringBuffer sb = new StringBuffer(length);
 		sb.append(s);
@@ -180,9 +180,9 @@ public class StringHelper {
 		}
 		int beginning = needed / 2;
 		int end = beginning + needed % 2;
-		char prepadding[] = new char[beginning];
+		char[] prepadding = new char[beginning];
 		java.util.Arrays.fill(prepadding, c);
-		char postpadding[] = new char[end];
+		char[] postpadding = new char[end];
 		java.util.Arrays.fill(postpadding, c);
 		StringBuffer sb = new StringBuffer(length);
 		sb.append(prepadding);
@@ -408,11 +408,15 @@ public class StringHelper {
 		// Nothing in the array return empty string
 		// has the side effect of throwing a NullPointerException if
 		// the array is null.
-		if (array.length == 0) return "";
+		if (array.length == 0) {
+			return "";
+		}
 
 		// Only one thing in the array, return it.
 		if (array.length == 1){
-			if (array[0] == null) return "";
+			if (array[0] == null) {
+				return "";
+			}
 			return array[0];
 		}
 
@@ -420,16 +424,24 @@ public class StringHelper {
 		// of the resulting string.
 		int length = 0;
 		for (int i=0; i<array.length; i++){
-			if (array[i] != null) length+=array[i].length();
-			if (i<array.length-1) length+=delimiterLength;
+			if (array[i] != null) {
+				length += array[i].length();
+			}
+			if (i<array.length-1) {
+				length += delimiterLength;
+			}
 		}
 
 		// Make a second pass through and concatenate everything
 		// into a string buffer.
 		StringBuffer result = new StringBuffer(length);
 		for (int i=0; i<array.length; i++){
-			if (array[i] != null) result.append(array[i]);
-			if (i<array.length-1) result.append(delimiter);
+			if (array[i] != null) {
+				result.append(array[i]);
+			}
+			if (i<array.length-1) {
+				result.append(delimiter);
+			}
 		}
 
 		return result.toString();
@@ -821,11 +833,15 @@ public class StringHelper {
 			char ch = s.charAt(i);
 			found = true;
 			for (int j=0; found && j<cLength; j++){
-				if (c.charAt(j) == ch) found = false;
+				if (c.charAt(j) == ch) {
+					found = false;
+				}
 			}
 		}
 		// if all characters are trim-able.
-		if (!found) return "";
+		if (!found) {
+			return "";
+		}
 		start = i-1;
 		// Start from the end and find the
 		// last non-trim-able character.
@@ -834,7 +850,9 @@ public class StringHelper {
 			char ch = s.charAt(i);
 			found = true;
 			for (int j=0; found && j<cLength; j++){
-				if (c.charAt(j) == ch) found = false;
+				if (c.charAt(j) == ch) {
+					found = false;
+				}
 			}
 		}
 		end = i+2;
@@ -1203,10 +1221,14 @@ public class StringHelper {
 	 * @since ostermillerutils 1.02.25
 	 */
 	private static void buildFindAnyPattern(String[] terms, StringBuffer sb){
-		if (terms.length == 0) throw new IllegalArgumentException("There must be at least one term to find.");
+		if (terms.length == 0) {
+			throw new IllegalArgumentException("There must be at least one term to find.");
+		}
 		sb.append("(?:");
 		for (int i=0; i<terms.length; i++){
-			if (i>0) sb.append("|");
+			if (i>0) {
+				sb.append("|");
+			}
 			sb.append("(?:");
 			sb.append(escapeRegularExpressionLiteral(terms[i]));
 			sb.append(")");

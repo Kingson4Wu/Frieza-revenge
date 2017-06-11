@@ -80,7 +80,9 @@ public class ClientThread extends Thread {
             try {  
                 //获取用户输入的命令  
                 command = br.readLine();  
-                if(null == command) break;  
+                if(null == command) {
+                    break;
+                }
             } catch (IOException e) {  
                 pw.println("331 Failed to get command");  
                 pw.flush();  
@@ -118,7 +120,7 @@ public class ClientThread extends Thread {
             else if(command.toUpperCase().startsWith("PASS")){  
                 logger.info("(not logged in) ("+clientIp+")> "+command);  
                 password = command.substring(4).trim();   
-                if(username.equals("root") && password.equals("root")){  
+                if("root".equals(username) && "root".equals(password)){
                     pw.println("230 Logged on");  
                     pw.flush();  
                     logger.info("("+username+") ("+clientIp+")> 230 Logged on");  
@@ -343,8 +345,8 @@ public class ClientThread extends Thread {
                                 for(StackTraceElement ste : e.getStackTrace()){  
                                     logger.error(ste.toString());  
                                 }  
-                            }   
-                            byte bytebuffer[]= new byte[1024];   
+                            }
+                            byte[] bytebuffer = new byte[1024];
                             int length;   
                             try{   
                                 while((length = outfile.read(bytebuffer)) != -1){   
@@ -413,8 +415,8 @@ public class ClientThread extends Thread {
                                 for(StackTraceElement ste : e.getStackTrace()){  
                                     logger.error(ste.toString());  
                                 }  
-                            }   
-                            byte bytebuffer[] = new byte[1024];   
+                            }
+                            byte[] bytebuffer = new byte[1024];
                             int length;   
                             try{  
                                 while((length =insocket.read(bytebuffer) )!= -1){   

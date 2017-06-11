@@ -7,7 +7,8 @@ public class ConcreteObserver extends Observer{
         super();  
         this.observerName = observerName;  
     }  
- public   void update(WeatherInfo weatherInfo) {  
+ @Override
+ public   void update(WeatherInfo weatherInfo) {
         System.out.println("软件"+observerName+"的天气更新为:");  
         System.out.println("温度:"+weatherInfo.getTemperature());  
         System.out.println("湿度:"+weatherInfo.getHumidity());  

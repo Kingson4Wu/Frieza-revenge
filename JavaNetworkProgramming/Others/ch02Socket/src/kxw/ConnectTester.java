@@ -6,7 +6,7 @@ package kxw;
 import java.net.*;
 import java.io.*;
 public class ConnectTester {
-    public static void main(String args[]){
+    public static void main(String[] args){
         String host="localhost";
         int port=25;
         if(args.length>1){//加命令行参数www.baidu.com 80,结果：www.baidu.com/61.135.169.105:80 : 116ms
@@ -38,7 +38,9 @@ public class ConnectTester {
             result="failure";
         } finally {
             try {
-                if(socket!=null)socket.close();
+                if(socket!=null) {
+                    socket.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

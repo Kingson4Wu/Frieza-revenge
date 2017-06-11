@@ -87,6 +87,7 @@ public class TransferServer {
             this.socket = socket;
         }
 
+        @Override
         public void run() {
 
             System.out.println("New connection accepted " + socket.getInetAddress() + ":" + socket.getPort());

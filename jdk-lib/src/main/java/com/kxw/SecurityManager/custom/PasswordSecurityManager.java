@@ -23,32 +23,43 @@ class PasswordSecurityManager extends SecurityManager {
         System.out.println("What's the secret password?");
         try {
             response = dis.readLine();
-            if (response.equals(password))
+            if (response.equals(password)) {
                 return true;
-            else
+            } else {
                 return false;
+            }
         } catch (IOException e) {
             return false;
         }
     }
+    @Override
     public void checkRead(FileDescriptor filedescriptor) {
-        if (!accessOK())
+        if (!accessOK()) {
             throw new SecurityException("Not a Chance!");
+        }
     }
+    @Override
     public void checkRead(String filename) {
-        if (!accessOK())
+        if (!accessOK()) {
             throw new SecurityException("No Way!");
+        }
     }
+    @Override
     public void checkRead(String filename, Object executionContext) {
-        if (!accessOK())
+        if (!accessOK()) {
             throw new SecurityException("Forget It!");
+        }
     }
+    @Override
     public void checkWrite(FileDescriptor filedescriptor) {
-        if (!accessOK())
+        if (!accessOK()) {
             throw new SecurityException("Not!");
+        }
     }
+    @Override
     public void checkWrite(String filename) {
-        if (!accessOK())
+        if (!accessOK()) {
             throw new SecurityException("Not Even!");
+        }
     }
 }

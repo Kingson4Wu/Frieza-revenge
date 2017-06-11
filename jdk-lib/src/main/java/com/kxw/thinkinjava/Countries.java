@@ -136,14 +136,19 @@ public class Countries {
     implements Map.Entry<String,String> {
       int index;
       Entry(int index) { this.index = index; }
+      @Override
       public boolean equals(Object o) {
         return DATA[index][0].equals(o);
       }
+      @Override
       public String getKey() { return DATA[index][0]; }
+      @Override
       public String getValue() { return DATA[index][1]; }
+      @Override
       public String setValue(String value) {
         throw new UnsupportedOperationException();
       }
+      @Override
       public int hashCode() {
         return DATA[index][0].hashCode();
       }
@@ -153,30 +158,36 @@ public class Countries {
     extends AbstractSet<Map.Entry<String,String>> {
       private int size;
       EntrySet(int size) {
-        if(size < 0)
+        if(size < 0) {
           this.size = 0;
-        // Can't be any bigger than the array:
-        else if(size > DATA.length)
+        }// Can't be any bigger than the array:
+        else if(size > DATA.length) {
           this.size = DATA.length;
-        else
+        } else {
           this.size = size;
+        }
       }
+      @Override
       public int size() { return size; }
       private class Iter
       implements Iterator<Map.Entry<String,String>> {
         // Only one Entry object per Iterator:
         private Entry entry = new Entry(-1);
+        @Override
         public boolean hasNext() {
           return entry.index < size - 1;
         }
+        @Override
         public Map.Entry<String,String> next() {
           entry.index++;
           return entry;
         }
+        @Override
         public void remove() {
           throw new UnsupportedOperationException();
         }
       }
+      @Override
       public
       Iterator<Map.Entry<String,String>> iterator() {
         return new Iter();
@@ -184,6 +195,7 @@ public class Countries {
     }
     private static Set<Map.Entry<String,String>> entries =
       new EntrySet(DATA.length);
+    @Override
     public Set<Map.Entry<String,String>> entrySet() {
       return entries;
     }
@@ -191,6 +203,7 @@ public class Countries {
   // Create a partial map of 'size' countries:
   static Map<String,String> select(final int size) {
     return new FlyweightMap() {
+      @Override
       public Set<Map.Entry<String,String>> entrySet() {
         return new EntrySet(size);
       }

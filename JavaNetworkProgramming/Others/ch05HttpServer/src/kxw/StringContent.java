@@ -12,8 +12,9 @@ public class StringContent implements Content {
 
     public StringContent(CharSequence c, String t) {
         content = c.toString();
-        if (!content.endsWith("\n"))
+        if (!content.endsWith("\n")) {
             content += "\n";
+        }
         type = t + "; charset=GBK";
     }
 
@@ -28,6 +29,7 @@ public class StringContent implements Content {
         content = sw.toString();
     }
 
+    @Override
     public String type() {
         return type;
     }
@@ -35,28 +37,34 @@ public class StringContent implements Content {
     private ByteBuffer bb = null;
 
     private void encode() {
-        if (bb == null)
+        if (bb == null) {
             bb = charset.encode(CharBuffer.wrap(content));
+        }
     }
 
+    @Override
     public long length() {
         encode();
         return bb.remaining();
     }
 
+    @Override
     public void prepare() {
         encode();
         bb.rewind();
     }
 
+    @Override
     public boolean send(ChannelIO cio) throws IOException {
-        if (bb == null)
+        if (bb == null) {
             throw new IllegalStateException();
+        }
         cio.write(bb);
 
         return bb.hasRemaining();
     }
 
+    @Override
     public void release() throws IOException {}
 }
 

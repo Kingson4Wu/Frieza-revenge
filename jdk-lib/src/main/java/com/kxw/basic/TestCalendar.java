@@ -3,7 +3,7 @@ package com.kxw.basic;
 import java.util.*;
 
 public class TestCalendar{
-	public static void main(String args[]){
+	public static void main(String[] args){
 		Calendar c = Calendar.getInstance();
 		TestCalendar tc = new TestCalendar();
 		tc.display(c);

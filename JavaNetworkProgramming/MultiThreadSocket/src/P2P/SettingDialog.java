@@ -77,7 +77,7 @@ public class SettingDialog extends JDialog {
 
 
     public void jbtnOK_actionPerformed(ActionEvent e) {
-        if(jtfPort.getText().trim().equals("")){
+        if("".equals(jtfPort.getText().trim())){
             JOptionPane.showMessageDialog(this,"数据输入错误！");
             return;
         }
@@ -99,6 +99,7 @@ class SettingDialog_jbtnCancel_actionAdapter implements ActionListener {
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.jbtnCancel_actionPerformed(e);
     }
@@ -111,6 +112,7 @@ class SettingDialog_jbtnOK_actionAdapter implements ActionListener {
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.jbtnOK_actionPerformed(e);
     }

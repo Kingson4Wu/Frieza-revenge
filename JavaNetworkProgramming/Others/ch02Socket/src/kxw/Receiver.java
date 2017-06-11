@@ -57,8 +57,10 @@ public class Receiver {
     }
   }
 
-  public static void main(String args[])throws Exception {
-    if(args.length>0)stopWay=Integer.parseInt(args[0]);//有命令行接受参数
+  public static void main(String[] args)throws Exception {
+    if(args.length>0) {
+      stopWay = Integer.parseInt(args[0]);//有命令行接受参数
+    }
     new Receiver().receive();
   }
 }

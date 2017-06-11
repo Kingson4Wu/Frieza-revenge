@@ -129,6 +129,7 @@ class MainFrame_this_windowAdapter extends WindowAdapter {
         this.adaptee = adaptee;
     }
 
+    @Override
     public void windowClosed(WindowEvent e) {
         adaptee.this_windowClosed(e);
     }
@@ -141,6 +142,7 @@ class MainFrame_jbtnSend_actionAdapter implements ActionListener {
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.jbtnSend_actionPerformed(e);
     }
@@ -153,6 +155,7 @@ class MainFrame_jbtnSetting_actionAdapter implements ActionListener {
         this.adaptee = adaptee;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         adaptee.jbtnSetting_actionPerformed(e);
     }

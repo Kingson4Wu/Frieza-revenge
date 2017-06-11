@@ -17,7 +17,7 @@ public class ReflectTester
         Object objectCopy = classType.getConstructor(new Class[] {}).newInstance(new Object[] {});
 
         // 获得对象的所有属性
-        Field fields[] = classType.getDeclaredFields();
+        Field[] fields = classType.getDeclaredFields();
 
         for (int i = 0; i < fields.length; i++)
         {

@@ -246,7 +246,7 @@ public class BrandProductTest {
 				for(int i=0; i<pageLinks.size(); i++){
 					WebElement aLink = pageLinks.get(i);
 					logger.info(aLink.getText());
-					if(!aLink.getText().equals(">")){
+					if(!">".equals(aLink.getText())){
 						otherPageUrls.add(aLink.getAttribute("href"));
 					}
 				}

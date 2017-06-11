@@ -53,14 +53,18 @@ public class DateHandler {
     public static boolean isSeason(String date){
         int getMonth = Integer.parseInt(date.substring(5,7));
         boolean sign = false;
-        if (getMonth==3)
+        if (getMonth==3) {
             sign = true;
-        if (getMonth==6)
+        }
+        if (getMonth==6) {
             sign = true;
-        if (getMonth==9)
+        }
+        if (getMonth==9) {
             sign = true;
-        if (getMonth==12)
+        }
+        if (getMonth==12) {
             sign = true;
+        }
         return sign;
     }
 
@@ -235,10 +239,12 @@ public class DateHandler {
         int intDay=cld.get(Calendar.DAY_OF_MONTH);
         String mons=String.valueOf(intMon);
         String days=String.valueOf(intDay);
-        if(intMon<10)
-            mons="0"+String.valueOf(intMon);
-        if(intDay<10)
-            days="0"+String.valueOf(intDay);
+        if(intMon<10) {
+            mons = "0" + String.valueOf(intMon);
+        }
+        if(intDay<10) {
+            days = "0" + String.valueOf(intDay);
+        }
         return String.valueOf(cld.get(Calendar.YEAR))+"-"+mons+"-"+days;
     }
 
@@ -252,10 +258,11 @@ public class DateHandler {
         java.util.Date date = new Date();
         cld.setTime(date);
         int intMon=cld.get(Calendar.MONTH) + 1;
-        if(intMon<10)
+        if(intMon<10) {
             strmonth = "0" + String.valueOf(intMon);
-        else
+        } else {
             strmonth = String.valueOf(intMon);
+        }
         date = null;
         return strmonth;
     }
@@ -282,10 +289,12 @@ public class DateHandler {
         int intDay = cld.get(Calendar.DAY_OF_MONTH);
         String mons = String.valueOf(intMon);
         String days = String.valueOf(intDay);
-        if(intMon < 10)
-            mons="0" + String.valueOf(intMon);
-        if(intDay < 10)
+        if(intMon < 10) {
+            mons = "0" + String.valueOf(intMon);
+        }
+        if(intDay < 10) {
             days = "0" + String.valueOf(intDay);
+        }
         return String.valueOf(cld.get(Calendar.YEAR)) + "-" + mons + "-" + days;
     }
 
@@ -303,25 +312,25 @@ public class DateHandler {
         DateHandler dateOver=new DateHandler();
         dateOver.setDate(date);
 
-        rightNow.set(rightNow.YEAR,dateOver.getYear());
-        rightNow.set(rightNow.MONTH,dateOver.getMonth()-1);
-        rightNow.set(rightNow.DATE,dateOver.getDay());
+        rightNow.set(Calendar.YEAR,dateOver.getYear());
+        rightNow.set(Calendar.MONTH,dateOver.getMonth()-1);
+        rightNow.set(Calendar.DATE,dateOver.getDay());
 
-        month = rightNow.get(rightNow.MONTH);
+        month = rightNow.get(Calendar.MONTH);
 
-        while(rightNow.get(rightNow.MONTH)==month){
+        while(rightNow.get(Calendar.MONTH)==month){
             week=rightNow.get(Calendar.DAY_OF_WEEK);
             if (week==1||week==7){
             }else{
                 workDay++;
-                System.out.println(rightNow.get(rightNow.DATE));
+                System.out.println(rightNow.get(Calendar.DATE));
             }
-            rightNow.add(rightNow.DATE,sign);
+            rightNow.add(Calendar.DATE,sign);
         }
         return workDay;
     }
 
-    public static void main(String args[]){
+    public static void main(String[] args){
         System.out.println(DateHandler.isSeason("2002-03-02"));
 //    String cc ="100.123.342";
 //    System.out.println(cc.indexOf(".",3));

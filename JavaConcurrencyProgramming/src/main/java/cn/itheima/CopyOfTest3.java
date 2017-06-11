@@ -34,6 +34,7 @@ public class CopyOfTest3 extends Thread
 		c.start();
 		d.start();
 	}
+	@Override
 	public void run()
 	{
 		testDo.doSome(key, value);

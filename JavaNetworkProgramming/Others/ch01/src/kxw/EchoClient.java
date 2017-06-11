@@ -11,7 +11,7 @@ public class EchoClient {
   public EchoClient()throws IOException{
     socket=new Socket(host,port);
   }
-  public static void main(String args[])throws IOException{
+  public static void main(String[] args)throws IOException{
     new EchoClient().talk();
   }
   private PrintWriter getWriter(Socket socket)throws IOException{
@@ -33,8 +33,9 @@ public class EchoClient {
         pw.println(msg);
         System.out.println(br.readLine());
 
-        if(msg.equals("bye"))
+        if("bye".equals(msg)) {
           break;
+        }
       }
     }catch(IOException e){
       e.printStackTrace();

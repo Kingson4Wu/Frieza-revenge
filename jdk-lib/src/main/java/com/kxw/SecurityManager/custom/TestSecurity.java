@@ -7,7 +7,7 @@ import java.io.*;
 
 public class TestSecurity
 {
-    public static void main(String args[])
+    public static void main(String[] args)
     {
         try {
             //System.setSecurityManager(new PasswordSecurityManager("123456"));
