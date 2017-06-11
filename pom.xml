@@ -86,6 +86,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>4.12</junit.version>
         <jdk.version>1.8</jdk.version>
+        <antlr.version>2.7.7</antlr.version>
+        <asm.version>3.3.1</asm.version>
+        <cglib-nodep.version>2.2</cglib-nodep.version>
+        <fastjson.version>1.2.4</fastjson.version>
+        <jackson-annotations>2.7.4</jackson-annotations>
+        <jackson.version>2.7.4</jackson.version>
     </properties>
 
     <dependencyManagement>

@@ -56,9 +56,5 @@
       </exclusions>
     </dependency>
   </dependencies>
-  <properties>
-    <jackson.version>2.3.3</jackson.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
 </project>
 
