@@ -41,3 +41,21 @@ E:.
 </pre>
 
 5. 使用maven插件生成代码
+
+---
+
++ protobuf在netty里面的应用举例:<http://blog.csdn.net/goldenfish1919/article/details/6719276>
++ netty为protobuf提供了两个编码器（ProtobufEncoder，ProtobufVarint32LengthFieldPrepender），两个解码器（ProtobufVarint32FrameDecoder，ProtobufDecoder）
+  [注]所谓的编码就是把应用程序使用的数据类型编码成在网络上传输的二进制字节流，反之同理。
++ 在netty中使用Protobuf需要注意的是：
+  
+   protobufDecoder仅仅负责编码，并不支持读半包，所以在之前，一定要有读半包的处理器。
+  
+   有三种方式可以选择：
+  
+  使用netty提供ProtobufVarint32FrameDecoder
+  继承netty提供的通用半包处理器 LengthFieldBasedFrameDecoder
+  继承ByteToMessageDecoder类，自己处理半包  
+  
+  
+  
