@@ -2,7 +2,7 @@
 + protoc-gen-grpc-java下载地址：<https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.4.0/>
 + Protocol Buffers（proto3）常用语法:<http://www.jianshu.com/p/18b4e55c9f22>,
 <http://www.jianshu.com/p/e06ba6249edc>
-
++ Protobuf3 语法指南:<http://colobu.com/2017/03/16/Protobuf3-language-guide/>
 ---
 
 1. 编写.proto 文件
