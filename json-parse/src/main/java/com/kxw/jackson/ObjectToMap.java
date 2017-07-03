@@ -1,8 +1,10 @@
 package com.kxw.jackson;
 
+import java.util.Date;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.kxw.bean.Kingson;
 
 /**
@@ -13,11 +15,17 @@ public class ObjectToMap {
 
     public static void main(String[] args) {
         ObjectMapper oMapper = new ObjectMapper();
+        SimpleModule module = new SimpleModule();
+        module.addSerializer(Boolean.class, new NumericBooleanSerializer());
+        module.addSerializer(Date.class, new TimestampDateSerializer());
+        oMapper.registerModule(module);
 
         Kingson obj = new Kingson();
         obj.setName("mkyong");
         obj.setId(34);
         obj.setGameOpen("ddddd");
+        obj.setBirthDay(new Date());
+        obj.setDeleted(false);
 
         // object -> Map
         Map<String, Object> map = oMapper.convertValue(obj, Map.class);
@@ -34,3 +42,5 @@ public class ObjectToMap {
          */
     }
 }
+
+
