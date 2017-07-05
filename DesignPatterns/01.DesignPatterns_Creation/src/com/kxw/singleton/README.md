@@ -102,5 +102,36 @@ public enum Singleton {
 
 ---
 
-可以不要再使用Double-Checked Locking了
-：<https://my.oschina.net/andylucc/blog/668919>
++ 可以不要再使用Double-Checked Locking了：<https://my.oschina.net/andylucc/blog/668919>
+
++ 双重检查锁定与延迟初始化：<http://www.infoq.com/cn/articles/double-checked-locking-with-delay-initialization>
+    - 基于volatile的双重检查锁定的解决方案
+    ```java
+    public class SafeDoubleCheckedLocking {
+        private volatile static Instance instance;
+
+        public static Instance getInstance() {
+            if (instance == null) {
+                synchronized (SafeDoubleCheckedLocking.class) {
+                    if (instance == null)
+                        instance = new Instance();//instance为volatile，现在没问题了
+                }
+            }
+            return instance;
+        }
+    }
+    ```
+    - 基于类初始化的解决方案
+    ```java
+    public class InstanceFactory {
+        private static class InstanceHolder {
+            public static Instance instance = new Instance();
+        }
+
+        public static Instance getInstance() {
+            return InstanceHolder.instance ;  //这里将导致InstanceHolder类被初始化
+        }
+    }
+    ```
+
+
