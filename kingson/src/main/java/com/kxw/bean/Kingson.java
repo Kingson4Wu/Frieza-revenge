@@ -18,6 +18,8 @@ public class Kingson {
 
     private Boolean deleted;
 
+    private Person person;
+
     public Kingson(){
         super();
         this.id = 10;
@@ -92,6 +94,14 @@ public class Kingson {
         this.deleted = deleted;
     }
 
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
     public void run() {
         System.out.println("i am king !");
 
@@ -99,5 +109,9 @@ public class Kingson {
 
     public boolean next() {
         return false;
+    }
+
+    public static boolean isNameValid(String name) {
+        return name != null;
     }
 }

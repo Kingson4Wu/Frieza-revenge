@@ -1,9 +1,15 @@
 package com.kxw.shutdown;
 
 
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 import sun.misc.Signal;
 import sun.misc.SignalHandler;
-import java.util.concurrent.*;
 
 /**
  * @author lujianing01@58.com
@@ -154,4 +160,31 @@ public class MsgClient {
  OutOfMemory宕机
  使用Kill pid命令干掉进程（注：在使用kill -9 pid时，是不会被调用的）
  </pre>
+ */
+
+/**
+ * <pre>
+ *     在 Linux 中，通常可以发送一些信号来杀死一个进程，
+ *     一般用来杀死进程的信号有 SIGTERM、 SIGKILL。
+ *     但是，如果希望进程合理地终止，就不要发送硬中断信号 SIGKILL，因为该信号是不能拦截的，
+ *     进程接到该信号之后会马上退出，并没有机会进行现场清理——这包括对线程的关闭等操作。
+ *     更好的做法是，发送 SIGTERM 信号，这样进程在接到该信号后，可以做一些退出的准备工作。
+ * </pre>
+ *
+ * <pre>
+ *     linux杀死进程以及发送或响应信号
+ *     <a href='http://www.cnblogs.com/gengzj/p/3827108.html'>@link</a>
+ *      kill -l : 该命令会打印出信号数(signal number)和信号名称。
+ *      要通过kill命令向进程发送特定的信号，可以使用：$ kill -s SIGNAL PID
+ *
+ *      尽管可以指定很多信号用于不同的目的，我们经常用到的其实只有少数几个，具体如下所示。
+ *      1）、SIGHUP 1 --- 对控制进程或终端进行挂起检测(hangup detection)。
+ *      2）、SIGINT 2 --- 当按下CTRL+C时发送该信号。
+ *      3）、SIGKILL 9 --- 用于强行杀死进程。
+ *      4）、SIGTERM 15 --- 默认用于终止进程。
+ *      5）、SIGTSTP 20 --- 当按下Ctrl+Z时发送该信号。
+ *
+ *      如果要强行杀死进程，则使用：
+ *      $ kill -s SIGKILL PROCESSED_ID 或者 $ kill -9 PROCESSED_ID
+ * </pre>
  */
