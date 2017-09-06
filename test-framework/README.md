@@ -98,9 +98,10 @@ public class EmailSystemTest {
 ---
 
 
-Cobertura 是一种开源工具，它通过检测基本的代码，并观察在测试包运行时执行了哪些代码和没有执行哪些代码，来测量测试覆盖率。
++ Cobertura 是一种开源工具，它通过检测基本的代码，并观察在测试包运行时执行了哪些代码和没有执行哪些代码，来测量测试覆盖率。
 除了找出未测试到的代码并发现 bug 外，Cobertura 还可以通过标记无用的、执行不到的代码来优化代码，
 还可以提供 API 实际操作的内部信息。Elliotte Rusty Harold 将与您分享如何利用代码覆盖率的最佳实践来使用 Cobertura。
 
-
-
++ Moco 框架以及其在 Web 集成测试的应用:<http://www.ibm.com/developerworks/cn/web/1405_liugang_mocowebtest/>
+    - `git clone https://github.com/dreamhead/moco.git` && `./gradlew build`
+    - `java -jar moco-runner-<version>-standalone.jar start -p 12306 -c foo.json`

@@ -182,7 +182,7 @@ public class MsgClient {
  *      2）、SIGINT 2 --- 当按下CTRL+C时发送该信号。
  *      3）、SIGKILL 9 --- 用于强行杀死进程。
  *      4）、SIGTERM 15 --- 默认用于终止进程。
- *      5）、SIGTSTP 20 --- 当按下Ctrl+Z时发送该信号。
+ *      5）、SIGTSTP 20 --- 当按下Ctrl+Z时发送该信号。(暂停,挂起)
  *
  *      如果要强行杀死进程，则使用：
  *      $ kill -s SIGKILL PROCESSED_ID 或者 $ kill -9 PROCESSED_ID

@@ -57,6 +57,12 @@
             <version>1.6.12</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava-gwt</artifactId>
+            <version>19.0</version>
+        </dependency>
+
 
     </dependencies>
 
