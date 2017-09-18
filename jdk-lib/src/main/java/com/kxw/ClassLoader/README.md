@@ -1,11 +1,11 @@
 三种类加载器加载类文件的地方：
 
-1) Bootstrap类加载器 – JRE/lib/rt.jar
+1) Bootstrap类加载器(C++) – JRE/lib/rt.jar (加载%JAVA_HOME_%/jre/lib,-Xbootclasspath指定(rt.jar),%JAVA_HOME_%/jre/classes)
 
 2) Extension类加载器 – JRE/lib/ext或者java.ext.dirs指向的目录
 
 3) Application类加载器 – CLASSPATH环境变量, 由-classpath或-cp选项定义,或者是JAR中的Manifest的classpath属性定义.
-
+(Java 程序默认的类加载器)
 ---
 
 1. loadclass用来定义加载策略，打破双亲委托在这里定义

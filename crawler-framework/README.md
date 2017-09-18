@@ -11,3 +11,4 @@ Headless Chrome 是 Chrome 浏览器的无界面形态，可以在不打开浏�
 
 <https://juejin.im/entry/58fd5e645c497d005803b6a4>
 <https://www.google.com/chrome/browser/beta.html?platform=linux>
+Headless Chrome 入门:<https://mp.weixin.qq.com/s/QsO-B2qQy2rIKNHSfbiyRg>
