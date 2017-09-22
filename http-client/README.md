@@ -60,3 +60,7 @@ reference:<http://jinnianshilongnian.iteye.com/blog/2089792>
 
 vips-common-http-client
 
+---
+
+从原生的 HttpUrlConnection 到经典的 Apache 的 HttpClient，再到对前面这些网络基础框架的封装，比如 Volley、Async Http Client，如今 Retrofit
+

@@ -53,3 +53,5 @@ Reference：
 
 1. http://rednaxelafx.iteye.com/blog/659108/
 
++ 逃逸分析为何不能在编译期进行？<https://www.zhihu.com/question/27963717>
+
