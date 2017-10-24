@@ -5,4 +5,6 @@ package com.kxw.dynamicproxy;
 public interface Subject
 {
     abstract public void request();
+
+    void response();
 }

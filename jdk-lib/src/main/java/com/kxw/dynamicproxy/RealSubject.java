@@ -14,4 +14,9 @@ public class RealSubject implements Subject
         System.out.println("From real subject.");
     }
 
+    @Override
+    public void response() {
+        System.out.println("response.");
+    }
+
 }

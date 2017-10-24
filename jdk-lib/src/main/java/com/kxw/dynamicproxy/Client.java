@@ -24,5 +24,7 @@ public class Client
 				cls.getClassLoader(), cls.getInterfaces(), ds);
 
 		subject.request();//实际上执行代理类的invoke方法，隐式执行
+
+		subject.response();
 	}
 }
