@@ -21,5 +21,7 @@ public class CollectionSkills {
         List<Integer> idList = list.stream().map(Kingson::getId).collect(Collectors.toList());
 
         Map<Integer, List<Kingson>> kLMap = list.stream().collect(Collectors.groupingBy(Kingson::getId));
+
+        list.stream().map(Kingson::getName).collect(Collectors.joining("','", "('", "')"));
     }
 }
