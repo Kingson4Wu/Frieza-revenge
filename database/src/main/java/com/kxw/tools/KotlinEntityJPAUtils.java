@@ -12,9 +12,10 @@ import java.util.Arrays;
  * 2 生成的bean带了数据库的字段说明.
  * 3 各位自己可以修改此工具用到项目中去.
  */
-public class KotlinEntityUtils {
+public class KotlinEntityJPAUtils {
     private String tablename = "";
     private String[] colnames;
+    private String[] colTablenames;
     private String[] colTypes;
     private int[] colSizes; // 列名大小
     private int[] colScale; // 列名小数精度
@@ -42,6 +43,7 @@ public class KotlinEntityUtils {
             ResultSetMetaData rsmd = pstmt.getMetaData();
             int size = rsmd.getColumnCount(); // 共有多少列
             colnames = new String[size];
+            colTablenames = new String[size];
             colTypes = new String[size];
             colSizes = new int[size];
             colScale = new int[size];
@@ -91,6 +93,7 @@ public class KotlinEntityUtils {
     private String parse(String[] colNames, String[] colTypes, int[] colSizes) {
         StringBuffer sb = new StringBuffer();
         //sb.append("\r\nimport java.io.Serializable;\r\n");
+        sb.append("import javax.persistence.*\r\n");
         if (importUtil) {
             sb.append("import java.util.Date\r\n");
         }
@@ -103,7 +106,12 @@ public class KotlinEntityUtils {
         //表注释
         processColnames(sb);
         // sb.append("public class " + fuck(tablename) + " implements Serializable {\r\n");
+
+        sb.append("\n");
+        //sb.append("@Entity\r\n");
+        //sb.append("@Table(name = \"" + tablename + "\")\r\n");
         sb.append("data class  " + fuck(tablename) + " (\r\n");
+        sb.append("\n");
         processAllAttrs(sb);
         //processAllMethod(sb);
         sb.append(")\r\n");
@@ -126,6 +134,7 @@ public class KotlinEntityUtils {
         for (int i = 0; i < colnames.length; i++) {
             colsiz = colSizes[i] <= 0 ? "" : (colScale[i] <= 0 ? "(" + colSizes[i] + ")" : "(" + colSizes[i] + "," + colScale[i] + ")");
             //sb.append("\t" + colnames[i].toUpperCase() + "    " + colTypes[i].toUpperCase() + colsiz + "\r\n");
+            colTablenames[i] = colnames[i];
             char[] ch = colnames[i].toCharArray();
             char c = 'a';
             if (ch.length > 3) {
@@ -172,11 +181,18 @@ public class KotlinEntityUtils {
     private void processAllAttrs(StringBuffer sb) {
         //sb.append("\tprivate static final long serialVersionUID = 1L;\r\n");
         for (int i = 0; i < colnames.length; i++) {
-            if( MySQLTableComment.commentMap2.containsKey(colnames[i]) && !"".equals(MySQLTableComment.commentMap2.get(colnames[i]).trim())){
+            if (MySQLTableComment.commentMap2.containsKey(colnames[i]) && !"".equals(MySQLTableComment.commentMap2.get(colnames[i]).trim())) {
                 sb.append("\t/** " + MySQLTableComment.commentMap2.get(colnames[i])).append(" */\r\n");
             }
-            sb.append("\tval " + initcapIs(colnames[i]) + ": " + oracleSqlType2JavaType(colTypes[i], colScale[i], colSizes[i],colnames[i]));
-            if(i<colnames.length-1){
+           /* if ("id".equals(colnames[i])) {
+                sb.append("\t@Id\r\n");
+                sb.append("\t@GeneratedValue\r\n");
+
+            } else {
+                sb.append("\t@Column(name = \"" + colTablenames[i] + "\")\r\n");
+            }*/
+            sb.append("\tval " + initcapIs(colnames[i]) + ": " + oracleSqlType2JavaType(colTypes[i], colScale[i], colSizes[i], colnames[i]));
+            if (i < colnames.length - 1) {
                 sb.append(",\r\n");
             }
             sb.append("\r\n");
@@ -203,17 +219,17 @@ public class KotlinEntityUtils {
     private String initcapIs(final String str) {
 
         String str2 = str;
-        if(str.startsWith("is")){
-            str2 = str.substring(2,str.length());
+        if (str2.startsWith("is")) {
+            str2 = str.substring(2, str.length());
         }
-        char[] ch = str.toCharArray();
+        char[] ch = str2.toCharArray();
         if (ch[0] >= 'A' && ch[0] <= 'Z') {
             ch[0] = (char) (ch[0] + 32);
         }
 
         str2 = new String(ch);
         /** java 关键字*/
-        if("package".equals(str2)){
+        if ("package".equals(str2)) {
             return str;
         }
         return str2;
@@ -304,7 +320,7 @@ public class KotlinEntityUtils {
      */
     public static void main(String[] args) throws Exception {
         MySQLTableComment.getColumnCommentByTableName(Arrays.asList("treatment_record"));
-        KotlinEntityUtils t = new KotlinEntityUtils();
+        KotlinEntityJPAUtils t = new KotlinEntityJPAUtils();
         t.tableToEntity("treatment_record");
 
 
