@@ -27,6 +27,7 @@
         <module>encryption</module>
         <module>eclipse-jdt</module>
         <module>file-operation</module>
+        <module>freemarker</module>
         <module>http-client</module>
         <module>java-web</module>
         <module>jgit</module>
