@@ -7,6 +7,7 @@ import freemarker.template.Version;
 import java.io.File;
 
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.io.Writer;
 import java.util.*;
 
@@ -22,8 +23,6 @@ public class CodeGenerateUtils {
         Map<String, JavaClassMetaData> javaClassMetaDataMap = JavaCodeMetaDataHelper.obtainJavaClassMap(Arrays.asList("treatment_record"));
 
         JavaClassMetaData javaClassMetaData = javaClassMetaDataMap.get("treatment_record");
-
-        //System.out.println(CodeGenerateUtils.class.getClassLoader().getResource("").getPath());
 
         Configuration cfg = new Configuration(new Version("2.3.20"));
         String tplDir = CodeGenerateUtils.class.getClassLoader().getResource("").getPath();
@@ -42,11 +41,20 @@ public class CodeGenerateUtils {
 
         root.put("javaFieldMetaDataList", javaClassMetaData.getJavaFieldMetaDataList());
 
-        Template template = cfg.getTemplate("Javabean.ftl");
+        //Template template = cfg.getTemplate("Javabean.ftl");
+        Template template = cfg.getTemplate("MybatisDao.ftl");
 
-        Writer writer = new PrintWriter(System.out);
+        //Writer writer = new PrintWriter(System.out);
+        Writer writer=new StringWriter();
 
         template.process(root, writer);
+        String content = writer.toString();
+        String replaceContent = content
+                .replaceAll("<br/>","\n")
+                .replaceAll("\\\\[{]","{")
+                .replaceAll("\\\\[}]","}");
+
+        System.out.println(replaceContent);
 
 
     }
