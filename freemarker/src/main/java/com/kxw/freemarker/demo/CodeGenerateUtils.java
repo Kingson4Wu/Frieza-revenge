@@ -41,8 +41,8 @@ public class CodeGenerateUtils {
 
         root.put("javaFieldMetaDataList", javaClassMetaData.getJavaFieldMetaDataList());
 
-        //Template template = cfg.getTemplate("Javabean.ftl");
-        Template template = cfg.getTemplate("MybatisDao.ftl");
+        Template template = cfg.getTemplate("Javabean.ftl");
+        //Template template = cfg.getTemplate("MybatisDao.ftl");
 
         //Writer writer = new PrintWriter(System.out);
         Writer writer=new StringWriter();

@@ -1,6 +1,7 @@
 package com.kxw.bean;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by kingsonwu on 15/12/26.
@@ -19,6 +20,8 @@ public class Kingson {
     private Boolean deleted;
 
     private Person person;
+
+    private List<Person> personList;
 
     public Kingson(){
         super();
@@ -113,5 +116,13 @@ public class Kingson {
 
     public static boolean isNameValid(String name) {
         return name != null;
+    }
+
+    public List<Person> getPersonList() {
+        return personList;
+    }
+
+    public void setPersonList(List<Person> personList) {
+        this.personList = personList;
     }
 }
