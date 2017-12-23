@@ -31,6 +31,23 @@ public class JavaCodeMetaDataHelper {
                 javaFieldMetaData.setDbType(columnMetaData.getType());
                 javaFieldMetaData.setJavaName(getCamelCase(columnMetaData.getColumn()));
                 javaFieldMetaData.setJavaType(getJavaType(columnMetaData.getType()));
+
+                /**  kotlin*/
+                if("String".equals(javaFieldMetaData.getJavaType())){
+                    javaFieldMetaData.setDefaultValue("\"\"");
+                }else if("Long".equals(javaFieldMetaData.getJavaType())){
+                    javaFieldMetaData.setDefaultValue("0L");
+                }else if("Integer".equals(javaFieldMetaData.getJavaType())){
+                    javaFieldMetaData.setDefaultValue("0");
+                    javaFieldMetaData.setJavaType("Int");
+                }else if("Boolean".equals(javaFieldMetaData.getJavaType())){
+                    javaFieldMetaData.setDefaultValue("false");
+                }else if("Date".equals(javaFieldMetaData.getJavaType())){
+                    javaFieldMetaData.setDefaultValue("Date()");
+                }else{
+                    javaFieldMetaData.setDefaultValue("");
+                }
+
                 javaFieldMetaDataList.add(javaFieldMetaData);
             }
             javaClassMetaData.setJavaFieldMetaDataList(javaFieldMetaDataList);

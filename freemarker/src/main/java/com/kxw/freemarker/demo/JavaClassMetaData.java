@@ -54,6 +54,8 @@ public class JavaClassMetaData {
 
         private String javaName;
 
+        private String defaultValue;
+
         private String dbName;
 
         private String dbComment;
@@ -98,6 +100,14 @@ public class JavaClassMetaData {
 
         public void setDbType(String dbType) {
             this.dbType = dbType;
+        }
+
+        public String getDefaultValue() {
+            return defaultValue;
+        }
+
+        public void setDefaultValue(String defaultValue) {
+            this.defaultValue = defaultValue;
         }
     }
 }

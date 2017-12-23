@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class TableMetadataHelper {
 
-    private static final String url = "jdbc:mysql://localhost:3306/bigdoctor";
+    private static final String url = "jdbc:mysql://127.0.0.1:3306/bigdoctor_treatment";
     private static final String user = "root";
     private static final String password = "123456";
 
