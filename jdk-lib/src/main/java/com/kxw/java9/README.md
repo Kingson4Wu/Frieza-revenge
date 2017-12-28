@@ -60,3 +60,11 @@ Java 8引进了CompletableFuture，继承自Future<T>。Futures是非常有用�
 Java 9即将带来一些重大的更新与改进，其中JEP 266会是最有趣的一部分改进。它的改进方案主要来自社区的一些倡议，旨在帮助开发人员解决异步处理方面的一些重大问题。
 
 <pre>
+
+
+---
++ Java平台，标准版Oracle JDK 9中的新功能:<https://my.oschina.net/gemron/blog/1541837>
+    - 模块化
+    - 默认JVM垃圾回收为G1
+    - jshell
+    

@@ -52,6 +52,13 @@ public class TestOptional {
             .map(c -> c.getPerson())
             .map(p -> p.getName())
             .orElseThrow(() -> new IllegalArgumentException("The value of param comp isn't available."));
+
+        /**
+         * map  是可能无限级联的, 比如再深一层, 获得用户名的大写形式
+         return user.map(u -> u.getUsername())
+         .map(name -> name.toUpperCase())
+         .orElse(null);
+         */
     }
 
     /**

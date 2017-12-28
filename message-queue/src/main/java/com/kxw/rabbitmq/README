@@ -35,3 +35,7 @@ rabbitmq-service.bat start（执行这句）
   现在，消费者宕机已经无法影响到我们的消息了，但如果RabbitMQ重启了，消息依然会丢失。所幸的是，RabbitMQ提供了持久化的机制，将内存中的消息持久化到硬盘上，即使重启RabbitMQ，消息也不会丢失。但是，仍然有一个非常短暂的时间窗口（RabbitMQ收到消息还没来得及存到硬盘上）会导致消息丢失，如果需要严格的控制，可以参考官方文档
   要使用RabbitMQ的消息持久化，在声明队列时设置一个参数即可
   durable=true
+
+---
+
++ RabbitMQ 快速入门及应用:<https://mp.weixin.qq.com/s/GIkzoIBGQJtXB9RXlwlzPQ>

@@ -1,28 +1,6 @@
 # Utils4Java
 utils code package for Java Programming.<br/>
 
-wiznote : 实用代码工具类 ,idea test case, eclipse test case
-<http://hao.jobbole.com/>
-<https://github.com/jobbole/awesome-java-cn>
-
-IT_study_notes directory:
-1. MessageQueue_demo (activemq rabbitmq zeromq)
-2. Hessian_demo 一个基于 binary-RPC 实现的远程通讯 library。
-3. cache : xmemcached ,Ehcache, redis
-4. netty, mina, thrift ,probuffer
-5. auto test :rest-assured, selenium
-6. tomcat websocket
-7. zookeeper demo
-8. 网络爬虫
-9. 微信公众平台开发
-10. csdn blog 代码迁移,eclipse demo,sony电脑笔记,教程
-11. commons-digester ,jdom,dom4j解析xml <http://blog.csdn.net/kingson_wu/article/details/24555077>
-
-
-
-### point list
-1. LRU cache
-2. 
 
 ---
 org.apache.commons.lang3
@@ -97,19 +75,6 @@ jdk properties,spring,spring 自定义PropertyPlaceholderConfigurer,ReourceBundl
 4. apache-bval
 
 
-#### JVM command 
- CRaSH
- <https://github.com/crashub/crash>
- <http://www.crashub.org/1.3/javadoc/index.html>
- <http://www.crashub.org/1.3/cookbook.html>
- <http://www.crashub.org/1.3/reference.html>
-
-#### stopwatch
-spring stopwatch ,common lang3 ,自定义annotation
-
-#### timer
-jdk，Quartz(<http://ifeve.com/quartz-tutorial-quickstart/>)，spring
-
 #### Thread Pool
 IO thread pool : CPU 核数 / 2
 Worker Thread pool :  CPU 核数 * 2
@@ -129,7 +94,11 @@ nio file (Path,File Attributes,Symbolic和Hard Links ,DirectoryStream ,FileVisit
 #### 数据库操作
 jdbc，apache common DBUtils,spring jdbcTemplate,mybatis,hibernate
 
+#### stopwatch
+spring stopwatch ,common lang3 ,自定义annotation
 
+#### timer
+jdk，Quartz(<http://ifeve.com/quartz-tutorial-quickstart/>)，spring
 
 #### 在Java中定时执行任务
 在Java中，如果要定时执行某项任务，需要用到java.util.Timer类，对于喜欢使用框架的朋友，
@@ -141,26 +110,6 @@ jdbc，apache common DBUtils,spring jdbcTemplate,mybatis,hibernate
 #### 编写代码生成器
 + guava CaseFormat
 
-
-#### 网络爬虫
-+ <https://github.com/yahoo/anthelion>
-+ Apache Nutch：可扩展可伸缩的Java 网络爬虫 <https://github.com/apache/nutch>
-Nutch可以自动发现网页超链接，减少很多维护工作，比如检查坏链接，为所有访问过的页面建立拷贝进行搜索。
-+ crawler4j：轻量级多线程网络爬虫 <https://github.com/yasserg/crawler4j>
-
-#### 微服务
-+ spring boot
-<http://www.infoq.com/cn/articles/microframeworks1-spring-boot/>
-<http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/>
-<http://projects.spring.io/spring-boot/>
-
-#### 字节码操作
-Java动态代理机制详解（JDK和CGLIB，Javassist，ASM） <http://www.it165.net/pro/html/201406/14928.html>
-Java动态编程初探——Javassist<http://www.cnblogs.com/hucn/p/3636912.html>
-Java字节码操纵框架ASM小试<http://www.oseye.net/user/kevin/blog/304>
-关于java字节码框架ASM的学习<http://www.cnblogs.com/liuling/archive/2013/05/25/asm.html>
-使用 Antlr 开发领域语言<http://www.ibm.com/developerworks/cn/java/j-lo-antlr/>
-javassist跟asm比较<http://www.educity.cn/wenda/379483.html>
 
 #### 给线上代码增加log
 + btrace <http://blog.csdn.net/qyongkang/article/details/6090497>
@@ -175,7 +124,7 @@ javassist跟asm比较<http://www.educity.cn/wenda/379483.html>
 
 #### language
 + jython
-+ jphp <http://j-php.net/wiki/Home >
++ jphp <http://j-php.net/wiki/Home>
 + nashorn
 + scala
 + groovy
@@ -218,9 +167,3 @@ HttpServletRequestWrapper、HttpServletResponseWrapper,HttpSessionWrapper
 
 二维码生成:<http://blog.sina.com.cn/s/blog_5a6efa330102v1lb.html>
 
----
-分布式系统
-Akka 提供类似Erlang型的Actor模型的抽象层来编写分布式系统。Akka可以从容应对许多种不同的故障，为编写可靠的分布式系统提供了更高层次的抽象。
-
-Web应用程序
-需要用Java写一个功能完善的Web应用程序？莫怕，有Play Framework罩着你。Play基于Akka的非阻塞I/O，提供了编写Web应用程序的可扩展的异步框架。如果想使用不那么前沿但是被广泛应用于产品的框架，请尝试Jetty。

@@ -1,5 +1,6 @@
-com.thoughtworks.xstream.annotations
-java 对象和xml的装换
++ com.thoughtworks.xstream.annotations
+  java 对象和xml的装换
+  <http://www.blogjava.net/DLevin/archive/2012/11/30/392240.html>
 
 
 简化JSON处理的开发库。
