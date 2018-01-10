@@ -39,3 +39,7 @@ rabbitmq-service.bat start（执行这句）
 ---
 
 + RabbitMQ 快速入门及应用:<https://mp.weixin.qq.com/s/GIkzoIBGQJtXB9RXlwlzPQ>
++ Spring Boot与RabbitMQ结合实现延迟队列:<http://kissyu.org/2017/11/18/Spring%20Boot%E4%B8%8ERabbitMQ%E7%BB%93%E5%90%88%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/>
+何为延迟队列？
+顾名思义，延迟队列就是进入该队列的消息会被延迟消费的队列。而一般的队列，消息一旦入队了之后就会被消费者马上消费。
++ RabbitMQ进阶——消息何去何从:<https://mp.weixin.qq.com/s/21Mueu-w-n64_Nx0nl2G_w>
