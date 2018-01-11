@@ -15,6 +15,14 @@
 <https://mp.weixin.qq.com/s/4TxWLKnlmjAJ3-PdFcL-Lg>
 
 
+ArrayBlockingQueue
+
+disruptor是用于一个JVM中多个线程之间的消息队列，作用与ArrayBlockingQueue有相似之处，但是disruptor从功能、性能都远好于ArrayBlockingQueue，当多个线程之间传递大量数据或对性能要求较高时，可以考虑使用disruptor作为ArrayBlockingQueue的替代者。
+
+官方也对disruptor和ArrayBlockingQueue的性能在不同的应用场景下做了对比，本文列出其中一组数据，数据中P代表producer，C代表consumer，ABS代表ArrayBlockingQueue
+官方性能测试数据在Performance Results:<https://github.com/LMAX-Exchange/disruptor/wiki/Performance-Results>
+
+
 + 文章举例貌似有问题,多线程读取之后没法分别生成md5再合并,所以还是得全部读取之后,按顺序合并,所以大文件还是分别在多个线程占用内存,总共的内存还是很大
 
 
