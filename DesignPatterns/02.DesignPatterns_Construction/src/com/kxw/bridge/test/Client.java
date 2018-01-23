@@ -1,5 +1,6 @@
 package com.kxw.bridge.test;
 
+import com.kxw.bridge.abstraction.Vehicle;
 import com.kxw.bridge.concreteImplementor.Goods;
 import com.kxw.bridge.concreteImplementor.Guest;
 import com.kxw.bridge.refinedAbstraction.Car;
@@ -19,7 +20,7 @@ public class Client {
      */
     public static void main(String[] args) {
         //造出一辆火车来  
-        Train train = new Train();
+        Vehicle train = new Train();
         //装入货物  
         train.setImplementor(new Goods());
         //运输  
@@ -31,7 +32,7 @@ public class Client {
 
 
         //造出一汽车来  
-        Car car = new Car();
+        Vehicle car = new Car();
         //装入货物  
         car.setImplementor(new Goods());
         //运输  

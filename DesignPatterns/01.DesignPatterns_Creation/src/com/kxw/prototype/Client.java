@@ -13,7 +13,17 @@ public class Client {
      */
     public static void main(String[] args) {
         Client c = new Client();
-        c.prototype = c.getNewPrototype(new ConcretePrototype());
+        Prototype p = new ConcretePrototype();
+        c.prototype = c.getNewPrototype(p);
+
+        System.out.println(c.prototype == p);
+
+        if (c.prototype instanceof ConcretePrototype && p instanceof ConcretePrototype) {
+            System.out.println(((ConcretePrototype)c.prototype).getName() == ((ConcretePrototype)p).getName());
+            System.out.println(((ConcretePrototype)c.prototype).getName());
+            System.out.println(((ConcretePrototype)c.prototype).getList() == ((ConcretePrototype)p).getList());
+            System.out.println(((ConcretePrototype)p).getList());
+        }
 
     }
 
@@ -22,6 +32,6 @@ public class Client {
      * @return
      */
     public Prototype getNewPrototype(Prototype prototype) {
-        return (Prototype) prototype.clone();
+        return (Prototype)prototype.clone();
     }
 }  

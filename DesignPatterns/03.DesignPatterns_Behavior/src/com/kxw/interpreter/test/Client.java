@@ -15,7 +15,7 @@ public class Client {
         Variable x = new Variable("x");
         Variable y = new Variable("y");
         Constant c = new Constant(true);
-        ctx.assign(x, false);
+        ctx.assign(x, false);//内存泄露风险
         ctx.assign(y, true);
         
         Expression exp = new Or(new And(c,x) , new And(y,new Not(x)));

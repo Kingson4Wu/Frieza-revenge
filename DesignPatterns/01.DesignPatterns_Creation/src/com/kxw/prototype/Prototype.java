@@ -8,6 +8,8 @@ package com.kxw.prototype;
  */  
 public interface Prototype extends Cloneable {  
   
-    public Object clone();  
+    public Object clone();
+
+
       
 }  
