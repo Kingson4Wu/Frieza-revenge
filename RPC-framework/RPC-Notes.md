@@ -53,3 +53,5 @@ fastjson是怎么实现JSON的序列化和反序列化的
 ---
 
 有人会说java 的序列化很慢，但是性能的瓶颈永远不会出现在序列化上。
+
++ 如何编写高性能的 RPC 框架:<https://mp.weixin.qq.com/s/bJkcjnX_5w6mPL0e-igDhw>

@@ -170,3 +170,5 @@ Spring AOP默认首先使用JDK动态代理来代理目标对象，如果目标�
 深入剖析动态代理--性能比较<http://blog.csdn.net/liutengteng130/article/details/46565309>
 
 <http://blog.csdn.net/Kingson_Wu/article/details/50864853>
+
++ Spring AOP 的实现原理:<https://mp.weixin.qq.com/s/aTsddLlKg8DE1mfIdI0wAw>
