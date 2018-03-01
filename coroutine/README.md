@@ -2,3 +2,4 @@ Akka 提供类似Erlang型的Actor模型的抽象层来编写分布式系统。A
 
 需要用Java写一个功能完善的Web应用程序？莫怕，有Play Framework罩着你。Play基于Akka的非阻塞I/O，提供了编写Web应用程序的可扩展的异步框架。如果想使用不那么前沿但是被广泛应用于产品的框架，请尝试Jetty。
 
+kilim

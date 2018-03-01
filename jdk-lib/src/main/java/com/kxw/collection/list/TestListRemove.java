@@ -1,4 +1,4 @@
-package com.kxw.list;
+package com.kxw.collection.list;
 
 
 import java.util.*;

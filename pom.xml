@@ -18,7 +18,6 @@
         <module>performance-test</module>
         <module>cache</module>
         <module>crawler-framework</module>
-        <module>collection-operation</module>
         <module>common-utils</module>
         <module>database</module>
         <module>maven-api</module>

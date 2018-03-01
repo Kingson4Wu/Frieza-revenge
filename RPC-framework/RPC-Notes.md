@@ -55,3 +55,17 @@ fastjson是怎么实现JSON的序列化和反序列化的
 有人会说java 的序列化很慢，但是性能的瓶颈永远不会出现在序列化上。
 
 + 如何编写高性能的 RPC 框架:<https://mp.weixin.qq.com/s/bJkcjnX_5w6mPL0e-igDhw>
+
+---
+http://www.cppblog.com/tx7do/archive/2016/11/17/214415.html
+
+ 	protobuf	thrift
+功能特性	主要是一种序列化机制	提供了全套RPC解决方案，包括序列化机制、传输层、并发处理框架等
+支持语言	C++/Java/Python	C++, Java, Python, Ruby, Perl, PHP, C#, Erlang, Haskell
+易用性	语法类似，使用方式等类似
+生成代码的质量	可读性都还过得去，执行效率另测
+升级时版本兼容性	均支持向后兼容和向前兼容
+学习成本	功能单一，容易学习	功能丰富、学习成本高
+文档&社区	官方文档较为丰富，google搜索protocol buffer有2000W+结果，google group被墙不能访问	官方文档较少，没有API文档，google搜索apache thrift仅40W结果，邮件列表不怎么活跃
+ 
+ 

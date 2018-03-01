@@ -1,4 +1,4 @@
-package com.kxw;
+package com.kxw.collection;
 
 import java.util.ArrayList;
 import java.util.Arrays;
