@@ -115,6 +115,19 @@ public enum Singleton {
                 synchronized (SafeDoubleCheckedLocking.class) {
                     if (instance == null)
                         instance = new Instance();//instance为volatile，现在没问题了
+                        //读volatile：每当子线程某一语句要用到volatile变量时，都会从主线程重新拷贝一份，这样就保证子线程的会跟主线程的一致。
+                        //写volatile: 每当子线程某一语句要写volatile变量时，都会在读完后同步到主线程去，这样就保证主线程的变量及时更新。
+                        
+                        /**在执行instance=new Singleton()；时，并不是原子语句，实际是包括了下面三大步骤：
+                          1.为对象分配内存
+                          
+                          2.初始化实例对象
+                          
+                          3.把引用instance指向分配的内存空间
+                          
+                          这个三个步骤并不能保证按序执行，处理器会进行指令重排序优化
+                          */
+                          //http://blog.csdn.net/glory1234work2115/article/details/50814419
                 }
             }
             return instance;
