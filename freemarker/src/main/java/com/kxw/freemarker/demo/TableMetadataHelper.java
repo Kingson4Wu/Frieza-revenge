@@ -15,9 +15,22 @@ import java.util.Map;
  */
 public class TableMetadataHelper {
 
-    private static final String url = "jdbc:mysql://127.0.0.1:3306/bigdoctor_treatment";
-    private static final String user = "root";
-    private static final String password = "123456";
+    private static  String url = "jdbc:mysql://127.0.0.1:3306/bigdoctor_treatment";
+    private static  String user = "root";
+    private static  String password = "123456";
+
+
+    public static void setUrl(String url) {
+        TableMetadataHelper.url = url;
+    }
+
+    public static void setUser(String user) {
+        TableMetadataHelper.user = user;
+    }
+
+    public static void setPassword(String password) {
+        TableMetadataHelper.password = password;
+    }
 
     private static Connection getMySQLConnection() throws Exception {
         Class.forName("com.mysql.jdbc.Driver");

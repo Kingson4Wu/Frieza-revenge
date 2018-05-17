@@ -8,7 +8,7 @@ package com.kxw.algorithm;
 public class ShellSort {
 
     public static void main(String[] args) {
-        int a[] = {1, 54, 6, 3, 78, 34, 12, 45, 56, 100};
+        int[] a = {1, 54, 6, 3, 78, 34, 12, 45, 56, 100};
         double d1 = a.length;
         int temp = 0;
 

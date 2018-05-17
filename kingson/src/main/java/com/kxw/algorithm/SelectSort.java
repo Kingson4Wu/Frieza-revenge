@@ -9,7 +9,7 @@ package com.kxw.algorithm;
 public class SelectSort {
 
     public static void main(String[] args) {
-        int a[] = {1, 54, 6, 3, 78, 34, 12, 45};
+        int[] a = {1, 54, 6, 3, 78, 34, 12, 45};
         int position = 0;
         for (int i = 0; i < a.length; i++) {
             int j = i + 1;

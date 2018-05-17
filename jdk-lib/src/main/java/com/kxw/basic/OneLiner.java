@@ -54,7 +54,12 @@ public class OneLiner {
         }
 
         /** 5.输出歌曲《Happy Birthday to You!》 - 根据集合中不同的元素输出不同的字符串 */
-        range(1, 5).boxed().map(i -> {System.out.print("Happy Birthday "); if (i == 3) return "dear NAME"; else return "to You"; }).forEach(System.out::println);
+        range(1, 5).boxed().map(i -> {System.out.print("Happy Birthday "); if (i == 3) {
+            return "dear NAME";
+        } else {
+            return "to You";
+        }
+        }).forEach(System.out::println);
 
         /** 6.过滤并分组集合中的数字*/
         //Map<String, List<Integer>> result2 = Stream.of(49, 58, 76, 82, 88, 90).collect(groupingBy(forPredicate(i -> i > 60, "passed", "failed")));

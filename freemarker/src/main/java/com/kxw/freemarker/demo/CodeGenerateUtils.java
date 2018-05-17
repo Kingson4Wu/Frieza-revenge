@@ -19,10 +19,15 @@ public class CodeGenerateUtils {
 
     public static void main(String[] args) throws Exception {
 
+        String tableName = "to";
+        TableMetadataHelper.setUrl("jdbc.6.min");
+        TableMetadataHelper.setUser("fn");
+        TableMetadataHelper.setPassword("k14");
 
-        Map<String, JavaClassMetaData> javaClassMetaDataMap = JavaCodeMetaDataHelper.obtainJavaClassMap(Arrays.asList("treatment_record_execution"));
 
-        JavaClassMetaData javaClassMetaData = javaClassMetaDataMap.get("treatment_record_execution");
+        Map<String, JavaClassMetaData> javaClassMetaDataMap = JavaCodeMetaDataHelper.obtainJavaClassMap(Arrays.asList(tableName));
+
+        JavaClassMetaData javaClassMetaData = javaClassMetaDataMap.get(tableName);
 
         Configuration cfg = new Configuration(new Version("2.3.20"));
         String tplDir = CodeGenerateUtils.class.getClassLoader().getResource("").getPath();
@@ -42,8 +47,8 @@ public class CodeGenerateUtils {
         root.put("javaFieldMetaDataList", javaClassMetaData.getJavaFieldMetaDataList());
 
         //Template template = cfg.getTemplate("Kotlinbean.ftl");
-        //Template template = cfg.getTemplate("Javabean.ftl");
-        Template template = cfg.getTemplate("MybatisDao.ftl");
+        Template template = cfg.getTemplate("Javabean.ftl");
+        //Template template = cfg.getTemplate("MybatisDao.ftl");
 
         //Writer writer = new PrintWriter(System.out);
         Writer writer=new StringWriter();

@@ -61,11 +61,15 @@ public class TestHttpClient {
     @Test
     public void test() throws IOException {
 
+        System.setProperty("http.proxySet", "true");
+        System.setProperty("http.proxyHost", "172.17.11.49");
+        System.setProperty("http.proxyPort", "1081");
+
         //创建一个客户端
         HttpClient client = new DefaultHttpClient();
 
         //创建一个get方法
-        HttpGet get = new HttpGet("http://www.baidu.com");
+        HttpGet get = new HttpGet("http://www.facebook.com");
 
         //执行请求
         HttpResponse res = client.execute(get);

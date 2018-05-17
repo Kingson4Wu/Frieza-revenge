@@ -43,7 +43,7 @@ public class MonBuffers {
 
         "com.sun.management.jmxremote.localConnectorAddress";
 
-    public static void main(String args[]) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         // attach to target VM to get connector address
 

@@ -1,7 +1,16 @@
 package com.kxw.test;
 
 class Test {
-    int x() { return 1; }
-    //String x() { return "123"; }
+    private static final int MASK = (2 << 6) - 1;
+
+    public static void main(String[] args) {
+
+        System.out.println(130 & MASK);
+
+        System.out.println((2 << 6) - 1);
+
+        System.out.println(2 << 6);
+
+    }
+
 }
-//是的！Java语言不允许一个类里有2个方法是『重载一致』的，而不会关心这2个方法的throws子句或返回类型实际是不同的。

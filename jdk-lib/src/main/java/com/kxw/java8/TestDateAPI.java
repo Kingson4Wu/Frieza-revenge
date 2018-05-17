@@ -98,17 +98,17 @@ public class TestDateAPI {
         System.out.println(legacyDate);     // Wed Dec 31 23:59:59 CET 2014
 
         //格式化LocalDateTime和格式化时间和日期一样的，除了使用预定义好的格式外，我们也可以自己定义格式
-        DateTimeFormatter formatter =
+       /* DateTimeFormatter formatter =
                 DateTimeFormatter
                         .ofPattern("MMM dd, yyyy - HH:mm");
         LocalDateTime parsed = LocalDateTime.parse("Nov 03, 2014 - 07:13", formatter);
         String string = formatter.format(parsed);
-        System.out.println(string);     // Nov 03, 2014 - 07:13
+        System.out.println(string);*/     // Nov 03, 2014 - 07:13
 
         //和java.text.NumberFormat不一样的是新版的DateTimeFormatter是不可变的，所以它是线程安全的。
         //关于时间日期格式的详细信息：http://download.java.net/jdk8/docs/api/java/time/format/DateTimeFormatter.html
 
-
+        System.out.println(Instant.now().getEpochSecond());
 
     }
 }
