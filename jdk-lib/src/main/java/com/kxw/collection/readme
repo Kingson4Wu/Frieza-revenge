@@ -22,3 +22,8 @@ http://jackyrong.iteye.com/blog/2158009
           public Integer apply(Movie from) {
             return from.getRank();
     }});
+
+---
+
+sort:
+ list.sort(Comparator.comparing(Result::getxx),  Comparator.reverseOrder())

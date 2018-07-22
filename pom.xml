@@ -92,7 +92,11 @@
         <fastjson.version>1.2.4</fastjson.version>
         <jackson-annotations>2.7.4</jackson-annotations>
         <jackson.version>2.7.4</jackson.version>
+        <maven-enforcer-plugin_version>1.1</maven-enforcer-plugin_version>
+        <extra-enforcer-rules_version>1.0-alpha-3</extra-enforcer-rules_version>
     </properties>
+
+
 
     <dependencyManagement>
         <dependencies>
@@ -209,6 +213,33 @@
                     </archive>
                 </configuration>
             </plugin>
+            <!-- https://blog.csdn.net/elricboa/article/details/78606642 -->
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M1</version>
+                <executions>
+                    <execution>
+                        <id>enforce-dependencies</id>
+                        <goals>
+                            <goal>display-info</goal>
+                            <goal>enforce</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <rules>
+                        <requireMavenVersion>
+                            <version>[3.0.3,)</version>
+                        </requireMavenVersion>
+
+                        <requireJavaVersion>
+                            <version>1.8.0</version>
+                        </requireJavaVersion>
+                    </rules>
+                    <fail>true</fail>
+                </configuration>
+            </plugin>-->
         </plugins>
 
     </build>

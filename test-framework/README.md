@@ -105,3 +105,13 @@ public class EmailSystemTest {
 + Moco 框架以及其在 Web 集成测试的应用:<http://www.ibm.com/developerworks/cn/web/1405_liugang_mocowebtest/>
     - `git clone https://github.com/dreamhead/moco.git` && `./gradlew build`
     - `java -jar moco-runner-<version>-standalone.jar start -p 12306 -c foo.json`
+
++ DbUnit 是一个 JUnit 扩展，每次集成测试前，将数据库初始化成已知状态，确保数据库存储正确的数据。
++ Spring Test 是为 Spring 程序编写自动化测试的最有用的库之一。为了给 Spring 驱动的应用程序（包括 MVC 控制器在内），编写单元测试和集成测试，Spring Test 提供了一流的支持。
+Spring Test DbUnit 集成了 Spring Test 框架与 DbUnit；Spring Test MVC HtmlUnit 集成了Spring Test MVC 框架和 HtmlUnit。
+
+
++ 
+Mockito
+
+Mockito 并不是无酒精混合饮料的意思。Mockito 是一个用Java编写的单元测试框架，Mockito 2.0为高级框架集成提供了更好的API。这不是针对编写单元测试的用户，而是针对需要使用定制逻辑扩展或包装Mockito的其他测试工具和模拟框架。（项目地址：https://github.com/mockito/mockito）

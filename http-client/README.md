@@ -65,3 +65,14 @@ vips-common-http-client
 + 从原生的 HttpUrlConnection 到经典的 Apache 的 HttpClient，再到对前面这些网络基础框架的封装，比如 Volley、Async Http Client，如今 Retrofit
 
 + Java9之HttpClientAPI实战详解:<https://my.oschina.net/lt0314/blog/1546572>
+
+---
+
+System.setProperty("http.proxySet", "true");
+System.setProperty("http.proxyHost", proxyHost);
+System.setProperty("http.proxyPort", "" + proxyPort);
+// 针对https也开启代理
+System.setProperty("https.proxyHost", proxyHost);
+System.setProperty("https.proxyPort", "" + proxyPort);
+
+只对Jdk的HttpURLConnection有用,对apache的httpClient没用
