@@ -1,18 +1,24 @@
 package apache.commons.beanutils;
 
-import com.kxw.bean.Kingson;
-import com.kxw.bean.Person;
-import org.apache.commons.beanutils.BeanUtils;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.kxw.bean.Kingson;
+import com.kxw.bean.Person;
+import org.apache.commons.beanutils.BeanUtils;
 
 /**
  * Created by kingsonwu on 15/12/26.
  */
 
 public class TestBeanUtils {
+
+    /**
+     * map对象转实体类，原本使用Beanutils或者cglib的BeanCopier实现转换，前者使用的是反射的机制，所以性能相对较差，后者是使用修改字节码技术，性能在未使用Converter时基本等同于set和get方法。
+     * https://www.west.cn/cms/wiki/code/2018-07-28/42684.html
+     * {@link com.kxw.cglib.CglibBeanCopierUtils}
+     */
 
     public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
 

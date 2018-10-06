@@ -76,3 +76,17 @@ System.setProperty("https.proxyHost", proxyHost);
 System.setProperty("https.proxyPort", "" + proxyPort);
 
 只对Jdk的HttpURLConnection有用,对apache的httpClient没用
+
+---
+1.connectionRequestTimout
+
+指从连接池获取连接的timeout
+
+2.connetionTimeout
+
+指客户端和服务器建立连接的timeout，
+就是http请求的三个阶段，一：建立连接；二：数据传送；三，断开连接。超时后会ConnectionTimeOutException
+
+3.socketTimeout
+
+指客户端和服务器建立连接后，客户端从服务器读取数据的timeout，超出后会抛出SocketTimeOutException
