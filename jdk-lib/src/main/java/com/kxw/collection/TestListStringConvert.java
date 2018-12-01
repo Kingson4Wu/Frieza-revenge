@@ -2,10 +2,14 @@ package com.kxw.collection;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+
+import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * Created by kingson.wu on 2015/12/10.
+ * https://mp.weixin.qq.com/s/gBVp4WUPi4xuKRzQgFLslQ
  */
 public class TestListStringConvert {
 
@@ -25,6 +29,20 @@ public class TestListStringConvert {
         String[] dataList = body.split(",");
         List<String> list2 = new ArrayList<>();
         list2 = Arrays.asList(dataList);
+
+        /** List转化成int[] */
+        List<Integer> list = new ArrayList<>();
+        list.add(0);
+        int[] array = ArrayUtils.toPrimitive(list.toArray(new Integer[0]));
+
+        /** 拷贝list, 两种方法都是浅拷贝*/
+        List<Integer> srcList = new ArrayList<>();
+        List<Integer> dstList = new ArrayList<>(srcList);
+        //使用Collections.copy()
+        ArrayList<Integer> dstList2 = new ArrayList<>(srcList.size());
+        Collections.copy(dstList2, srcList);
+
+
 
     }
 
