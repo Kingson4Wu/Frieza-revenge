@@ -16,3 +16,10 @@ Java字节码操纵框架ASM小试<http://www.oseye.net/user/kevin/blog/304>
 关于java字节码框架ASM的学习<http://www.cnblogs.com/liuling/archive/2013/05/25/asm.html>
 使用 Antlr 开发领域语言<http://www.ibm.com/developerworks/cn/java/j-lo-antlr/>
 javassist跟asm比较<http://www.educity.cn/wenda/379483.html>
+
+
+#### ASM
++ ASM 库的介绍和使用:<https://www.jianshu.com/p/905be2a9a700>
+ASM 官方为我们提供了 ASMifier，可以帮助我们生成这些晦涩难懂的 ASM 代码
+
+how to use asm to spring boot?

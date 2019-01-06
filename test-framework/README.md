@@ -115,3 +115,12 @@ Spring Test DbUnit 集成了 Spring Test 框架与 DbUnit；Spring Test MVC Html
 Mockito
 
 Mockito 并不是无酒精混合饮料的意思。Mockito 是一个用Java编写的单元测试框架，Mockito 2.0为高级框架集成提供了更好的API。这不是针对编写单元测试的用户，而是针对需要使用定制逻辑扩展或包装Mockito的其他测试工具和模拟框架。（项目地址：https://github.com/mockito/mockito）
+
+使用强大的 Mockito 来测试你的代码：<https://www.jianshu.com/p/f6e3ab9719b9>
+
+---
+
+Awaitility
+Awaitility是一个小型的Java领域专用语言（DSL），用于对异步的操作进行同步。
+
+测试异步的系统是比较困难的。不仅需要处理线程、超时和并发问题，而且测试代码的本来意图也有可能被这些细节所蒙蔽。Awaitility是一个领域专用语言，可以允许你以一种简洁且易读的方式来表达异步系统的各种期望结果。
