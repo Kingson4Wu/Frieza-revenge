@@ -22,5 +22,7 @@ public class FastJsonTest {
          * <a href='https://github.com/alibaba/fastjson/issues/120'>@link</a>
          */
 
+
+        JSON.parseObject("kxw", Kingson.class);
     }
 }

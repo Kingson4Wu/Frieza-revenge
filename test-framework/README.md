@@ -124,3 +124,9 @@ Awaitility
 Awaitility是一个小型的Java领域专用语言（DSL），用于对异步的操作进行同步。
 
 测试异步的系统是比较困难的。不仅需要处理线程、超时和并发问题，而且测试代码的本来意图也有可能被这些细节所蒙蔽。Awaitility是一个领域专用语言，可以允许你以一种简洁且易读的方式来表达异步系统的各种期望结果。
+
+
+testCompile 'pl.pojo:pojo-tester:0.7.6'
+pojo-tester
+lombok
+kotlin
