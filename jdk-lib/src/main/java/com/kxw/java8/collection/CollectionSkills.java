@@ -23,5 +23,7 @@ public class CollectionSkills {
         Map<Integer, List<Kingson>> kLMap = list.stream().collect(Collectors.groupingBy(Kingson::getId));
 
         list.stream().map(Kingson::getName).collect(Collectors.joining("','", "('", "')"));
+
+        //Stream.of的静态方法将两个list转换为Stream，再通过flatMap将两个流合并为一个。
     }
 }

@@ -41,7 +41,7 @@ public class TestDateApi2 {
 
         //LocalDate date = LocalDate.parse("201501", DateTimeFormatter.ofPattern("yyyyMM"));
 
-
+        //Java 8 Time Api 使用指南-珍藏限量版:<https://mp.weixin.qq.com/s?__biz=MzU0MDEwMjgwNA==&mid=2247485897&idx=1&sn=8487a66802b3c891c068898a9abbf9b6&chksm=fb3f1032cc4899249eb136a06e6c226f255b40fab0c5ae3c2d35b75effe79a6e46e3ea505faa&mpshare=1&scene=1&srcid=&sharer_sharetime=1566913432339&sharer_shareid=dcfe0eae58d1da3d4cc1d60a98c3905c#rd>
 
     }
 }

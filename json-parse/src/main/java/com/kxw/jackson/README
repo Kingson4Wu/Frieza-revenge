@@ -41,3 +41,6 @@ Long answer: yes, as long as you always configure instance before use, and do no
 
 Further: it is beneficial to use just one instance (or small number of instances) for data binding; many optimizations for reuse (of symbol tables, some buffers) depend on ObjectMapper instances being reused.
 
+---
++ Jackson还可以使用SPI来自动发现和注册模块。
+

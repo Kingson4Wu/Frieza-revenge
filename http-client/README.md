@@ -90,3 +90,8 @@ System.setProperty("https.proxyPort", "" + proxyPort);
 3.socketTimeout
 
 指客户端和服务器建立连接后，客户端从服务器读取数据的timeout，超出后会抛出SocketTimeOutException
+
+
+---
+
++ “每个host路由的默认最大连接,需要通过setDefaultMaxConnectionsPerHost来设置,否则默认值是2”
