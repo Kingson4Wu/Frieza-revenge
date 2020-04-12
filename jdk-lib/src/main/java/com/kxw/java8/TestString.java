@@ -53,6 +53,8 @@ public class TestString {
         // => 1
 
 
+        //students.stream().map(Student::getName).collect(Collectors.joining(",","[","]"));
+
 
     }
 }

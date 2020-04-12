@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JacksonTest {
 
+    // 数组格式返回{},jackson报错，fastjson不报错，返回一个对象属性为空，size＝1的list
+
     public static void main(String[] args) {
 
         String str = "xxx";

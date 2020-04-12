@@ -8,3 +8,6 @@
     + https://cloud.tencent.com/developer/article/1377032  
 
 + <https://www.cnblogs.com/peida/p/EventBus.html>
+
+
++ EventBus 原理深度解析:<https://mp.weixin.qq.com/s/CSmtpJAHAsaBCnIvcHdt8g>, https://my.oschina.net/yangjianzhou/blog/2208677

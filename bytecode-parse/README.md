@@ -23,3 +23,8 @@ javassist跟asm比较<http://www.educity.cn/wenda/379483.html>
 ASM 官方为我们提供了 ASMifier，可以帮助我们生成这些晦涩难懂的 ASM 代码
 
 how to use asm to spring boot?
+
+---
+
+#### beanCopy
++ CGLIB BeanCopier和BeanMap等实现:<https://yq.aliyun.com/articles/48665>

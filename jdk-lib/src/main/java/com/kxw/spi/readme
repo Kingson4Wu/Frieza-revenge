@@ -1,0 +1,16 @@
+
+JAVA 拾遗 —— 关于SPI机制: https://mp.weixin.qq.com/s/8rrHhgUn4VxEgBlw_Oe-qQ
+
+既然说到了数据库驱动，索性再多说一点，还记得一道经典的面试题：class.forName(“com.mysql.jdbc.Driver”)到底做了什么事？
+
+先思考下：自己会怎么回答？
+
+都知道class.forName与类加载机制有关，会触发执行com.mysql.jdbc.Driver类中的静态方法，从而使主类加载数据库驱动。如果再追问，为什么它的静态块没有自动触发？可答：因为数据库驱动类的特殊性质，JDBC规范中明确要求Driver类必须向DriverManager注册自己，导致其必须由class.forName手动触发，这可以在java.sql.Driver中得到解释。完美了吗？还没，来到最新的DriverManager源码中，可以看到这样的注释,翻译如下：
+
+DriverManager 类的方法 getConnection 和 getDrivers 已经得到提高以支持 Java Standard Edition Service Provider 机制。 JDBC 4.0 Drivers 必须包括 META-INF/services/java.sql.Driver 文件。此文件包含 java.sql.Driver 的 JDBC 驱动程序实现的名称。例如，要加载 my.sql.Driver 类，META-INF/services/java.sql.Driver 文件需要包含下面的条目：
+
+my.sql.Driver
+
+应用程序不再需要使用 Class.forName() 显式地加载 JDBC 驱动程序。当前使用 Class.forName() 加载 JDBC 驱动程序的现有程序将在不作修改的情况下继续工作。
+
+可以发现，Class.forName已经被弃用了，所以，这道题目的最佳回答，应当是和面试官牵扯到JAVA中的SPI机制，进而聊聊加载驱动的演变历史。
