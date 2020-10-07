@@ -28,3 +28,6 @@ how to use asm to spring boot?
 
 #### beanCopy
 + CGLIB BeanCopier和BeanMap等实现:<https://yq.aliyun.com/articles/48665>
++ 常见Bean映射工具分析评测及Orika介绍:<https://www.jianshu.com/p/40e0e64797b9>
+    - Orika是近期在github活跃的项目，底层采用了javassist类库生成Bean映射的字节码，之后直接加载执行生成的字节码文件，因此在速度上比使用反射进行赋值会快很多
+    
